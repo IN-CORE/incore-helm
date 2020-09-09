@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "incore.fullname" . }}-auth
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.auth.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "incore.name" . }}-auth
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+#      annotations:
+#        sidecar.istio.io/inject: "false"
+      labels:
+        app.kubernetes.io/name: {{ include "incore.name" . }}-auth
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: auth
+          image: "{{ .Values.image.project }}/{{ .Values.auth.image.repository }}:{{ .Values.auth.image.tag }}"
+          imagePullPolicy: Always # {{ .Values.image.pullPolicy }}
+          env:
+            - name: KEYCLOAK_AUDIENCE
+              value: {{ .Values.auth.audience | quote }}
+            - name: KEYCLOAK_URL
+              {{- with first .Values.keycloak.ingress.rules }}
+              value: {{ printf "https://%s/auth/realms/%s/" .host $.Values.auth.realm | quote }}
+              {{- end }}
+          ports:
+            - containerPort: {{ .Values.auth.service.port }}
+              name: auth
+          livenessProbe:
+            httpGet:
+              path: /
+              port: auth
+          readinessProbe:
+            httpGet:
+              path: /
+              port: auth
+          resources:
+            {{- toYaml .Values.auth.resources | nindent 12 }}
+      {{- with .Values.auth.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.auth.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.auth.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
