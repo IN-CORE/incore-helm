@@ -24,6 +24,14 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      initContainers:
+        - name: check-url
+          image: "ncsa/checks:1.0.0"
+          env:
+            - name: URL
+              {{- with first .Values.keycloak.ingress.rules }}
+              value: {{ printf "https://%s/auth/realms/%s/" .host $.Values.auth.realm | quote }}
+              {{- end }}
       containers:
         - name: auth
           image: "{{ .Values.image.project }}/{{ .Values.auth.image.repository }}:{{ .Values.auth.image.tag }}"

@@ -61,3 +61,10 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Create the mongodb uri to use
+*/}}
+{{- define "incore.mongodb.uri" -}}
+{{- printf "mongodb://root:%s@%s-mongodb-0:27017%s?maxpoolsize=100" .Values.mongodb.auth.rootPassword (include "incore.fullname" .) "@DB@" }}
+{{- end }}

@@ -214,12 +214,23 @@ jupyterhub:
       - incore.example.com
 
 # ----------------------------------------------------------------------
+# MONGODB
+# ----------------------------------------------------------------------
+mongodb:
+  architecture: standalone
+  useStatefulSet: true
+  auth:
+    rootPassword: incorerocks
+  replicaSetName: incore
+  initdbScripts:
+
+# ----------------------------------------------------------------------
 # POSTGRESQL
 # ----------------------------------------------------------------------
 postgresql:
   postgresqlPassword: incorerocks
   initdbScripts:
-    db-init.sql: |
+    keycloak.sql: |
       CREATE DATABASE keycloak;
       CREATE USER keycloak WITH PASSWORD 'keycloak';
       GRANT ALL PRIVILEGES ON DATABASE keycloak TO keycloak;

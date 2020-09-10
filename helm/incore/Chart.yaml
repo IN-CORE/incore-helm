@@ -30,3 +30,6 @@ dependencies:
   - name: postgresql
     version: ~9.3
     repository: https://charts.bitnami.com/bitnami
+  - name: mongodb
+    version: ~9
+    repository: https://charts.bitnami.com/bitnami
