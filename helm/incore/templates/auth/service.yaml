@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "incore.fullname" . }}-auth
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+#  annotations:
+#    getambassador.io/config: |
+#      ---
+#      apiVersion: ambassador/v1
+#      kind:  AuthService
+#      name:  authentication
+#      auth_service: "auth:5000"
+#      allowed_authorization_headers:
+#      - "x-auth-userinfo"
+#      - "X-Auth-Userinfo"
+#      status_on_error:
+#        code: 503
+#      #config:
+#        #buffer:
+#          #max_request_bytes: 33559432
+#          #max_request_time: 600000
+#      ---
+#      apiVersion: ambassador/v1
+#      kind:  Mapping
+#      name:  login_mapping
+#      prefix: /login/
+#      service: auth:5000
+#      timeout_ms: 600000
+#      cors:
+#        origins: "*"
+#        methods: POST, GET, OPTIONS, PUT, DELETE
+#        headers: "*"
+#        #exposed_headers:
+#        #max_age: "86400"
+#      retry_policy:
+#        retry_on: "5xx"
+#      envoy_override:
+#        per_connection_buffer_limit_bytes: 333559432
+spec:
+  selector:
+    app.kubernetes.io/name: {{ include "incore.name" . }}-auth
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  type: {{ .Values.auth.service.type }}
+  ports:
+    - port: {{ .Values.auth.service.port }}
+      name: auth
+      targetPort: {{ .Values.auth.service.port }}
+      protocol: TCP

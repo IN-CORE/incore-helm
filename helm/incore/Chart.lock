@@ -1,0 +1,15 @@
+dependencies:
+- name: jupyterhub
+  repository: https://jupyterhub.github.io/helm-chart/
+  version: 0.9.1
+- name: keycloak
+  repository: https://codecentric.github.io/helm-charts
+  version: 9.0.7
+- name: postgresql
+  repository: https://charts.bitnami.com/bitnami
+  version: 9.3.4
+- name: mongodb
+  repository: https://charts.bitnami.com/bitnami
+  version: 9.1.1
+digest: sha256:d1763135aa9173c03a858e3c026438ce4b74b7dc6b5805abf81d8b82db81d4ed
+generated: "2020-09-09T23:15:24.634989-05:00"
