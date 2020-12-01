@@ -173,7 +173,7 @@ svc_data:
   replicas: 1
   image:
     repository: data-jetty
-    tag: 0.7.0
+    tag: 0.9.0
   service:
     type: ClusterIP
     port: 8888
@@ -190,6 +190,99 @@ svc_data:
 #            burst: 20
   persistence:
     size: 10Gi
+
+# ----------------------------------------------------------------------
+# DFR3 SERVICE CONFIGURATION
+# ----------------------------------------------------------------------
+svc_dfr3:
+  replicas: 1
+  image:
+    repository: dfr3-jetty
+    tag: 0.9.0
+  service:
+    type: ClusterIP
+    port: 8888
+  ingress:
+    annotations:
+#      ingress.kubernetes.io/auth-url: /auth/
+#      ingress.kubernetes.io/auth-response-headers: x-auth-userinfo, X-Auth-Userinfo
+#      traefik.ingress.kubernetes.io/rate-limit: |
+#        extractorfunc: client.ip
+#        rateset:
+#          api-rateset:
+#            period: 1s
+#            average: 10
+#            burst: 20
+
+# ----------------------------------------------------------------------
+# HAZARD SERVICE CONFIGURATION
+# ----------------------------------------------------------------------
+svc_hazard:
+  replicas: 1
+  image:
+    repository: hazard-jetty
+    tag: 0.9.0
+  service:
+    type: ClusterIP
+    port: 8888
+  ingress:
+    annotations:
+#      ingress.kubernetes.io/auth-url: /auth/
+#      ingress.kubernetes.io/auth-response-headers: x-auth-userinfo, X-Auth-Userinfo
+#      traefik.ingress.kubernetes.io/rate-limit: |
+#        extractorfunc: client.ip
+#        rateset:
+#          api-rateset:
+#            period: 1s
+#            average: 10
+#            burst: 20
+
+# ----------------------------------------------------------------------
+# SPACE SERVICE CONFIGURATION
+# ----------------------------------------------------------------------
+svc_space:
+  replicas: 1
+  image:
+    repository: space-jetty
+    tag: 0.9.0
+  service:
+    type: ClusterIP
+    port: 8888
+  ingress:
+    annotations:
+#      ingress.kubernetes.io/auth-url: /auth/
+#      ingress.kubernetes.io/auth-response-headers: x-auth-userinfo, X-Auth-Userinfo
+#      traefik.ingress.kubernetes.io/rate-limit: |
+#        extractorfunc: client.ip
+#        rateset:
+#          api-rateset:
+#            period: 1s
+#            average: 10
+#            burst: 20
+
+# ----------------------------------------------------------------------
+# SEMANTICS SERVICE CONFIGURATION
+# ----------------------------------------------------------------------
+svc_sema:
+  replicas: 1
+  image:
+    repository: semantics-jetty
+    tag: 0.9.0
+  service:
+    type: ClusterIP
+    port: 8888
+  ingress:
+    annotations:
+#      ingress.kubernetes.io/auth-url: /auth/
+#      ingress.kubernetes.io/auth-response-headers: x-auth-userinfo, X-Auth-Userinfo
+#      traefik.ingress.kubernetes.io/rate-limit: |
+#        extractorfunc: client.ip
+#        rateset:
+#          api-rateset:
+#            period: 1s
+#            average: 10
+#            burst: 20
+
 
 # ----------------------------------------------------------------------
 # DEPENDENCIES CONFIGURATION

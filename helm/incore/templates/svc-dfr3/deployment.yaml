@@ -1,0 +1,113 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "incore.fullname" . }}-svc-dfr3
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "incore.name" . }}-svc-dfr3
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "incore.name" . }}-svc-dfr3
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      hostAliases:
+        - ip: "141.142.210.179"
+          hostnames:
+            - "incore2-mongo-dev.os.ncsa.edu"
+            - "incore2-mongo-dev"
+      containers:
+        - name: incore-dfr3-jetty
+          image: "{{ .Values.image.project }}/{{ .Values.svc_dfr3.image.repository }}:{{ .Values.svc_dfr3.image.tag }}"
+          env:
+            - name: JETTY_PORT
+              value: {{ .Values.svc_data.service.port | quote }}
+            - name: SERVICES_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: SERVICES_URL
+            - name: DATA_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: DATA_MONGODB_URI
+            - name: DFR3_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: DFR3_MONGODB_URI
+            - name: HAZARD_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: HAZARD_MONGODB_URI
+            - name: SPACE_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: SPACE_MONGODB_URI
+            - name: DATA_REPO_DATA_DIR
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: DATA_REPO_DATA_DIR
+            - name: GEOSERVER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: GEOSERVER_URL
+            - name: GEOSERVER_WORKSPACE
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: GEOSERVER_WORKSPACE
+            - name: GEOSERVER_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: GEOSERVER_USER
+            - name: GEOSERVER_PW
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: GEOSERVER_PW
+            - name: GEOSERVER_ENABLE
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: GEOSERVER_ENABLE
+          ports:
+            - containerPort: {{ .Values.svc_dfr3.service.port }}
+              name: svc-dfr3
+          livenessProbe:
+            httpGet:
+              path: /dfr3/
+              port: {{ .Values.svc_dfr3.service.port }}
+          readinessProbe:
+            httpGet:
+              path: /dfr3/
+              port: {{ .Values.svc_dfr3.service.port }}
+          resources:
+            {{- toYaml .Values.frontend.resources | nindent 12 }}
+      {{- with .Values.frontend.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.frontend.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.frontend.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

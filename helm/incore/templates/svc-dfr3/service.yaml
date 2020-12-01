@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "incore.fullname" . }}-svc-dfr3
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+#  annotations:
+#    getambassador.io/config: |
+#      ---
+#      apiVersion: ambassador/v1
+#      kind: Mapping
+#      name: incore-dfr3_svc_mapping
+#      prefix: /dfr3/
+#      rewrite: /dfr3/
+#      service: incore-dfr3-svc-am
+#      timeout_ms: 60000
+#      envoy_override:
+#        per_connection_buffer_limit_bytes: 393559432
+#      #idle_timeout_ms: 500000
+#      #connect_timeout_ms: 600000
+spec:
+  selector:
+    app.kubernetes.io/name: {{ include "incore.name" . }}-svc-dfr3
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  type: {{ .Values.svc_data.service.type }}
+  ports:
+    - port: {{ .Values.svc_data.service.port }}
+      name: svc-dfr3
+      targetPort: {{ .Values.svc_data.service.port }}
+      protocol: TCP

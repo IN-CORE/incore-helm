@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "incore.fullname" . }}-svc-space
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+#  annotations:
+#    getambassador.io/config: |
+#      ---
+#      apiVersion: ambassador/v1
+#      kind: Mapping
+#      name: incore-space_svc_mapping
+#      prefix: /space/
+#      rewrite: /space/
+#      service: incore-space-svc-am
+#      timeout_ms: 60000
+#      envoy_override:
+#        per_connection_buffer_limit_bytes: 393559432
+#      #idle_timeout_ms: 500000
+#      #connect_timeout_ms: 600000
+spec:
+  selector:
+    app.kubernetes.io/name: {{ include "incore.name" . }}-svc-space
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  type: {{ .Values.svc_data.service.type }}
+  ports:
+    - port: {{ .Values.svc_data.service.port }}
+      name: svc-space
+      targetPort: {{ .Values.svc_data.service.port }}
+      protocol: TCP
