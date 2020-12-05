@@ -90,7 +90,7 @@ spec:
             - containerPort: {{ .Values.svc_data.service.port }}
               name: svc-data
           volumeMounts:
-            - name: {{ include "incore.name" . }}-svc-data
+            - name: {{ include "incore.name" . }}-data
               mountPath: /home/incore/data
           livenessProbe:
             httpGet:
@@ -103,9 +103,13 @@ spec:
           resources:
             {{- toYaml .Values.frontend.resources | nindent 12 }}
       volumes:
-        - name: {{ include "incore.name" . }}-svc-data
+        - name: {{ include "incore.name" . }}-data
           persistentVolumeClaim:
-            claimName: {{ include "incore.name" . }}-svc-data
+            {{- if .Values.persistence.existingClaim }}
+            claimName: {{ .Values.persistence.existingClaim }}
+            {{- else }}
+            claimName: {{ include "incore.name" . }}-data
+            {{- end }}
       {{- with .Values.frontend.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
