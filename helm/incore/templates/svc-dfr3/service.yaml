@@ -22,9 +22,9 @@ spec:
   selector:
     app.kubernetes.io/name: {{ include "incore.name" . }}-svc-dfr3
     app.kubernetes.io/instance: {{ .Release.Name }}
-  type: {{ .Values.svc_data.service.type }}
+  type: {{ .Values.svc_dfr3.service.type }}
   ports:
-    - port: {{ .Values.svc_data.service.port }}
+    - port: {{ .Values.svc_dfr3.service.port }}
       name: svc-dfr3
-      targetPort: {{ .Values.svc_data.service.port }}
+      targetPort: {{ .Values.svc_dfr3.service.port }}
       protocol: TCP

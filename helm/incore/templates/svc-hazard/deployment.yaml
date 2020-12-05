@@ -30,7 +30,7 @@ spec:
           image: "{{ .Values.image.project }}/{{ .Values.svc_hazard.image.repository }}:{{ .Values.svc_hazard.image.tag }}"
           env:
             - name: JETTY_PORT
-              value: {{ .Values.svc_data.service.port | quote }}
+              value: {{ .Values.svc_hazard.service.port | quote }}
             - name: SERVICES_URL
               valueFrom:
                 secretKeyRef:
@@ -90,7 +90,7 @@ spec:
             - containerPort: {{ .Values.svc_hazard.service.port }}
               name: svc-hazard
           volumeMounts:
-            - name: {{ include "incore.name" . }}-svc-data
+            - name: {{ include "incore.name" . }}-data
               mountPath: /home/incore/data
           livenessProbe:
             httpGet:
@@ -103,9 +103,13 @@ spec:
           resources:
             {{- toYaml .Values.frontend.resources | nindent 12 }}
       volumes:
-        - name: {{ include "incore.name" . }}-svc-data
+        - name: {{ include "incore.name" . }}-data
           persistentVolumeClaim:
-            claimName: {{ include "incore.name" . }}-svc-data
+            {{- if .Values.persistence.existingClaim }}
+            claimName: {{ .Values.persistence.existingClaim }}
+            {{- else }}
+            claimName: {{ include "incore.name" . }}-data
+            {{- end }}
       {{- with .Values.frontend.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

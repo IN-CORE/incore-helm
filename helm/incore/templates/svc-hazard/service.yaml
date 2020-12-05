@@ -22,9 +22,9 @@ spec:
   selector:
     app.kubernetes.io/name: {{ include "incore.name" . }}-svc-hazard
     app.kubernetes.io/instance: {{ .Release.Name }}
-  type: {{ .Values.svc_data.service.type }}
+  type: {{ .Values.svc_hazard.service.type }}
   ports:
-    - port: {{ .Values.svc_data.service.port }}
+    - port: {{ .Values.svc_hazard.service.port }}
       name: svc-hazard
-      targetPort: {{ .Values.svc_data.service.port }}
+      targetPort: {{ .Values.svc_hazard.service.port }}
       protocol: TCP

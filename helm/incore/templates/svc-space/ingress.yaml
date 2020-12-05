@@ -31,7 +31,7 @@ spec:
     - host: {{ .host | quote }}
       http:
         paths:
-          - path: /space/
+          - path: /space/api
             backend:
               serviceName: {{ $fullName }}-svc-space
               servicePort: {{ $svcPort }}

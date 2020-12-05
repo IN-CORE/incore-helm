@@ -20,17 +20,12 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      hostAliases:
-        - ip: "141.142.210.179"
-          hostnames:
-            - "incore2-mongo-dev.os.ncsa.edu"
-            - "incore2-mongo-dev"
       containers:
         - name: incore-space-jetty
           image: "{{ .Values.image.project }}/{{ .Values.svc_space.image.repository }}:{{ .Values.svc_space.image.tag }}"
           env:
             - name: JETTY_PORT
-              value: {{ .Values.svc_data.service.port | quote }}
+              value: {{ .Values.svc_space.service.port | quote }}
             - name: SERVICES_URL
               valueFrom:
                 secretKeyRef:
@@ -57,20 +52,11 @@ spec:
                   name: {{ include "incore.fullname" . }}-services
                   key: SPACE_MONGODB_URI
             - name: DATA_REPO_DATA_DIR
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: DATA_REPO_DATA_DIR
+              value: "/home/incore/data/"
             - name: GEOSERVER_URL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: GEOSERVER_URL
+              value: "/geoserver/"
             - name: GEOSERVER_WORKSPACE
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: GEOSERVER_WORKSPACE
+              value: "incore"
             - name: GEOSERVER_USER
               valueFrom:
                 secretKeyRef:
@@ -82,32 +68,29 @@ spec:
                   name: {{ include "incore.fullname" . }}-services
                   key: GEOSERVER_PW
             - name: GEOSERVER_ENABLE
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: GEOSERVER_ENABLE
+              value: {{ .Values.geoserver.enable | quote }}
           ports:
             - containerPort: {{ .Values.svc_space.service.port }}
               name: svc-space
           livenessProbe:
             httpGet:
-              path: /space/
-              port: {{ .Values.svc_space.service.port }}
+              path: /space/api/status
+              port: svc-space
           readinessProbe:
             httpGet:
-              path: /space/
-              port: {{ .Values.svc_space.service.port }}
+              path: /space/api/status
+              port: svc-space
           resources:
-            {{- toYaml .Values.frontend.resources | nindent 12 }}
-      {{- with .Values.frontend.nodeSelector }}
+            {{- toYaml .Values.svc_space.resources | nindent 12 }}
+      {{- with .Values.svc_space.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.frontend.affinity }}
+      {{- with .Values.svc_space.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.frontend.tolerations }}
+      {{- with .Values.svc_space.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}

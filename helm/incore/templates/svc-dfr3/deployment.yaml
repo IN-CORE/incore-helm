@@ -30,7 +30,7 @@ spec:
           image: "{{ .Values.image.project }}/{{ .Values.svc_dfr3.image.repository }}:{{ .Values.svc_dfr3.image.tag }}"
           env:
             - name: JETTY_PORT
-              value: {{ .Values.svc_data.service.port | quote }}
+              value: {{ .Values.svc_dfr3.service.port | quote }}
             - name: SERVICES_URL
               valueFrom:
                 secretKeyRef:
