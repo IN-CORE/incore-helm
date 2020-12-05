@@ -94,11 +94,11 @@ spec:
               mountPath: /home/incore/data
           livenessProbe:
             httpGet:
-              path: /data/
+              path: /data/api/status
               port: {{ .Values.svc_data.service.port }}
           readinessProbe:
             httpGet:
-              path: /data/
+              path: /data/api/status
               port: {{ .Values.svc_data.service.port }}
           resources:
             {{- toYaml .Values.frontend.resources | nindent 12 }}
