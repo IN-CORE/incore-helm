@@ -19,3 +19,31 @@
   echo "Visit http://127.0.0.1:8080 to use your application"
   kubectl --namespace {{ .Release.Namespace }} port-forward $POD_NAME 8080:80
 {{- end }}
+
+
+Following versions have been deployed:
+
+UI:
+- frontend     : {{ .Values.frontend.image.tag }}
+- playbook     : MISSING
+
+Documentation:
+- Manual       : {{ .Values.doc_incore.image.tag }}
+- API          : {{ .Values.doc_api.image.tag }}
+- PyIncore     : {{ .Values.doc_pyincore.image.tag }}
+- PyIncore Viz : {{ .Values.doc_pyincore_viz.image.tag }}
+
+Services:
+- Auth         : {{ .Values.auth.image.tag }}
+- Data         : {{ .Values.svc_data.image.tag }}
+- DFR3         : {{ .Values.svc_dfr3.image.tag }}
+- Hazard       : {{ .Values.svc_hazard.image.tag }}
+- Semantics    : {{ .Values.svc_sema.image.tag }}
+- Space        : {{ .Values.svc_space.image.tag }}
+
+Support:
+- DataWolf     : MISSING
+- Geoserver    : {{ .Values.geoserver.image.repository }}:{{ .Values.geoserver.image.tag }}
+- Postgresql   : {{ .Values.postgresql.image.tag }}
+- Keycloak     : {{ default .Values.keycloak.image.tag "unknown" }}
+- MongoDB      : {{ .Values.mongodb.image.tag }}
