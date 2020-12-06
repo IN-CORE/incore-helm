@@ -20,11 +20,6 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      hostAliases:
-        - ip: "141.142.210.179"
-          hostnames:
-            - "incore2-mongo-dev.os.ncsa.edu"
-            - "incore2-mongo-dev"
       containers:
         - name: incore-data-jetty
           image: "{{ .Values.image.project }}/{{ .Values.svc_data.image.repository }}:{{ .Values.svc_data.image.tag }}"
