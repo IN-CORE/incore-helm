@@ -26,61 +26,16 @@ spec:
           env:
             - name: JETTY_PORT
               value: {{ .Values.svc_dfr3.service.port | quote }}
-            - name: SERVICES_URL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: SERVICES_URL
-            - name: DATA_MONGODB_URI
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: DATA_MONGODB_URI
             - name: DFR3_MONGODB_URI
               valueFrom:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: DFR3_MONGODB_URI
-            - name: HAZARD_MONGODB_URI
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: HAZARD_MONGODB_URI
             - name: SPACE_MONGODB_URI
               valueFrom:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: SPACE_MONGODB_URI
-            - name: DATA_REPO_DATA_DIR
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: DATA_REPO_DATA_DIR
-            - name: GEOSERVER_URL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: GEOSERVER_URL
-            - name: GEOSERVER_WORKSPACE
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: GEOSERVER_WORKSPACE
-            - name: GEOSERVER_USER
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: GEOSERVER_USER
-            - name: GEOSERVER_PW
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: GEOSERVER_PW
-            - name: GEOSERVER_ENABLE
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: GEOSERVER_ENABLE
           ports:
             - containerPort: {{ .Values.svc_dfr3.service.port }}
               name: svc-dfr3

@@ -26,26 +26,11 @@ spec:
           env:
             - name: JETTY_PORT
               value: {{ .Values.svc_data.service.port | quote }}
-            - name: SERVICES_URL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: SERVICES_URL
             - name: DATA_MONGODB_URI
               valueFrom:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: DATA_MONGODB_URI
-            - name: DFR3_MONGODB_URI
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: DFR3_MONGODB_URI
-            - name: HAZARD_MONGODB_URI
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: HAZARD_MONGODB_URI
             - name: SPACE_MONGODB_URI
               valueFrom:
                 secretKeyRef:
@@ -57,15 +42,9 @@ spec:
                   name: {{ include "incore.fullname" . }}-services
                   key: DATA_REPO_DATA_DIR
             - name: GEOSERVER_URL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: GEOSERVER_URL
+              value: {{ .Values.geoserver.url | quote }}
             - name: GEOSERVER_WORKSPACE
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: GEOSERVER_WORKSPACE
+              value: {{ .Values.geoserver.workspace | quote }}
             - name: GEOSERVER_USER
               valueFrom:
                 secretKeyRef:
@@ -77,10 +56,7 @@ spec:
                   name: {{ include "incore.fullname" . }}-services
                   key: GEOSERVER_PW
             - name: GEOSERVER_ENABLE
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: GEOSERVER_ENABLE
+              value: {{ .Values.geoserver.enabled | quote }}
           ports:
             - containerPort: {{ .Values.svc_data.service.port }}
               name: svc-data

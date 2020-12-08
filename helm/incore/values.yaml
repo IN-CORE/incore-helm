@@ -88,7 +88,7 @@ frontend:
   replicas: 1
   image:
     repository: frontend
-    tag: 0.7.0
+    tag: d.8888
   service:
     type: ClusterIP
     port: 80
@@ -176,6 +176,7 @@ doc_api:
 # ----------------------------------------------------------------------
 svc_data:
   replicas: 1
+  repo: /home/incore/data/
   image:
     repository: data-jetty
     tag: 0.9.0
@@ -193,6 +194,7 @@ svc_data:
 #            period: 1s
 #            average: 10
 #            burst: 20
+
 
 # ----------------------------------------------------------------------
 # DFR3 SERVICE CONFIGURATION
@@ -298,6 +300,8 @@ geoserver:
   enabled : true
   username: admin
   password: incorerocks
+  workspace: incore
+  url: /geoserver/
   replicas: 1
   image:
     repository: kartoza/geoserver

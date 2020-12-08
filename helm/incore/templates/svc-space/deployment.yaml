@@ -26,49 +26,11 @@ spec:
           env:
             - name: JETTY_PORT
               value: {{ .Values.svc_space.service.port | quote }}
-            - name: SERVICES_URL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: SERVICES_URL
-            - name: DATA_MONGODB_URI
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: DATA_MONGODB_URI
-            - name: DFR3_MONGODB_URI
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: DFR3_MONGODB_URI
-            - name: HAZARD_MONGODB_URI
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: HAZARD_MONGODB_URI
             - name: SPACE_MONGODB_URI
               valueFrom:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: SPACE_MONGODB_URI
-            - name: DATA_REPO_DATA_DIR
-              value: "/home/incore/data/"
-            - name: GEOSERVER_URL
-              value: "/geoserver/"
-            - name: GEOSERVER_WORKSPACE
-              value: "incore"
-            - name: GEOSERVER_USER
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: GEOSERVER_USER
-            - name: GEOSERVER_PW
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: GEOSERVER_PW
-            - name: GEOSERVER_ENABLE
-              value: {{ .Values.geoserver.enable | quote }}
           ports:
             - containerPort: {{ .Values.svc_space.service.port }}
               name: svc-space
