@@ -166,7 +166,7 @@ doc_api:
   replicas: 1
   image:
     repository: doc/api
-    tag: 0.8.1
+    tag: 1.7.0
   service:
     type: ClusterIP
     port: 80
