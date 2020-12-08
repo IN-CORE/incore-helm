@@ -36,6 +36,36 @@ spec:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: SPACE_MONGODB_URI
+            - name: AUTH_LDAP_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: AUTH_LDAP_URL
+            - name: AUTH_LDAP_USERDN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: AUTH_LDAP_USERDN
+            - name: AUTH_LDAP_ADMINS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: AUTH_LDAP_ADMINS
+            - name: AUTH_LDAP_CACHE_REFRESH_SECS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: AUTH_LDAP_CACHE_REFRESH_SECS
+            - name: AUTH_LDAP_VIEW_ALL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: AUTH_LDAP_VIEW_ALL
+            - name: SERVICES_ALLOW_ORIGIN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: SERVICES_ALLOW_ORIGIN
           ports:
             - containerPort: {{ .Values.svc_sema.service.port }}
               name: svc-sema

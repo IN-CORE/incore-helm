@@ -386,3 +386,20 @@ keycloak:
       value: keycloak
     - name: DB_PASSWORD
       value: keycloak
+
+# ----------------------------------------------------------------------
+# LDAP CONFIGURATION
+# ----------------------------------------------------------------------
+# used to get groups the user belongs to to give access to spaces etc.
+ldap:
+  url: ldap.example.com
+  userdn: "OU=People,OU=example,OU=com"
+  admins: admin
+  refresh: "900"
+  viewall: vieall
+
+#------------------------------------------------------------------------
+# CORS
+#------------------------------------------------------------------------
+cors:
+  origin: 'http://localhost:3000,http://localhost:5000'
