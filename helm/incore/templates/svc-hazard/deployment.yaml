@@ -42,10 +42,7 @@ spec:
                   name: {{ include "incore.fullname" . }}-services
                   key: SPACE_MONGODB_URI
             - name: DATA_REPO_DATA_DIR
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: DATA_REPO_DATA_DIR
+              value: /home/incore/data
           ports:
             - containerPort: {{ .Values.svc_hazard.service.port }}
               name: svc-hazard
