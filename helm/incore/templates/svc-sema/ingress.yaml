@@ -9,7 +9,7 @@ metadata:
     {{- include "incore.labels" . | nindent 4 }}
   annotations:
     ingress.kubernetes.io/auth-type: forward
-    ingress.kubernetes.io/auth-url: http://{{ $fullName }}-auth.{{ .Release.Namesema }}.svc.cluster.local:5000/semantics/
+    ingress.kubernetes.io/auth-url: http://{{ $fullName }}-auth.{{ .Release.Namespace }}.svc.cluster.local:5000/semantics/
     ingress.kubernetes.io/auth-trust-headers: "true"
     ingress.kubernetes.io/auth-response-headers: x-auth-userinfo, X-Auth-Userinfo
     {{- with .Values.svc_sema.ingress.annotations }}
