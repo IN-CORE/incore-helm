@@ -41,6 +41,10 @@ Services:
 - Semantics    : {{ .Values.svc_sema.image.tag }}
 - Space        : {{ .Values.svc_space.image.tag }}
 
+Jupyter:
+- hub          : {{ .Values.jupyterhub.hub.image.tag }}
+- user         : UNKNOWN
+
 Support:
 - DataWolf     : MISSING
 - Geoserver    : {{ .Values.geoserver.image.repository }}:{{ .Values.geoserver.image.tag }}
