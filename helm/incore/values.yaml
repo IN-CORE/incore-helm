@@ -7,6 +7,8 @@ replicaCount: 1
 image:
   project: hub.ncsa.illinois.edu/incore
   pullPolicy: IfNotPresent
+  pullSecrets:
+    - name: regcred
 
 imagePullSecrets:
   - name: regcred
@@ -88,7 +90,7 @@ frontend:
   replicas: 1
   image:
     repository: frontend
-    tag: d.8888
+    tag: 0.8.0
   service:
     type: ClusterIP
     port: 80
@@ -98,19 +100,7 @@ frontend:
     size: 1Gi
 
 # ----------------------------------------------------------------------
-# FRONTEND CONFIGURATION
-# ----------------------------------------------------------------------
-whoami:
-  replicas: 1
-  ingress:
-    annotations:
-  #      traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
-  service:
-    type: ClusterIP
-    port: 80
-
-# ----------------------------------------------------------------------
-# FRONTEND CONFIGURATION
+# AUTHENTICATION CONFIGURATION
 # ----------------------------------------------------------------------
 auth:
   replicas: 1
@@ -130,7 +120,7 @@ doc_incore:
   replicas: 1
   image:
     repository: doc/incore
-    tag: 1.7.0
+    tag: 1.8.0
   service:
     type: ClusterIP
     port: 80
@@ -154,7 +144,7 @@ doc_pyincore_viz:
   replicas: 1
   image:
     repository: doc/pyincore-viz
-    tag: 0.2.4
+    tag: 0.2.5
   service:
     type: ClusterIP
     port: 80
@@ -166,7 +156,7 @@ doc_api:
   replicas: 1
   image:
     repository: doc/api
-    tag: 1.7.0
+    tag: 1.8.0
   service:
     type: ClusterIP
     port: 80
@@ -179,7 +169,7 @@ svc_data:
   repo: /home/incore/data/
   image:
     repository: data-jetty
-    tag: 0.9.0
+    tag: 0.9.1
   service:
     type: ClusterIP
     port: 8888
@@ -203,7 +193,7 @@ svc_dfr3:
   replicas: 1
   image:
     repository: dfr3-jetty
-    tag: 0.9.0
+    tag: 0.9.1
   service:
     type: ClusterIP
     port: 8888
@@ -226,7 +216,7 @@ svc_hazard:
   replicas: 1
   image:
     repository: hazard-jetty
-    tag: 0.9.0
+    tag: 0.9.1
   service:
     type: ClusterIP
     port: 8888
@@ -249,7 +239,7 @@ svc_space:
   replicas: 1
   image:
     repository: space-jetty
-    tag: 0.9.0
+    tag: 0.9.1
   service:
     type: ClusterIP
     port: 8888
@@ -272,7 +262,7 @@ svc_sema:
   replicas: 1
   image:
     repository: semantics-jetty
-    tag: 0.9.0
+    tag: 0.9.1
   service:
     type: ClusterIP
     port: 8888

@@ -20,13 +20,14 @@ spec:
         app.kubernetes.io/name: {{ include "incore.name" . }}-auth
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
-      {{- with .Values.imagePullSecrets }}
+      {{- with .Values.auth.image.pullSecrets | default .Values.image.pullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       initContainers:
         - name: check-url
           image: "ncsa/checks:1.0.0"
+          imagePullPolicy: {{ .Values.auth.image.pullPolicy | default .Values.image.pullPolicy }}
           env:
             - name: URL
               {{- with first .Values.keycloak.ingress.rules }}
@@ -35,7 +36,7 @@ spec:
       containers:
         - name: auth
           image: "{{ .Values.image.project }}/{{ .Values.auth.image.repository }}:{{ .Values.auth.image.tag }}"
-          imagePullPolicy: Always # {{ .Values.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.auth.image.pullPolicy | default .Values.image.pullPolicy }}
           env:
             - name: KEYCLOAK_AUDIENCE
               value: {{ .Values.auth.audience | quote }}
