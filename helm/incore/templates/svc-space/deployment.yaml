@@ -26,11 +26,61 @@ spec:
           env:
             - name: JETTY_PORT
               value: {{ .Values.svc_space.service.port | quote }}
+            - name: SERVICES_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: SERVICES_URL
+            - name: DATA_SERVICE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: DATA_SERVICE_URL
+            - name: DFR3_SERVICE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: DFR3_SERVICE_URL
+            - name: HAZARD_SERVICE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: HAZARD_SERVICE_URL
+            - name: SPACE_SERVICE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: SPACE_SERVICE_URL
+            - name: SEMANTICS_SERVICE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: SEMANTICS_SERVICE_URL
+            - name: DATA_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: DATA_MONGODB_URI
+            - name: DFR3_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: DFR3_MONGODB_URI
+            - name: HAZARD_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: HAZARD_MONGODB_URI
             - name: SPACE_MONGODB_URI
               valueFrom:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: SPACE_MONGODB_URI
+            - name: SEMANTICS_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: SEMANTICS_MONGODB_URI
             - name: AUTH_LDAP_URL
               valueFrom:
                 secretKeyRef:
