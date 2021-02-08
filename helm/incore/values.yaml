@@ -345,10 +345,10 @@ jupyterhub:
       command4: ["echo", "SUCCESS"]
     cpu:
       requests: 2
-      limit: 4
+      limit: 2
     memory:
       requests: 4G
-      limit: 16G
+      limit: 4G
     #storage:
     #  type: dynamic
     #  capacity: 2Gi
