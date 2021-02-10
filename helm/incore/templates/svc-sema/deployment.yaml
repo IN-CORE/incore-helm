@@ -23,7 +23,7 @@ spec:
       containers:
         - name: incore-semantics-jetty
           image: "{{ .Values.image.project }}/{{ .Values.svc_sema.image.repository }}:{{ .Values.svc_sema.image.tag }}"
-          imagePullPolicy: {{ .Values.frontend.image.pullPolicy | default .Values.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.svc_sema.image.pullPolicy | default .Values.image.pullPolicy }}
           env:
             - name: JETTY_PORT
               value: {{ .Values.svc_sema.service.port | quote }}

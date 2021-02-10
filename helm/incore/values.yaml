@@ -168,7 +168,6 @@ svc_data:
   replicas: 1
   repo: /home/incore/data/
   image:
-    pullPolicy: Always
     repository: data-jetty
     tag: 0.9.1
   service:
@@ -193,7 +192,6 @@ svc_data:
 svc_dfr3:
   replicas: 1
   image:
-    pullPolicy: Always
     repository: dfr3-jetty
     tag: 0.9.1
   service:
@@ -217,7 +215,6 @@ svc_dfr3:
 svc_hazard:
   replicas: 1
   image:
-    pullPolicy: Always
     repository: hazard-jetty
     tag: 0.9.1
   service:
@@ -241,7 +238,6 @@ svc_hazard:
 svc_space:
   replicas: 1
   image:
-    pullPolicy: Always
     repository: space-jetty
     tag: 0.9.1
   service:
@@ -265,7 +261,6 @@ svc_space:
 svc_sema:
   replicas: 1
   image:
-    pullPolicy: Always
     repository: semantics-jetty
     tag: 0.9.1
   service:
