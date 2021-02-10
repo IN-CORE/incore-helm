@@ -325,10 +325,10 @@ jupyterhub:
       incoreConfig.py: |
         #c.KubeSpawner.cmd = ['jupyter-labhub']
         #c.Spawner.default_rul="/lab"
-        c.KubeSpawner.cpu_limit= 4
-        c.KubeSpanwer.cpu_guarantee = 2
-        c.KubeSpanwer.mem_limit = 8
-        c.KubeSpawner.mem_guarantee = 4
+        #c.KubeSpawner.cpu_limit= 4
+        #c.KubeSpanwer.cpu_guarantee = 2
+        #c.KubeSpanwer.mem_limit = 8
+        #c.KubeSpawner.mem_guarantee = 4
         from customauthenticator.custom import CustomTokenAuthenticator
         c.JupyterHub.authenticator_class = CustomTokenAuthenticator
         c.CustomTokenAuthenticator.keycloak_url = "https://%s/auth/realms/%s/" % (os.getenv('KEYCLOAK_HOSTNAME'), os.getenv('KEYCLOAK_REALM'))
@@ -348,7 +348,7 @@ jupyterhub:
       limit: 4
     memory:
       requests: 4G
-      limit: 16G
+      limit: 8G
     #storage:
     #  type: dynamic
     #  capacity: 2Gi
