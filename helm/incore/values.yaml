@@ -348,7 +348,7 @@ jupyterhub:
       limit: 4
     memory:
       requests: 4G
-      limit: 8G
+      limit: 16G
     #storage:
     #  type: dynamic
     #  capacity: 2Gi
