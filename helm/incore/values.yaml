@@ -310,7 +310,7 @@ jupyterhub:
   hub:
     image:
       name: hub.ncsa.illinois.edu/incore/jupyterhub
-      tag: 0.5.0
+      tag: 5.0.0 
       pullSecrets:
         name: regcred
     pdb:
@@ -326,13 +326,15 @@ jupyterhub:
         c.Spawner.cmd = ['start.sh','jupyterhub-singleuser','--allow-root']
         c.KubeSpawner.args = ['--allow-root']
         def notebook_dir_hook(spawner):
-            spawner.environment = {'NB_USER':spawner.user.name,'NB_UID':'1000'}
+            uid_number = os.environ['TOKEN_USER_ID_NUMBER']
+            spawner.environment = {'NB_USER':spawner.user.name,'NB_UID':uid_number}
         c.Spawner.pre_spawn_hook = notebook_dir_hook
         from customauthenticator.custom import CustomTokenAuthenticator
         c.JupyterHub.authenticator_class = CustomTokenAuthenticator
         c.CustomTokenAuthenticator.keycloak_url = "https://%s/auth/realms/%s/" % (os.getenv('KEYCLOAK_HOSTNAME'), os.getenv('KEYCLOAK_REALM'))
         c.CustomTokenAuthenticator.auth_cookie_header= "Authorization"
         c.CustomTokenAuthenticator.auth_username_key= "preferred_username"
+        c.CustomTokenAuthenticator.auth_uid_number_key = "uid_number"
         c.CustomTokenAuthenticator.landing_page_login_url = "https://" + os.getenv('KEYCLOAK_HOSTNAME')
 
   singleuser:
