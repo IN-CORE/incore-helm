@@ -310,7 +310,7 @@ jupyterhub:
   hub:
     image:
       name: hub.ncsa.illinois.edu/incore/jupyterhub
-      tag: 5.0.0 
+      tag: 0.5.0 
       pullSecrets:
         name: regcred
     pdb:
