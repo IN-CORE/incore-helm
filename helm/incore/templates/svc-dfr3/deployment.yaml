@@ -23,6 +23,7 @@ spec:
       containers:
         - name: incore-dfr3-jetty
           image: "{{ .Values.image.project }}/{{ .Values.svc_dfr3.image.repository }}:{{ .Values.svc_dfr3.image.tag }}"
+          imagePullPolicy: {{ .Values.svc_dfr3.image.pullPolicy | default .Values.image.pullPolicy }}
           env:
             - name: JETTY_PORT
               value: {{ .Values.svc_dfr3.service.port | quote }}

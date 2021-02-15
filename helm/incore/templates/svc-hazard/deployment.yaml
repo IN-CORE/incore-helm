@@ -23,6 +23,7 @@ spec:
       containers:
         - name: incore-hazard-jetty
           image: "{{ .Values.image.project }}/{{ .Values.svc_hazard.image.repository }}:{{ .Values.svc_hazard.image.tag }}"
+          imagePullPolicy: {{ .Values.svc_hazard.image.pullPolicy | default .Values.image.pullPolicy }}
           env:
             - name: JETTY_PORT
               value: {{ .Values.svc_hazard.service.port | quote }}
