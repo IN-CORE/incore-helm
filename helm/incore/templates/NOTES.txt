@@ -43,7 +43,7 @@ Services:
 
 Jupyter:
 - hub          : {{ .Values.jupyterhub.hub.image.tag }}
-- user         : UNKNOWN
+- lab          : {{ .Values.jupyterhub.singleuser.image.tag }}
 
 Support:
 - DataWolf     : MISSING

@@ -323,18 +323,18 @@ jupyterhub:
       KEYCLOAK_REALM: In-core
     extraConfig:
       incoreConfig.py: |
-        #c.KubeSpawner.cmd = ['jupyter-labhub']
-        #c.Spawner.default_rul="/lab"
-        #c.KubeSpawner.cpu_limit= 4
-        #c.KubeSpanwer.cpu_guarantee = 2
-        #c.KubeSpanwer.mem_limit = 8
-        #c.KubeSpawner.mem_guarantee = 4
         from customauthenticator.custom import CustomTokenAuthenticator
+        c.Spawner.cmd = ['start.sh', 'jupyterhub-singleuser', '--allow-root']
+        c.KubeSpawner.args = ['--allow-root']
         c.JupyterHub.authenticator_class = CustomTokenAuthenticator
         c.CustomTokenAuthenticator.keycloak_url = "https://%s/auth/realms/%s/" % (os.getenv('KEYCLOAK_HOSTNAME'), os.getenv('KEYCLOAK_REALM'))
         c.CustomTokenAuthenticator.auth_cookie_header= "Authorization"
         c.CustomTokenAuthenticator.auth_username_key= "preferred_username"
+        c.CustomTokenAuthenticator.auth_uid_number_key = "uid_number"
+        c.CustomTokenAuthenticator.enable_auth_state = True
+        c.CustomTokenAuthenticator.auto_login = True
         c.CustomTokenAuthenticator.landing_page_login_url = "https://" + os.getenv('KEYCLOAK_HOSTNAME')
+
   singleuser:
     defaultUrl: "/lab"
     image:
@@ -343,6 +343,16 @@ jupyterhub:
       pullSecrets:
         name: regcred
       command4: ["echo", "SUCCESS"]
+    # need root to allow to change 
+    uid: 0
+    fsGid: 0
+    # mount to user home directorys
+    storage:
+      homeMountPath: /home/{username}
+    extraEnv:
+      CHOWN_HOME: 'yes'
+      CHOWN_HOME_OPTS: -R
+      INCORE_SERVER: incore.ncsa.illinois.edu
     cpu:
       requests: 2
       limit: 4
