@@ -60,8 +60,6 @@ The following table lists the configurable parameters of the IN-CORE chart and t
 | ------------------------------------ | ------------------------------------------------ | -------------------------------------------------------
 | ingress.hosts[0].host | ingress rule for incore  | incore.example.com
 
-| TODO | TODO | ""
-
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. Or more convenient
 use a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
