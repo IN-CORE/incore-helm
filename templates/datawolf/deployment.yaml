@@ -1,0 +1,98 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "incore.fullname" . }}-datawolf
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.datawolf.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "incore.name" . }}-datawolf
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "incore.name" . }}-datawolf
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: datawolf
+          image: "{{ .Values.image.project }}/{{ .Values.datawolf.image.repository }}:{{ .Values.datawolf.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.datawolf.image.pullPolicy | default .Values.image.pullPolicy }}
+          env:
+            - name: DATAWOLF_ADMINS
+              value: "exaple@example.com"
+            - name: DATAWOLF_USE_AUTH
+              value: "false"
+            - name: DB_SOURCE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: datawolf
+                  key: datawolf_db_addr
+            - name: DB_MAX_POOLSIZE
+              value: "100"
+            - name: DB_IDLE_TIMEOUT
+              value: "30000"
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak
+                  key: keycloak_db_user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak
+                  key: keycloak_db_password
+            - name: ENGINE_STORELOGS
+              value: "false"
+            - name: ENGINE_TIMEOUT
+              value: "3600"
+            - name: ENGINE_EXTRALOCALEXECUTOR
+              value: "1"
+            - name: ENGINE_LOCALEXECUTORTHREADS
+              value: "8"
+            - name: ENGINE_PAGESIZE
+              value: "250"
+          ports:
+            - containerPort: 80
+              name: http
+          volumeMounts:
+            - name: {{ include "incore.name" . }}-data
+              mountPath: /home/datawolf/data
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.datawolf.resources | nindent 12 }}
+      volumes:
+        - name: {{ include "incore.name" . }}-data
+          persistentVolumeClaim:
+            {{- if .Values.persistence.existingClaim }}
+            claimName: {{ .Values.persistence.existingClaim }}
+            {{- else }}
+            claimName: {{ include "incore.name" . }}-data
+            {{- end }}
+      {{- with .Values.datawolf.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.datawolf.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.datawolf.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

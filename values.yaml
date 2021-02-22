@@ -446,3 +446,27 @@ ldap:
 #------------------------------------------------------------------------
 cors:
   origin: 'http://localhost:3000,http://localhost:5000'
+
+# ----------------------------------------------------------------------
+# PLAYBOOK CONFIGURATION
+# ----------------------------------------------------------------------
+playbook:
+  replicas: 1
+  image:
+    repository: playbook
+    tag: develop
+  service:
+    type: ClusterIP
+    port: 80
+
+# ----------------------------------------------------------------------
+# DATAWOLF CONFIGURATION
+# ----------------------------------------------------------------------
+datawolf:
+  replicas: 1
+  image:
+    repository: datawolf
+    tag: develop
+  service:
+    type: ClusterIP
+    port: 80
