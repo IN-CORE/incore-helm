@@ -32,7 +32,7 @@ spec:
             - name: DATAWOLF_USE_AUTH
               value: "false"
             - name: DB_SOURCE_URL
-              value: jdbc:postgresql://{{ include "fullname" . }}-posgresql/datawolf
+              value: jdbc:postgresql://{{ include "incore.name" . }}-posgresql/datawolf
             - name: DB_MAX_POOLSIZE
               value: "100"
             - name: DB_IDLE_TIMEOUT
