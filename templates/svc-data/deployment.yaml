@@ -54,7 +54,7 @@ spec:
                   name: {{ include "incore.fullname" . }}-services
                   key: GEOSERVER_PW
             - name: GEOSERVER_ENABLE
-              value: {{ .Values.geoserver.enabled | quote }}
+              value: {{ .Values.svc_data.geoserver.enabled | quote }}
             - name: AUTH_LDAP_URL
               valueFrom:
                 secretKeyRef:

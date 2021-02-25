@@ -175,6 +175,8 @@ svc_data:
     port: 8888
   ingress:
     annotations:
+  geoserver:
+    enabled: true
 #      ingress.kubernetes.io/auth-url: /auth/
 #      ingress.kubernetes.io/auth-response-headers: x-auth-userinfo, X-Auth-Userinfo
 #      traefik.ingress.kubernetes.io/rate-limit: |
