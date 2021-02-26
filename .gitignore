@@ -56,3 +56,8 @@ values-incore*
 
 # secrets
 helm/incore/templates/secrets.yaml
+
+# box files
+*incore-prod*
+keycloak-incore-realm.json
+regcred.json
