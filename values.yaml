@@ -112,6 +112,10 @@ auth:
   service:
     type: ClusterIP
     port: 5000
+  influxdb:
+    url: "http://influxdb:8086/"
+    org: "incore"
+    token: ""
 
 # ----------------------------------------------------------------------
 # INCORE DOCUMENTATION CONFIGURATION
@@ -175,6 +179,8 @@ svc_data:
     port: 8888
   ingress:
     annotations:
+  geoserver:
+    enabled: true
 #      ingress.kubernetes.io/auth-url: /auth/
 #      ingress.kubernetes.io/auth-response-headers: x-auth-userinfo, X-Auth-Userinfo
 #      traefik.ingress.kubernetes.io/rate-limit: |

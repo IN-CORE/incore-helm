@@ -1,16 +1,14 @@
 {{- if .Values.ingress.enabled -}}
   {{- $fullName := include "incore.fullname" . -}}
   {{- $svcPort := .Values.frontend.service.port -}}
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ $fullName }}-frontend
   labels:
     {{- include "incore.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
   annotations:
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
+    {{- include "incore.authIngressAnnotation" . | nindent 4 }}
 spec:
   {{- if .Values.ingress.tls }}
   tls:
@@ -28,8 +26,11 @@ spec:
       http:
         paths:
           - path: /
+            pathType: ImplementationSpecific
             backend:
-              serviceName: {{ $fullName }}-frontend
-              servicePort: {{ $svcPort }}
+              service:
+                name: {{ $fullName }}-frontend
+                port:
+                  number: {{ $svcPort }}
     {{- end }}
   {{- end }}
