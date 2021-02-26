@@ -1,16 +1,17 @@
 {{- if .Values.ingress.enabled -}}
   {{- $fullName := include "incore.fullname" . -}}
   {{- $svcPort := .Values.doc_pyincore.service.port -}}
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ $fullName }}-doc-pyincore
   labels:
     {{- include "incore.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
   annotations:
+    {{- include "incore.authIngressAnnotation" . | nindent 4 }}
+    {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
-  {{- end }}
+    {{- end }}
 spec:
   {{- if .Values.ingress.tls }}
   tls:
@@ -28,8 +29,11 @@ spec:
       http:
         paths:
           - path: /doc/pyincore/
+            pathType: ImplementationSpecific
             backend:
-              serviceName: {{ $fullName }}-doc-pyincore
-              servicePort: {{ $svcPort }}
+              service:
+                name: {{ $fullName }}-doc-pyincore
+                port:
+                  number: {{ $svcPort }}
     {{- end }}
   {{- end }}

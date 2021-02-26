@@ -56,3 +56,6 @@ values-incore*
 
 # secrets
 helm/incore/templates/secrets.yaml
+
+# list of dependencies
+charts/

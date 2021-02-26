@@ -2,16 +2,17 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "incore.fullname" . -}}
 {{- $svcPort := .Values.geoserver.service.port -}}
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ $fullName }}-geoserver
   labels:
     {{- include "incore.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
   annotations:
+    {{- include "incore.authIngressAnnotation" . | nindent 4 }}
+    {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
-  {{- end }}
+    {{- end }}
 spec:
   {{- if .Values.ingress.tls }}
   tls:
@@ -29,9 +30,12 @@ spec:
       http:
         paths:
           - path: /geoserver/
+            pathType: ImplementationSpecific
             backend:
-              serviceName: {{ $fullName }}-geoserver
-              servicePort: {{ $svcPort }}
+              service:
+                name: {{ $fullName }}-geoserver
+                port:
+                  number: {{ $svcPort }}
     {{- end }}
   {{- end }}
 {{- end}}

@@ -63,6 +63,17 @@ Create the name of the service account to use
 {{- end }}
 
 {{/*
+Selector labels
+*/}}
+{{- define "incore.authIngressAnnotation" -}}
+ingress.kubernetes.io/auth-type: forward
+ingress.kubernetes.io/auth-url: http://{{ include "incore.fullname" . }}-auth.{{ .Release.Namespace }}.svc.cluster.local:5000/
+ingress.kubernetes.io/auth-trust-headers: "true"
+ingress.kubernetes.io/auth-response-headers: x-auth-userinfo, X-Auth-Userinfo
+{{- end }}
+
+
+{{/*
 Create the mongodb uri to use
 */}}
 {{- define "incore.mongodb.uri" -}}

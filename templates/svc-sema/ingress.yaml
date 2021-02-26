@@ -1,17 +1,14 @@
 {{- if .Values.ingress.enabled -}}
   {{- $fullName := include "incore.fullname" . -}}
   {{- $svcPort := .Values.svc_sema.service.port -}}
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ $fullName }}-svc-sema
   labels:
     {{- include "incore.labels" . | nindent 4 }}
   annotations:
-    ingress.kubernetes.io/auth-type: forward
-    ingress.kubernetes.io/auth-url: http://{{ $fullName }}-auth.{{ .Release.Namespace }}.svc.cluster.local:5000/semantics/
-    ingress.kubernetes.io/auth-trust-headers: "true"
-    ingress.kubernetes.io/auth-response-headers: x-auth-userinfo, X-Auth-Userinfo
+    {{- include "incore.authIngressAnnotation" . | nindent 4 }}
     {{- with .Values.svc_sema.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
@@ -32,8 +29,11 @@ spec:
       http:
         paths:
           - path: /semantics/
+            pathType: ImplementationSpecific
             backend:
-              serviceName: {{ $fullName }}-svc-sema
-              servicePort: {{ $svcPort }}
+              service:
+                name: {{ $fullName }}-svc-sema
+                port:
+                  number: {{ $svcPort }}
     {{- end }}
   {{- end }}
