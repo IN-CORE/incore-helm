@@ -52,10 +52,12 @@ helm/incore/charts
 __pycache__
 
 # values for deployment
-values-incore*
+values-incore-*.yaml
+incore-*-pvc.yaml
 
 # secrets
+regcred.json
 helm/incore/templates/secrets.yaml
 
-# list of dependencies
+# list of dependency charts
 charts/

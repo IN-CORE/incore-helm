@@ -10,9 +10,6 @@ metadata:
     {{- include "incore.labels" . | nindent 4 }}
   annotations:
     {{- include "incore.authIngressAnnotation" . | nindent 4 }}
-    {{- with .Values.ingress.annotations }}
-    {{- toYaml . | nindent 4 }}
-    {{- end }}
 spec:
   {{- if .Values.ingress.tls }}
   tls:

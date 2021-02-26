@@ -108,7 +108,7 @@ auth:
   audience: INCORE
   image:
     repository: incore-auth
-    tag: radiant
+    tag: 1.0.0
   service:
     type: ClusterIP
     port: 5000
