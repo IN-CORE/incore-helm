@@ -112,6 +112,12 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.0.1
+
+- Documentation updates:
+  - Fixed broken Jupyter Notebook examples
+  - Fixed fragility curves with SD as demand type in DFR3 service
+
 ### 1.0.0
 
 This is the first release of the helm chart for INCORE 2.0.0
