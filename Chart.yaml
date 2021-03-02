@@ -8,18 +8,25 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.0
+version: 1.0.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
-appVersion: 1.5.0
+appVersion: 2.0.0
 
+# List of people that maintain this helm chart.
 maintainers:
   - name: Rob Kooper
     email: kooper@illinois.edu
   - name: Yong Wook Kim
     email: ywkim@illinois.edu
+
+# location of source code
+sources:
+  - https://github.com/IN-CORE
+
+# dependencies for the helm chart, use helm dep install to the install them.
 dependencies:
   - name: jupyterhub
     version: ~0.9
@@ -33,3 +40,12 @@ dependencies:
   - name: mongodb
     version: ~9
     repository: https://charts.bitnami.com/bitnami
+
+# annotations for artifact.io
+annotations:
+  artifacthub.io/links: |
+    - name: Helm Chart
+      url: https://opensource.ncsa.illinois.edu/bitbucket/projects/INCORE1/repos/incore-helm/browse
+  artifacthub.io/changes: |
+    - INCORE version 2.0.0 released
+    - Initial release of the helm chart

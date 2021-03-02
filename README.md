@@ -112,6 +112,6 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
-### 0.1.0
+### 1.0.0
 
-This is the first release of the helm chart
+This is the first release of the helm chart for INCORE 2.0.0
