@@ -44,16 +44,25 @@ spec:
               {{- with first .Values.keycloak.ingress.rules }}
               value: {{ printf "https://%s/auth/realms/%s/" .host $.Values.auth.realm | quote }}
               {{- end }}
+            - name: INFLUXDB_V2_URL
+              value: {{ .Values.auth.influxdb.url | quote }}
+            - name: INFLUXDB_V2_ORG
+              value: {{ .Values.auth.influxdb.org | quote }}
+            - name: INFLUXDB_V2_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: INFLUXDB_V2_TOKEN
           ports:
             - containerPort: {{ .Values.auth.service.port }}
               name: auth
           livenessProbe:
             httpGet:
-              path: /
+              path: /healthz
               port: auth
           readinessProbe:
             httpGet:
-              path: /
+              path: /healthz
               port: auth
           resources:
             {{- toYaml .Values.auth.resources | nindent 12 }}

@@ -1,10 +1,11 @@
+{{- if .Values.geoserver.enabled }}
 {{- if .Values.ingress.enabled -}}
-  {{- $fullName := include "incore.fullname" . -}}
-  {{- $svcPort := .Values.doc_pyincore_viz.service.port -}}
+{{- $fullName := include "incore.fullname" . -}}
+{{- $svcPort := .Values.geoserver.service.port -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ $fullName }}-doc-pyincore-viz
+  name: {{ $fullName }}-geoserver
   labels:
     {{- include "incore.labels" . | nindent 4 }}
   annotations:
@@ -25,12 +26,13 @@ spec:
     - host: {{ .host | quote }}
       http:
         paths:
-          - path: /doc/pyincore_viz/
+          - path: /geoserver/
             pathType: ImplementationSpecific
             backend:
               service:
-                name: {{ $fullName }}-doc-pyincore-viz
+                name: {{ $fullName }}-geoserver
                 port:
                   number: {{ $svcPort }}
     {{- end }}
   {{- end }}
+{{- end}}
