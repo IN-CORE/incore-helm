@@ -10,7 +10,7 @@ spec:
     app.kubernetes.io/instance: {{ .Release.Name }}
   type: {{ .Values.datawolf.service.type }}
   ports:
-    - port: {{ .Values.datawolf.service.port }}
+    - port: 80
       name: datawolf
-      targetPort: {{ .Values.datawolf.service.port }}
+      targetPort: 8888
       protocol: TCP

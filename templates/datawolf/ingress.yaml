@@ -30,6 +30,6 @@ spec:
           - path: /datawolf/
             backend:
               serviceName: {{ $fullName }}-datawolf
-              servicePort: {{ $svcPort }}
+              servicePort: 80
     {{- end }}
   {{- end }}
