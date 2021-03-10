@@ -52,7 +52,7 @@ spec:
             - name: ENGINE_PAGESIZE
               value: {{ .Values.datawolf.env.engine_pagesize | quote }}
           ports:
-            - containerPort: {{ .Values.datawolf.service.port }}
+            - containerPort: 8888
               name: http
           volumeMounts:
             - name: {{ include "incore.name" . }}-data
