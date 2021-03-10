@@ -59,11 +59,11 @@ spec:
               mountPath: /home/datawolf/data
           livenessProbe:
             httpGet:
-              path: /
+              path: /datawolf
               port: http
           readinessProbe:
             httpGet:
-              path: /
+              path: /datawolf
               port: http
           resources:
             {{- toYaml .Values.datawolf.resources | nindent 12 }}
