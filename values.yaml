@@ -492,4 +492,5 @@ datawolf:
     engine_pagesize: 250
   service:
     type: ClusterIP
-    port: 8888
+    port: 80
+    tragetPort: 8888

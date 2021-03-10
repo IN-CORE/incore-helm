@@ -52,7 +52,7 @@ spec:
             - name: ENGINE_PAGESIZE
               value: {{ .Values.datawolf.env.engine_pagesize | quote }}
           ports:
-            - containerPort: {{ .Values.datawolf.service.port }}
+            - containerPort: {{ .Values.datawolf.service.targetPort }}
               name: http
           volumeMounts:
             - name: {{ include "incore.name" . }}-data
@@ -60,11 +60,11 @@ spec:
           livenessProbe:
             httpGet:
               path: /datawolf
-              port: {{ .Values.datawolf.service.port }}
+              port: {{ .Values.datawolf.service.targetPort }}
           readinessProbe:
             httpGet:
               path: /datawolf
-              port: {{ .Values.datawolf.service.port }}
+              port: {{ .Values.datawolf.service.targetPort }}
           resources:
             {{- toYaml .Values.datawolf.resources | nindent 12 }}
       volumes:
