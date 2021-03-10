@@ -478,30 +478,18 @@ datawolf:
     repository: datawolf
     tag: develop
   env:
-    - name: DATAWOLF_ADMINS
-      value: datawolf@incore.illinios.edu
-    - name: DATAWOLF_USE_AUTH
-      value: "false"
-    - name: DB_SOURCE_URL
-      value: db_address
-    - name: DB_MAX_POOLSIZE
-      value: "100"
-    - name: DB_IDLE_TIMEOUT
-      value: "30000"
-    - name: DB_USER
-      value: username
-    - name: DB_PASSWORD
-      value: password
-    - name: ENGINE_STORELOGS
-      value: "false"
-    - name: ENGINE_TIMEOUT
-      value: "3600"
-    - name: ENGINE_EXTRALOCALEXECUTOR
-      value: "1"
-    - name: ENGINE_LOCALEXECUTORTHREADS
-      value: "8"
-    - name: ENGINE_PAGESIZE
-      value: "250"
+    - datawolf_admins: datawolf@incore.illinios.edu
+    - datawolf_use_auth: false
+    - db_source_url: db_address
+    - db_max_poolsize: 100
+    - db_idle_timeout: 30000
+    - db_user: username
+    - db_password: password
+    - engine_storelogs: false
+    - engine_timeout: 3600
+    - engine_extralocalexecutor: 1
+    - engine_localexecutorthreads: 8
+    - engine_pagesize: 250
   service:
     type: ClusterIP
     port: 80

@@ -28,31 +28,31 @@ spec:
           imagePullPolicy: {{ .Values.datawolf.image.pullPolicy | default .Values.image.pullPolicy }}
           env:
             - name: DATAWOLF_ADMINS
-              value: "exaple@example.com"
+              value: {{ .Values.datawolf.env.datawolf_admins | quote }}
             - name: DATAWOLF_USE_AUTH
-              value: "false"
+              value: {{ .Values.datawolf.env.datawolf_use_auth | quote }}
             - name: DB_SOURCE_URL
-              value: jdbc:postgresql://{{ include "incore.fullname" . }}-posgresql/datawolf
+              value: {{ .Values.datawolf.env.db_source_url | quote }}
             - name: DB_MAX_POOLSIZE
-              value: "100"
+              value: {{ .Values.datawolf.env.db_max_poolsize | quote }}
             - name: DB_IDLE_TIMEOUT
-              value: "30000"
+              value: {{ .Values.datawolf.env.db_idle_timeout | quote }}
             - name: DB_USER
-              value: username
+              value: {{ .Values.datawolf.env.db_user | quote }}
             - name: DB_PASSWORD
-              value: password
+              value: {{ .Values.datawolf.env.db_password | quote }}
             - name: ENGINE_STORELOGS
-              value: "false"
+              value: {{ .Values.datawolf.env.engine_storelogs | quote }}
             - name: ENGINE_TIMEOUT
-              value: "3600"
+              value: {{ .Values.datawolf.env.engine_timeout | quote }}
             - name: ENGINE_EXTRALOCALEXECUTOR
-              value: "1"
+              value: {{ .Values.datawolf.env.engine_extralocalexecutor | quote }}
             - name: ENGINE_LOCALEXECUTORTHREADS
-              value: "8"
+              value: {{ .Values.datawolf.env.engine_localexecutorthreads | quote }}
             - name: ENGINE_PAGESIZE
-              value: "250"
+              value: {{ .Values.datawolf.env.engine_pagesize | quote }}
           ports:
-            - containerPort: 80
+            - containerPort: {{ .Values.datawolf.serivce.port | quote }}
               name: http
           volumeMounts:
             - name: {{ include "incore.name" . }}-data
