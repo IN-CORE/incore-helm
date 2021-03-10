@@ -60,11 +60,11 @@ spec:
           livenessProbe:
             httpGet:
               path: /datawolf
-              port: http
+              port: {{ .Values.datawolf.service.port }}
           readinessProbe:
             httpGet:
               path: /datawolf
-              port: http
+              port: {{ .Values.datawolf.service.port }}
           resources:
             {{- toYaml .Values.datawolf.resources | nindent 12 }}
       volumes:
