@@ -57,14 +57,14 @@ spec:
           volumeMounts:
             - name: {{ include "incore.name" . }}-data
               mountPath: /home/datawolf/data
-          livenessProbe:
-            httpGet:
-              path: /datawolf
-              port: 8888
-          readinessProbe:
-            httpGet:
-              path: /datawolf
-              port: 8888
+          #livenessProbe:
+          #  httpGet:
+          #    path: /datawolf
+          #    port: 8888
+          #readinessProbe:
+          #  httpGet:
+          #    path: /datawolf
+          #    port: 8888
           resources:
             {{- toYaml .Values.datawolf.resources | nindent 12 }}
       volumes:
