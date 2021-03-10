@@ -12,5 +12,5 @@ spec:
   ports:
     - port: {{ .Values.datawolf.service.port }}
       name: datawolf
-      targetPort: http
+      targetPort: 8888
       protocol: TCP
