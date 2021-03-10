@@ -24,7 +24,7 @@ spec:
       {{- end }}
       containers:
         - name: datawolf
-          image: "{{ .Values.image.project }}/{{ .Values.datawolf.image.repository }}:{{ .Values.datawolf.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.project }}/{{ .Values.datawolf.image.repository }}:{{ .Values.datawolf.image.tag }}"
           imagePullPolicy: {{ .Values.datawolf.image.pullPolicy | default .Values.image.pullPolicy }}
           env:
             - name: DATAWOLF_ADMINS
@@ -52,21 +52,21 @@ spec:
             - name: ENGINE_PAGESIZE
               value: {{ .Values.datawolf.env.engine_pagesize | quote }}
           ports:
-            - containerPort: 8888
-              name: http
+            - containerPort: {{ .Values.datawolf.service.port }}
+              name: datawolf
           volumeMounts:
             - name: {{ include "incore.name" . }}-data
               mountPath: /home/datawolf/data
           #livenessProbe:
           #  httpGet:
           #    path: /datawolf
-          #    port: 8888
+          #    port: {{ .Values.datawolf.service.port }}
           #readinessProbe:
           #  httpGet:
           #    path: /datawolf
-          #    port: 8888
+          #    port: {{ .Values.datawolf.service.port }}
           resources:
-            {{- toYaml .Values.datawolf.resources | nindent 12 }}
+            {{- toYaml .Values.frontend.resources | nindent 12 }}
       volumes:
         - name: {{ include "incore.name" . }}-data
           persistentVolumeClaim:
@@ -75,15 +75,15 @@ spec:
             {{- else }}
             claimName: {{ include "incore.name" . }}-data
             {{- end }}
-      {{- with .Values.datawolf.nodeSelector }}
+      {{- with .Values.frontend.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.datawolf.affinity }}
+      {{- with .Values.frontend.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.datawolf.tolerations }}
+      {{- with .Values.frontend.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
