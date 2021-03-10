@@ -493,4 +493,4 @@ datawolf:
   service:
     type: ClusterIP
     port: 80
-    tragetPort: 8888
+    targetPort: 8888
