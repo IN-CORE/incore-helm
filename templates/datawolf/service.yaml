@@ -10,7 +10,7 @@ spec:
     app.kubernetes.io/instance: {{ .Release.Name }}
   type: {{ .Values.datawolf.service.type }}
   ports:
-    - port: {{ .Values.svc_data.service.port }}
+    - port: {{ .Values.datawolf.service.port }}
       name: datawolf
-      targetPort: {{ .Values.svc_data.service.port }}
+      targetPort: {{ .Values.datawolf.service.targetPort }}
       protocol: TCP
