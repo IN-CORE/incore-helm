@@ -25,7 +25,7 @@ Following versions have been deployed:
 
 UI:
 - frontend     : {{ .Values.frontend.image.tag }}
-- playbook     : MISSING
+- playbook     : {{ .Values.playbook.image.tag }}
 
 Documentation:
 - Manual       : {{ .Values.doc_incore.image.tag }}
@@ -46,7 +46,7 @@ Jupyter:
 - lab          : {{ .Values.jupyterhub.singleuser.image.tag }}
 
 Support:
-- DataWolf     : MISSING
+- DataWolf     : {{ .Values.datawolf.image.tag }}
 - Geoserver    : {{ .Values.geoserver.image.repository }}:{{ .Values.geoserver.image.tag }}
 - Postgresql   : {{ .Values.postgresql.image.tag }}
 - Keycloak     : {{ default .Values.keycloak.image.tag "unknown" }}
