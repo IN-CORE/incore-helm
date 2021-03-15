@@ -112,6 +112,10 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.0.3
+- Jupyterhub configuration chagned:
+  - Removed home ownership -R option in singleuser
+
 ### 1.0.2
 - Documentation updates:
   - Updated incore documents to 2.0.2

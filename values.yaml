@@ -357,7 +357,7 @@ jupyterhub:
       homeMountPath: /home/{username}
     extraEnv:
       CHOWN_HOME: 'yes'
-      CHOWN_HOME_OPTS: -R
+#      CHOWN_HOME_OPTS: -R
       INCORE_SERVER: incore.ncsa.illinois.edu
     cpu:
       requests: 2
