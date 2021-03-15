@@ -48,5 +48,4 @@ annotations:
       url: https://opensource.ncsa.illinois.edu/bitbucket/projects/INCORE1/repos/incore-helm/browse
   artifacthub.io/changes: |
     - Documentation updates:
-      - Fixed broken Jupyter Notebook examples
-      - Fixed fragility curves with SD as demand type in DFR3 service
+      - Incore documentation updated to 2.0.2
