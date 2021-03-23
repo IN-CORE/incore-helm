@@ -38,9 +38,15 @@ spec:
             - name: DB_IDLE_TIMEOUT
               value: {{ .Values.datawolf.env.db_idle_timeout | quote }}
             - name: DB_USER
-              value: {{ .Values.datawolf.env.db_user | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-datawolf
+                  key: DATAWOLF_USER
             - name: DB_PASSWORD
-              value: {{ .Values.datawolf.env.db_password | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-datawolf
+                  key: DATAWOLF_PASSWORD
             - name: ENGINE_STORELOGS
               value: {{ .Values.datawolf.env.engine_storelogs | quote }}
             - name: ENGINE_TIMEOUT
@@ -52,28 +58,28 @@ spec:
             - name: ENGINE_PAGESIZE
               value: {{ .Values.datawolf.env.engine_pagesize | quote }}
           ports:
-            - containerPort: {{ .Values.datawolf.service.targetPort }}
+            - containerPort: 8888
               name: datawolf
           volumeMounts:
-            - name: {{ include "incore.name" . }}-data
+            - name: {{ include "incore.name" . }}-datawolf
               mountPath: /home/datawolf/data
           livenessProbe:
             httpGet:
               path: /datawolf/persons
-              port: {{ .Values.datawolf.service.targetPort }}
+              port: datawolf
           readinessProbe:
             httpGet:
               path: /datawolf/persons
-              port: {{ .Values.datawolf.service.targetPort }}
+              port: datawolf
           resources:
             {{- toYaml .Values.frontend.resources | nindent 12 }}
       volumes:
-        - name: {{ include "incore.name" . }}-data
+        - name: {{ include "incore.name" . }}-datawolf
           persistentVolumeClaim:
-            {{- if .Values.persistence.existingClaim }}
-            claimName: {{ .Values.persistence.existingClaim }}
+            {{- if .Values.datawolf.persistence.existingClaim }}
+            claimName: {{ .Values.datawolf.persistence.existingClaim }}
             {{- else }}
-            claimName: {{ include "incore.name" . }}-data
+            claimName: {{ include "incore.name" . }}-datawolf
             {{- end }}
       {{- with .Values.frontend.nodeSelector }}
       nodeSelector:

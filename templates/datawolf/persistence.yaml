@@ -1,0 +1,17 @@
+{{- if not .Values.datawolf.persistence.existingClaim }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "incore.name" . }}-datawolf
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: {{ .Values.datawolf.persistence.size | quote }}
+  {{- if .Values.datawolf.persistence.storageClass }}
+  storageClassName: {{ .Values.datawolf.persistence.storageClass }}
+  {{- end }}
+{{- end }}
