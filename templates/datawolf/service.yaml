@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "incore.fullname" . }}-datawolf
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  selector:
+    app.kubernetes.io/name: {{ include "incore.name" . }}-datawolf
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  type: {{ .Values.datawolf.service.type }}
+  ports:
+    - port: {{ .Values.datawolf.service.port }}
+      name: datawolf
+      targetPort: datawolf
+      protocol: TCP

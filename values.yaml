@@ -400,6 +400,10 @@ postgresql:
       CREATE DATABASE keycloak;
       CREATE USER keycloak WITH PASSWORD 'keycloak';
       GRANT ALL PRIVILEGES ON DATABASE keycloak TO keycloak;
+    datawolf.sql: |
+      CREATE DATABASE datawolf;
+      CREATE USER datawolf WITH PASSWORD 'datawolf';
+      GRANT ALL PRIVILEGES ON DATABASE datawolf TO datawolf;
 
 # ----------------------------------------------------------------------
 # KEYCLOAK
@@ -451,3 +455,42 @@ ldap:
 #------------------------------------------------------------------------
 cors:
   origin: 'http://localhost:3000,http://localhost:5000'
+
+# ----------------------------------------------------------------------
+# PLAYBOOK CONFIGURATION
+# ----------------------------------------------------------------------
+playbook:
+  replicas: 1
+  image:
+    repository: playbook
+    tag: develop
+  service:
+    type: ClusterIP
+    port: 80
+
+# ----------------------------------------------------------------------
+# DATAWOLF CONFIGURATION
+# ----------------------------------------------------------------------
+datawolf:
+  replicas: 1
+  image:
+    repository: datawolf
+    tag: develop
+  env:
+    datawolf_admins: datawolf@incore.illinios.edu
+    datawolf_use_auth: false
+    db_source_url: db_address
+    db_max_poolsize: 100
+    db_idle_timeout: 30000
+    db_user: username
+    db_password: password
+    engine_storelogs: false
+    engine_timeout: 3600
+    engine_extralocalexecutor: 1
+    engine_localexecutorthreads: 8
+    engine_pagesize: 250
+  service:
+    type: ClusterIP
+    port: 8888
+  persistence:
+    size: 10Gi

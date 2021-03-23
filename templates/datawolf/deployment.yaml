@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "incore.fullname" . }}-datawolf
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.datawolf.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "incore.name" . }}-datawolf
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "incore.name" . }}-datawolf
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: datawolf
+          image: "{{ .Values.image.project }}/{{ .Values.datawolf.image.repository }}:{{ .Values.datawolf.image.tag }}"
+          imagePullPolicy: {{ .Values.datawolf.image.pullPolicy | default .Values.image.pullPolicy }}
+          env:
+            - name: DATAWOLF_ADMINS
+              value: {{ .Values.datawolf.env.datawolf_admins | quote }}
+            - name: DATAWOLF_USE_AUTH
+              value: {{ .Values.datawolf.env.datawolf_use_auth | quote }}
+            - name: DB_SOURCE_URL
+              value: {{ .Values.datawolf.env.db_source_url | quote }}
+            - name: DB_MAX_POOLSIZE
+              value: {{ .Values.datawolf.env.db_max_poolsize | quote }}
+            - name: DB_IDLE_TIMEOUT
+              value: {{ .Values.datawolf.env.db_idle_timeout | quote }}
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-datawolf
+                  key: DATAWOLF_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-datawolf
+                  key: DATAWOLF_PASSWORD
+            - name: ENGINE_STORELOGS
+              value: {{ .Values.datawolf.env.engine_storelogs | quote }}
+            - name: ENGINE_TIMEOUT
+              value: {{ .Values.datawolf.env.engine_timeout | quote }}
+            - name: ENGINE_EXTRALOCALEXECUTOR
+              value: {{ .Values.datawolf.env.engine_extralocalexecutor | quote }}
+            - name: ENGINE_LOCALEXECUTORTHREADS
+              value: {{ .Values.datawolf.env.engine_localexecutorthreads | quote }}
+            - name: ENGINE_PAGESIZE
+              value: {{ .Values.datawolf.env.engine_pagesize | quote }}
+          ports:
+            - containerPort: 8888
+              name: datawolf
+          volumeMounts:
+            - name: {{ include "incore.name" . }}-datawolf
+              mountPath: /home/datawolf/data
+          livenessProbe:
+            httpGet:
+              path: /datawolf/persons
+              port: datawolf
+          readinessProbe:
+            httpGet:
+              path: /datawolf/persons
+              port: datawolf
+          resources:
+            {{- toYaml .Values.frontend.resources | nindent 12 }}
+      volumes:
+        - name: {{ include "incore.name" . }}-datawolf
+          persistentVolumeClaim:
+            {{- if .Values.datawolf.persistence.existingClaim }}
+            claimName: {{ .Values.datawolf.persistence.existingClaim }}
+            {{- else }}
+            claimName: {{ include "incore.name" . }}-datawolf
+            {{- end }}
+      {{- with .Values.frontend.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.frontend.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.frontend.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

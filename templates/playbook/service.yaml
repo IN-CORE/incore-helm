@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "incore.fullname" . }}-playbook
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  selector:
+    app.kubernetes.io/name: {{ include "incore.name" . }}-playbook
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  type: {{ .Values.playbook.service.type }}
+  ports:
+    - port: {{ .Values.playbook.service.port }}
+      name: playbook
+      targetPort: http
+      protocol: TCP
