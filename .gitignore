@@ -63,6 +63,7 @@ charts/
 
 # box files
 *incore-prod*
+values-*.yaml
 keycloak-incore-realm.json
 regcred.json
 
