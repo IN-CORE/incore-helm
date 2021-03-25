@@ -112,8 +112,11 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.0.4 (not released yet)
+- cors filter is now a list of hosts
+
 ### 1.0.3
-- Jupyterhub configuration chagned:
+- Jupyterhub configuration changed:
   - Removed home ownership -R option in singleuser
 
 ### 1.0.2
