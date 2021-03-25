@@ -24,6 +24,10 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
+# this will check for services if cors is allowed
+cors:
+  origin: []
+
 podAnnotations: {}
 
 podSecurityContext: {}
@@ -284,6 +288,55 @@ svc_sema:
 #            average: 10
 #            burst: 20
 
+# ----------------------------------------------------------------------
+# LDAP CONFIGURATION
+# ----------------------------------------------------------------------
+# used to get groups the user belongs to to give access to spaces etc.
+ldap:
+  url: ldap.example.com
+  userdn: "OU=People,OU=example,OU=com"
+  admins: admin
+  refresh: "900"
+  viewall: vieall
+
+# ----------------------------------------------------------------------
+# PLAYBOOK CONFIGURATION
+# ----------------------------------------------------------------------
+playbook:
+  replicas: 1
+  image:
+    repository: playbook
+    tag: develop
+  service:
+    type: ClusterIP
+    port: 80
+
+# ----------------------------------------------------------------------
+# DATAWOLF CONFIGURATION
+# ----------------------------------------------------------------------
+datawolf:
+  replicas: 1
+  image:
+    repository: datawolf
+    tag: develop
+  env:
+    datawolf_admins: datawolf@incore.illinios.edu
+    datawolf_use_auth: false
+    db_source_url: db_address
+    db_max_poolsize: 100
+    db_idle_timeout: 30000
+    db_user: username
+    db_password: password
+    engine_storelogs: false
+    engine_timeout: 3600
+    engine_extralocalexecutor: 1
+    engine_localexecutorthreads: 8
+    engine_pagesize: 250
+  service:
+    type: ClusterIP
+    port: 8888
+  persistence:
+    size: 10Gi
 
 # ----------------------------------------------------------------------
 # DEPENDENCIES CONFIGURATION
@@ -439,58 +492,3 @@ keycloak:
     - name: DB_PASSWORD
       value: keycloak
 
-# ----------------------------------------------------------------------
-# LDAP CONFIGURATION
-# ----------------------------------------------------------------------
-# used to get groups the user belongs to to give access to spaces etc.
-ldap:
-  url: ldap.example.com
-  userdn: "OU=People,OU=example,OU=com"
-  admins: admin
-  refresh: "900"
-  viewall: vieall
-
-#------------------------------------------------------------------------
-# CORS
-#------------------------------------------------------------------------
-cors:
-  origin: 'http://localhost:3000,http://localhost:5000'
-
-# ----------------------------------------------------------------------
-# PLAYBOOK CONFIGURATION
-# ----------------------------------------------------------------------
-playbook:
-  replicas: 1
-  image:
-    repository: playbook
-    tag: develop
-  service:
-    type: ClusterIP
-    port: 80
-
-# ----------------------------------------------------------------------
-# DATAWOLF CONFIGURATION
-# ----------------------------------------------------------------------
-datawolf:
-  replicas: 1
-  image:
-    repository: datawolf
-    tag: develop
-  env:
-    datawolf_admins: datawolf@incore.illinios.edu
-    datawolf_use_auth: false
-    db_source_url: db_address
-    db_max_poolsize: 100
-    db_idle_timeout: 30000
-    db_user: username
-    db_password: password
-    engine_storelogs: false
-    engine_timeout: 3600
-    engine_extralocalexecutor: 1
-    engine_localexecutorthreads: 8
-    engine_pagesize: 250
-  service:
-    type: ClusterIP
-    port: 8888
-  persistence:
-    size: 10Gi
