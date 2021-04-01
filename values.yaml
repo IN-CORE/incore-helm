@@ -27,6 +27,8 @@ serviceAccount:
 # this will check for services if cors is allowed
 cors:
   origin: []
+  methods: GET,POST,DELETE
+  headers: authorization
 
 podAnnotations: {}
 

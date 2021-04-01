@@ -113,7 +113,8 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 ## ChangeLog
 
 ### 1.0.4 (not released yet)
-- cors filter is now a list of hosts
+- Cors filter is now a list of hosts
+- Datawolf and playbook added to the chart
 
 ### 1.0.3
 - Jupyterhub configuration changed:
@@ -124,11 +125,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
   - Updated incore documents to 2.0.2
 
 ### 1.0.1
-
 - Documentation updates:
   - Fixed broken Jupyter Notebook examples
   - Fixed fragility curves with SD as demand type in DFR3 service
 
 ### 1.0.0
-
 This is the first release of the helm chart for INCORE 2.0.0
