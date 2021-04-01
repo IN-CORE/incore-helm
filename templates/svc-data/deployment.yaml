@@ -82,10 +82,10 @@ spec:
                   key: AUTH_LDAP_VIEW_ALL
             - name: SERVICES_ALLOW_ORIGIN
               value: {{ join "," .Values.cors.origin | quote }}
-          - name: SERVICES_ALLOW_METHODS
-            value: {{ .Values.cors.methods | quote }}
-          - name: SERVICES_ALLOW_HEADERS
-            value: {{ .Values.cors.headers | quote }}
+            - name: SERVICES_ALLOW_METHODS
+              value: {{ .Values.cors.methods | quote }}
+            - name: SERVICES_ALLOW_HEADERS
+              value: {{ .Values.cors.headers | quote }}
           ports:
             - containerPort: {{ .Values.svc_data.service.port }}
               name: svc-data
