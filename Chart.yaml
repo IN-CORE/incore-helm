@@ -49,3 +49,5 @@ annotations:
   artifacthub.io/changes: |
     - Jupyterhub configuration changed:
       - Removed home ownership -R option in singleuser
+    - fixed cors issue by changing it to list of hosts
+    - added datawolf and playbook
