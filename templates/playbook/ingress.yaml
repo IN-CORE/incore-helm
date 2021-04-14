@@ -1,3 +1,4 @@
+{{- if .Values.playbook.enabled -}}
 {{- if .Values.ingress.enabled -}}
   {{- $fullName := include "incore.fullname" . -}}
   {{- $svcPort := .Values.playbook.service.port -}}
@@ -33,3 +34,4 @@ spec:
               servicePort: {{ $svcPort }}
     {{- end }}
   {{- end }}
+{{- end }}

@@ -25,7 +25,9 @@ Following versions have been deployed:
 
 UI:
 - frontend     : {{ .Values.frontend.image.tag }}
+{{- if .Values.playbook.enabled }}
 - playbook     : {{ .Values.playbook.image.tag }}
+{{- end }}
 
 Documentation:
 - Manual       : {{ .Values.doc_incore.image.tag }}
@@ -46,7 +48,9 @@ Jupyter:
 - lab          : {{ .Values.jupyterhub.singleuser.image.tag }}
 
 Support:
+{{- if .Values.datawolf.enabled }}
 - DataWolf     : {{ .Values.datawolf.image.tag }}
+{{- end }}
 - Geoserver    : {{ .Values.geoserver.image.repository }}:{{ .Values.geoserver.image.tag }}
 - Postgresql   : {{ .Values.postgresql.image.tag }}
 - Keycloak     : {{ default .Values.keycloak.image.tag "unknown" }}

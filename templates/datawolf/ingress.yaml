@@ -1,3 +1,4 @@
+{{- if .Values.datawolf.enabled -}}
 {{- if .Values.ingress.enabled -}}
   {{- $fullName := include "incore.fullname" . -}}
   {{- $svcPort := .Values.datawolf.service.port -}}
@@ -37,3 +38,4 @@ spec:
                   name: datawolf
     {{- end }}
   {{- end }}
+{{- end }}
