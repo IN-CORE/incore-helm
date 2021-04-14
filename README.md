@@ -112,6 +112,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.1.1
+- Incore 2.1.0 release
+
 ### 1.1.0
 - Cors filter is now a list of hosts
 - Datawolf and playbook added to the chart
