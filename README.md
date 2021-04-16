@@ -112,6 +112,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.2.1
+- Incore service hotfix 1.1.1
+
 ### 1.2.0
 - Incore 2.1.0 release
 
