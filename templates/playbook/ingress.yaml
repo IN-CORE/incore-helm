@@ -8,10 +8,8 @@ metadata:
   name: {{ $fullName }}-playbook
   labels:
     {{- include "incore.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
   annotations:
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
+    {{- include "incore.authIngressAnnotation" . | nindent 4 }}
 spec:
   {{- if .Values.ingress.tls }}
   tls:
@@ -31,9 +29,10 @@ spec:
           - path: /playbook/
             pathType: ImplementationSpecific
             backend:
-              service
-                Name: {{ $fullName }}-playbook
-                Port: {{ $svcPort }}
+              service:
+                name: {{ $fullName }}-playbook
+                port:
+                  number: {{ $svcPort }}
     {{- end }}
   {{- end }}
 {{- end }}
