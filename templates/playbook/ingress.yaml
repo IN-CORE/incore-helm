@@ -2,7 +2,7 @@
 {{- if .Values.ingress.enabled -}}
   {{- $fullName := include "incore.fullname" . -}}
   {{- $svcPort := .Values.playbook.service.port -}}
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ $fullName }}-playbook
@@ -29,9 +29,11 @@ spec:
       http:
         paths:
           - path: /playbook/
+            pathType: ImplementationSpecific
             backend:
-              serviceName: {{ $fullName }}-playbook
-              servicePort: {{ $svcPort }}
+              service
+                Name: {{ $fullName }}-playbook
+                Port: {{ $svcPort }}
     {{- end }}
   {{- end }}
 {{- end }}
