@@ -380,7 +380,7 @@ jupyterhub:
       enabled: false
     baseUrl: /hub/
     extraEnv:
-      JUPYTER_ENABLE_LAB: 1
+      JUPYTER_ENABLE_LAB: "1"
       KEYCLOAK_AUDIENCE: INCORE
       KEYCLOAK_HOSTNAME: incore.example.com
       KEYCLOAK_REALM: In-core
