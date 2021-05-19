@@ -402,7 +402,7 @@ jupyterhub:
     defaultUrl: "/lab"
     image:
       name: hub.ncsa.illinois.edu/incore/jupyterlab-incore
-      tag: 0.9.2-1.0.0
+      tag: 0.9.3-1.1.0
       pullSecrets:
         - regcred
       command4: ["echo", "SUCCESS"]
