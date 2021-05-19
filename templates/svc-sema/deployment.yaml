@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "incore.labels" . | nindent 4 }}
 spec:
-  replicas: 1 
+  replicas: {{ .Values.svc_sema.replicas }}
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "incore.name" . }}-svc-sema
