@@ -175,7 +175,7 @@ doc_api:
 # DATA SERVICE CONFIGURATION
 # ----------------------------------------------------------------------
 svc_data:
-  replicas: 1
+  replicas: 4
   repo: /home/incore/data/
   image:
     repository: data-jetty
@@ -202,7 +202,7 @@ svc_data:
 # DFR3 SERVICE CONFIGURATION
 # ----------------------------------------------------------------------
 svc_dfr3:
-  replicas: 1
+  replicas: 4
   image:
     repository: dfr3-jetty
     tag: 1.2.0
@@ -225,7 +225,7 @@ svc_dfr3:
 # HAZARD SERVICE CONFIGURATION
 # ----------------------------------------------------------------------
 svc_hazard:
-  replicas: 1
+  replicas: 4
   image:
     repository: hazard-jetty
     tag: 1.2.0
@@ -248,7 +248,7 @@ svc_hazard:
 # SPACE SERVICE CONFIGURATION
 # ----------------------------------------------------------------------
 svc_space:
-  replicas: 1
+  replicas: 2
   image:
     repository: space-jetty
     tag: 1.2.0
