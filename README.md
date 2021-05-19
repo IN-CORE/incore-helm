@@ -113,7 +113,7 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 ## ChangeLog
 
 ### 1.3.0
-- Incore release XX
+- Incore release 2.2.0
 - Upgrade jupyterhub to 0.11
 - Enable initial implementation of quota for jupyterlab
 - Updated playbook ingress version
