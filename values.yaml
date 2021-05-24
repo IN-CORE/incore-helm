@@ -398,6 +398,11 @@ jupyterhub:
         c.CustomTokenAuthenticator.auto_login = True
         c.CustomTokenAuthenticator.landing_page_login_url = "https://" + os.getenv('KEYCLOAK_HOSTNAME')
 
+  proxy:
+    chp:
+      pdb:
+        enabled: false
+
   singleuser:
     defaultUrl: "/lab"
     image:
