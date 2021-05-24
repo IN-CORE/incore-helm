@@ -274,7 +274,7 @@ svc_sema:
   replicas: 1
   image:
     repository: semantics-jetty
-    tag: 1.2.0
+    tag: 1.2.1
   service:
     type: ClusterIP
     port: 8888
