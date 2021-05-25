@@ -47,5 +47,7 @@ annotations:
     - name: Helm Chart
       url: https://opensource.ncsa.illinois.edu/bitbucket/projects/INCORE1/repos/incore-helm/browse
   artifacthub.io/changes: |
-    - Incore hotfix 2.2.1
+    - Incore service hotfix 1.2.1
     - Pyincore-viz hotfix 1.1.1
+    - Incore docs hotfix 2.2.1
+    - Incore ui hotfix 0.9.3
