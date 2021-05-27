@@ -71,16 +71,14 @@ spec:
           ports:
             - containerPort: {{ .Values.svc_sema.service.port }}
               name: svc-sema
-          # livenessProbe:
-          #   httpGet:
-          #     #path: /semantics/api/status
-          #     path: /
-          #     port: svc-sema
-          # readinessProbe:
-          #   httpGet:
-          #     #path: /semantics/api/status
-          #     path: /
-          #     port: svc-sema
+          livenessProbe:
+            httpGet:
+              path: /semantics/api/status
+              port: svc-sema
+          readinessProbe:
+            httpGet:
+              path: /semantics/api/status
+              port: svc-sema
           resources:
             {{- toYaml .Values.frontend.resources | nindent 12 }}
       {{- with .Values.frontend.nodeSelector }}

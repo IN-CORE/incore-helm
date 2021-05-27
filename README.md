@@ -112,6 +112,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.3.2
+- Enable semantics live/ready checks
+
 ### 1.3.1
 - Incore service hotfix 1.2.1
 - Pyincore-viz hotfix 1.1.1
