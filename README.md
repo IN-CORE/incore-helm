@@ -112,6 +112,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.4.0
+- Incore release 2.3.0
+
 ### 1.3.2
 - Enable semantics live/ready checks
 
@@ -131,7 +134,7 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 - Incore service hotfix 1.1.1
 
 ### 1.2.0
-- Incore 2.1.0 release
+- Incore release 2.1.0
 
 ### 1.1.0
 - Cors filter is now a list of hosts
