@@ -60,6 +60,11 @@ spec:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: AUTH_LDAP_URL
+            - name: HAZARD_SERVICE_URL
+                valueFrom:
+                  secretKeyRef:
+                    name: { { include "incore.fullname" . } }-services
+                    key: HAZARD_SERVICE_URL
             - name: AUTH_LDAP_USERDN
               valueFrom:
                 secretKeyRef:

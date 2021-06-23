@@ -112,6 +112,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.4.1
+- Added hazard service url environmental variable to data service
+
 ### 1.4.0
 - Incore release 2.3.0
 
