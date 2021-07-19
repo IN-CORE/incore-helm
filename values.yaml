@@ -160,6 +160,18 @@ doc_pyincore_viz:
     port: 80
 
 # ----------------------------------------------------------------------
+# PYINCORE_VIZ DOCUMENTATION CONFIGURATION
+# ----------------------------------------------------------------------
+doc_pyincore_data:
+  replicas: 1
+  image:
+    repository: doc/pyincore-data
+    tag: 0.1.0
+  service:
+    type: ClusterIP
+    port: 80
+
+# ----------------------------------------------------------------------
 # API DOCUMENTATION CONFIGURATION
 # ----------------------------------------------------------------------
 doc_api:
