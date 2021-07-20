@@ -1,0 +1,19 @@
+{{- if .Values.plotting.enabled -}}
+{{- if not .Values.plotting.persistence.existingClaim }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "incore.name" . }}-plotting
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: {{ .Values.plotting.persistence.size | quote }}
+  {{- if .Values.plotting.persistence.storageClass }}
+  storageClassName: {{ .Values.plotting.persistence.storageClass }}
+  {{- end }}
+{{- end }}
+{{- end }}

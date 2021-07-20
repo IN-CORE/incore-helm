@@ -303,6 +303,20 @@ svc_sema:
 #            burst: 20
 
 # ----------------------------------------------------------------------
+# PLOTTING SERVICE CONFIGURATION
+# ----------------------------------------------------------------------
+svc_plotting:
+  replicas: 1
+  image:
+    repository: plotting
+    tag: 0.1.0
+  service:
+    type: ClusterIP
+    port: 5000
+  ingress:
+    annotations:
+
+# ----------------------------------------------------------------------
 # LDAP CONFIGURATION
 # ----------------------------------------------------------------------
 # used to get groups the user belongs to to give access to spaces etc.
