@@ -25,8 +25,6 @@ spec:
           image: "{{ .Values.image.project }}/{{ .Values.svc_plotting.image.repository }}:{{ .Values.svc_plotting.image.tag }}"
           imagePullPolicy: {{ .Values.svc_plotting.image.pullPolicy | default .Values.image.pullPolicy }}
           env:
-            - name: DATA_REPO_DATA_DIR
-              value: /home/incore/data
             - name: AUTH_LDAP_URL
               valueFrom:
                 secretKeyRef:
@@ -63,7 +61,7 @@ spec:
               name: svc-plotting
           volumeMounts:
             - name: {{ include "incore.name" . }}-plotting
-              mountPath: /home/incore/data
+              mountPath: /src/plotting-service/data
           livenessProbe:
             httpGet:
               path: /plotting/api/samples
