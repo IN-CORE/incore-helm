@@ -315,6 +315,8 @@ svc_plotting:
     port: 5000
   ingress:
     annotations:
+  persistence:
+    size: 2Gi
 
 # ----------------------------------------------------------------------
 # LDAP CONFIGURATION
