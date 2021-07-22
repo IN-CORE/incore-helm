@@ -74,16 +74,16 @@ spec:
               port: {{ .Values.svc_plotting.service.port }}
           resources:
             {{- toYaml .Values.frontend.resources | nindent 12 }}
-#      initContainers:
-#        { { - if .Values.svc_plotting.persistence.enabled } }
-#        - name: copy-plotting-db
-#          image: "{{ .Values.image.project }}/{{ .Values.svc_plotting.image.repository }}:{{ .Values.svc_plotting.image.tag }}"
-#          command: [ cp, -n, /src/plotting-service/cache.sqlite3, /src/plotting-service/data/cache.sqlite3 ]
-#          imagePullPolicy: { { .Values.image.pullPolicy } }
-#          volumeMounts:
-#            - name: {{ include "incore.name" . }}-plotting
-#              mountPath: /src/plotting-service/data
-#        { { - end } }
+      initContainers:
+        { { - if .Values.svc_plotting.persistence.enabled } }
+        - name: copy-plotting-db
+          image: "{{ .Values.image.project }}/{{ .Values.svc_plotting.image.repository }}:{{ .Values.svc_plotting.image.tag }}"
+          command: [ cp, -n, /src/plotting-service/cache.sqlite3, /src/plotting-service/copydb/cache.sqlite3 ]
+          imagePullPolicy: { { .Values.image.pullPolicy } }
+          volumeMounts:
+            - name: {{ include "incore.name" . }}-plotting
+              mountPath: /src/plotting-service/copydb
+        { { - end } }
       volumes:
         - name: {{ include "incore.name" . }}-plotting
           persistentVolumeClaim:
