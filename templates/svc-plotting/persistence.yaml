@@ -1,5 +1,5 @@
-{{- if .Values.plotting.enabled -}}
-{{- if not .Values.plotting.persistence.existingClaim }}
+{{- if .Values.svc_plotting.enabled -}}
+{{- if not .Values.svc_plotting.persistence.existingClaim }}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -11,9 +11,9 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: {{ .Values.plotting.persistence.size | quote }}
-  {{- if .Values.plotting.persistence.storageClass }}
-  storageClassName: {{ .Values.plotting.persistence.storageClass }}
+      storage: {{ .Values.svc_plotting.persistence.size | quote }}
+  {{- if .Values.svc_plotting.persistence.storageClass }}
+  storageClassName: {{ .Values.svc_plotting.persistence.storageClass }}
   {{- end }}
 {{- end }}
 {{- end }}

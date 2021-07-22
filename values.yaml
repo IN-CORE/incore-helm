@@ -317,6 +317,7 @@ svc_plotting:
   ingress:
     annotations:
   persistence:
+    enabled: true
     size: 2Gi
 
 # ----------------------------------------------------------------------

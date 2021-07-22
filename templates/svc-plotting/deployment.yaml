@@ -59,9 +59,11 @@ spec:
           ports:
             - containerPort: {{ .Values.svc_plotting.service.port }}
               name: svc-plotting
+          {{- if .Values.svc_plotting.persistence.enabled }}
           volumeMounts:
             - name: {{ include "incore.name" . }}-plotting
               mountPath: /src/plotting-service/data
+          {{- end }}
           livenessProbe:
             httpGet:
               path: /plotting/api/samples
@@ -72,11 +74,21 @@ spec:
               port: {{ .Values.svc_plotting.service.port }}
           resources:
             {{- toYaml .Values.frontend.resources | nindent 12 }}
+      initContainers:
+        { { - if .Values.svc_plotting.persistence.enabled } }
+        - name: copy-plotting-db
+          image: "{{ .Values.image.project }}/{{ .Values.svc_plotting.image.repository }}:{{ .Values.svc_plotting.image.tag }}"
+          command: [ cp, -n, /src/plotting-service/cache.sqlite3, /src/plotting-service/data/cache.sqlite3 ]
+          imagePullPolicy: { { .Values.image.pullPolicy } }
+          volumeMounts:
+            - name: {{ include "incore.name" . }}-plotting
+              mountPath: /src/plotting-service/data
+        { { - end } }
       volumes:
         - name: {{ include "incore.name" . }}-plotting
           persistentVolumeClaim:
-            {{- if .Values.persistence.existingClaim }}
-            claimName: {{ .Values.persistence.existingClaim }}
+            {{- if .Values.svc_plotting.persistence.existingClaim }}
+            claimName: {{ .Values.svc_plotting.persistence.existingClaim }}
             {{- else }}
             claimName: {{ include "incore.name" . }}-plotting
             {{- end }}
