@@ -111,6 +111,9 @@ IN-CORE will use a persistent storage to store all data that is uploaded as well
 For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.yaml).
 
 ## ChangeLog
+### 1.4.3
+- Added plotting-service deployment
+
 ### 1.4.2
 - Added pyincore-data doc deployment
 

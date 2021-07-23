@@ -318,7 +318,7 @@ svc_plotting:
     annotations:
   persistence:
     enabled: true
-    size: 2Gi
+    size: 5Gi
 
 # ----------------------------------------------------------------------
 # LDAP CONFIGURATION
