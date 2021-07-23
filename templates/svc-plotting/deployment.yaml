@@ -66,11 +66,11 @@ spec:
           {{- end }}
           livenessProbe:
             httpGet:
-              path: /plotting/api/health
+              path: /plotting/api/status
               port: {{ .Values.svc_plotting.service.port }}
           readinessProbe:
             httpGet:
-              path: /plotting/api/health
+              path: /plotting/api/status
               port: {{ .Values.svc_plotting.service.port }}
           resources:
             {{- toYaml .Values.frontend.resources | nindent 12 }}
