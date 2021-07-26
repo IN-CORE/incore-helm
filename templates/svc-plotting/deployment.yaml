@@ -20,6 +20,16 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      {{- if .Values.svc_plotting.persistence.enabled }}
+      initContainers:
+        - name: copy-plotting-db
+          image: "{{ .Values.image.project }}/{{ .Values.svc_plotting.image.repository }}:{{ .Values.svc_plotting.image.tag }}"
+          command: [ cp, -n, /src/plotting-service/cache.sqlite3, /src/plotting-service/copydb/cache.sqlite3 ]
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: {{ include "incore.name" . }}-plotting
+              mountPath: /src/plotting-service/copydb
+      {{- end }}
       containers:
         - name: incore-plotting
           image: "{{ .Values.image.project }}/{{ .Values.svc_plotting.image.repository }}:{{ .Values.svc_plotting.image.tag }}"
@@ -72,19 +82,11 @@ spec:
             httpGet:
               path: /plotting/api/status
               port: {{ .Values.svc_plotting.service.port }}
+          {{- with .Values.svc_plotting.resources -}}
           resources:
-            {{- toYaml .Values.frontend.resources | nindent 12 }}
-#      initContainers:
-#        { { - if .Values.svc_plotting.persistence.enabled } }
-#        - name: copy-plotting-db
-#          image: "{{ .Values.image.project }}/{{ .Values.svc_plotting.image.repository }}:{{ .Values.svc_plotting.image.tag }}"
-#          command: [ cp, -n, /src/plotting-service/cache.sqlite3, /src/plotting-service/copydb/cache.sqlite3 ]
-#          imagePullPolicy: { { .Values.image.pullPolicy } }
-#          volumeMounts:
-#            - name: {{ include "incore.name" . }}-plotting
-#              mountPath: /src/plotting-service/copydb
-#        { { - end } }
-      {{- if .Values.svc_plotting.persistence.enabled -}}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      {{- if .Values.svc_plotting.persistence.enabled }}
       volumes:
         - name: {{ include "incore.name" . }}-plotting
           persistentVolumeClaim:
@@ -94,15 +96,15 @@ spec:
             claimName: {{ include "incore.name" . }}-plotting
             {{- end }}
       {{- end }}
-      {{- with .Values.frontend.nodeSelector }}
+      {{- with .Values.svc_plotting.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.frontend.affinity }}
+      {{- with .Values.svc_plotting.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.frontend.tolerations }}
+      {{- with .Values.svc_plotting.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
