@@ -42,6 +42,7 @@ Services:
 - Hazard       : {{ .Values.svc_hazard.image.tag }}
 - Semantics    : {{ .Values.svc_sema.image.tag }}
 - Space        : {{ .Values.svc_space.image.tag }}
+- Plotting     : {{ .Values.svc_plotting.image.tag }}
 
 Jupyter:
 - hub          : {{ .Values.jupyterhub.hub.image.tag }}
