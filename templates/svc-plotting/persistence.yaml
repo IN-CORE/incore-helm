@@ -1,4 +1,4 @@
-{{- if .Values.svc_plotting.enabled -}}
+{{- if .Values.svc_plotting.persistence.enabled -}}
 {{- if not .Values.svc_plotting.persistence.existingClaim }}
 kind: PersistentVolumeClaim
 apiVersion: v1

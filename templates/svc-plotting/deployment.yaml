@@ -84,6 +84,7 @@ spec:
 #            - name: {{ include "incore.name" . }}-plotting
 #              mountPath: /src/plotting-service/copydb
 #        { { - end } }
+      {{- if .Values.svc_plotting.persistence.enabled -}}
       volumes:
         - name: {{ include "incore.name" . }}-plotting
           persistentVolumeClaim:
@@ -92,6 +93,7 @@ spec:
             {{- else }}
             claimName: {{ include "incore.name" . }}-plotting
             {{- end }}
+      {{- end }}
       {{- with .Values.frontend.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
