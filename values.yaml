@@ -309,7 +309,7 @@ svc_plotting:
   replicas: 1
   image:
     repository: plotting
-    tag: 0.1.0
+    tag: d.1311
   service:
     type: ClusterIP
     port: 5000
