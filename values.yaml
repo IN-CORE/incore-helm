@@ -356,7 +356,7 @@ datawolf:
     datawolf_admins: datawolf@incore.illinios.edu
     datawolf_use_auth: false
     db_source_url: db_address
-    db_max_poolsize: 100
+    db_max_poolsize: 20
     db_idle_timeout: 30000
     db_user: username
     db_password: password
