@@ -34,6 +34,7 @@ Documentation:
 - API          : {{ .Values.doc_api.image.tag }}
 - PyIncore     : {{ .Values.doc_pyincore.image.tag }}
 - PyIncore Viz : {{ .Values.doc_pyincore_viz.image.tag }}
+- PyIncore Data : {{ .Values.doc_pyincore_data.image.tag }}
 
 Services:
 - Auth         : {{ .Values.auth.image.tag }}
