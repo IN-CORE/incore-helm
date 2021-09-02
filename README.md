@@ -111,6 +111,9 @@ IN-CORE will use a persistent storage to store all data that is uploaded as well
 For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.yaml).
 
 ## ChangeLog
+### 1.6.0
+- Incore release 2.6.0
+
 ### 1.5.2
 - Changed datawolf's max pool size
 
