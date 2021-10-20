@@ -64,6 +64,41 @@ persistence:
   size: 10Gi
   #existingClaim: someclaim
 
+# quotas for incore. there are 3 top level groups:
+# - users, quotas for individual users
+# - groups, quotas per group, weight is used to order
+# - default quotas
+# each quota will have:
+# - cpu [min, max] for jupyterhub
+# - mem [min, max] for jupyterhub
+# - disk max total disk quota for user
+# - service [number of objects, size] quota for each of the services
+quota: |
+  {
+    "groups": {
+       "incore_ncsa": {
+         "weight": 1,
+         "cpu": [ 1, 8 ],
+         "mem": [ 2, 16 ],
+         "disk": 100,
+         "service": [ 200, 5 ]
+       },
+       "incore_coe": {
+         "weight": 0,
+         "cpu": [ 1, 4 ],
+         "mem": [ 2, 8 ],
+         "disk": 10,
+         "service": [ 200, 5 ]
+       }
+     },
+     "default": {
+       "cpu": [ 1, 2 ],
+       "mem": [ 2, 4 ],
+       "disk": 4,
+       "service": [ 100, 2 ]
+     }
+  }
+
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
@@ -424,6 +459,15 @@ jupyterhub:
         c.CustomTokenAuthenticator.enable_auth_state = True
         c.CustomTokenAuthenticator.auto_login = True
         c.CustomTokenAuthenticator.landing_page_login_url = "https://" + os.getenv('KEYCLOAK_HOSTNAME')
+    extraVolumes:
+      - name: incore
+        configMap:
+          name: incore
+          defaultMode: 420
+    extraVolumeMounts:
+      - name: incore
+        mountPath: /etc/quota.json
+        subPath: quota.json
 
   singleuser:
     defaultUrl: "/lab"
