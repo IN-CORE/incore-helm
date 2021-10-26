@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "incore.fullname" . }}-svc-maestro
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.svc_maestro.replicas }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "incore.name" . }}-svc-maestro
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "incore.name" . }}-svc-maestro
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: incore-maestro-jetty
+          image: "{{ .Values.image.project }}/{{ .Values.svc_maestro.image.repository }}:{{ .Values.svc_maestro.image.tag }}"
+          imagePullPolicy: {{ .Values.svc_maestro.image.pullPolicy | default .Values.image.pullPolicy }}
+          env:
+            - name: JETTY_PORT
+              value: {{ .Values.svc_maestro.service.port | quote }}
+            - name: MAESTRO_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: MAESTRO_MONGODB_URI
+            - name: SPACE_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: SPACE_MONGODB_URI
+            - name: AUTH_LDAP_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: AUTH_LDAP_URL
+            - name: AUTH_LDAP_USERDN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: AUTH_LDAP_USERDN
+            - name: AUTH_LDAP_ADMINS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: AUTH_LDAP_ADMINS
+            - name: AUTH_LDAP_CACHE_REFRESH_SECS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: AUTH_LDAP_CACHE_REFRESH_SECS
+            - name: AUTH_LDAP_VIEW_ALL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: AUTH_LDAP_VIEW_ALL
+            - name: SERVICES_ALLOW_ORIGIN
+              value: {{ join "," .Values.cors.origin | quote }}
+            - name: SERVICES_ALLOW_METHODS
+              value: {{ .Values.cors.methods | quote }}
+            - name: SERVICES_ALLOW_HEADERS
+              value: {{ .Values.cors.headers | quote }}
+          ports:
+            - containerPort: {{ .Values.svc_maestro.service.port }}
+              name: svc-maestro
+          livenessProbe:
+            httpGet:
+              path: /maestro/api/playbooks
+              port: svc-maestro
+          readinessProbe:
+            httpGet:
+              path: /maestro/api/playbooks
+              port: svc-maestro
+          resources:
+            {{- toYaml .Values.frontend.resources | nindent 12 }}
+      {{- with .Values.frontend.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.frontend.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.frontend.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

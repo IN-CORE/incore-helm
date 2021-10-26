@@ -112,6 +112,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.7.0
+- Added maestro service deployment
+
 ### 1.6.1
 - Make quotas for jupyterhub configurable
 

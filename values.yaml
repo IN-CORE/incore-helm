@@ -338,6 +338,20 @@ svc_sema:
 #            burst: 20
 
 # ----------------------------------------------------------------------
+# MAESTRO SERVICE CONFIGURATION
+# ----------------------------------------------------------------------
+svc_maestro:
+  replicas: 1
+  image:
+    repository: maestro-jetty
+    tag: 1.6.0
+  service:
+    type: ClusterIP
+    port: 8888
+  ingress:
+    annotations:
+
+# ----------------------------------------------------------------------
 # PLOTTING SERVICE CONFIGURATION
 # ----------------------------------------------------------------------
 svc_plotting:
