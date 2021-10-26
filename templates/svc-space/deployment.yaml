@@ -58,10 +58,10 @@ spec:
                   name: {{ include "incore.fullname" . }}-services
                   key: SEMANTICS_SERVICE_URL
             - name: MAESTRO_SERVICE_URL
-                valueFrom:
-                  secretKeyRef:
-                    name: { { include "incore.fullname" . } }-services
-                    key: MAESTRO_SERVICE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: { { include "incore.fullname" . } }-services
+                  key: MAESTRO_SERVICE_URL
             - name: DATA_MONGODB_URI
               valueFrom:
                 secretKeyRef:
