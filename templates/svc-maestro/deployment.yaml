@@ -73,11 +73,11 @@ spec:
               name: svc-maestro
           livenessProbe:
             httpGet:
-              path: /maestro/api/playbooks
+              path: /maestro/api/swagger.json
               port: svc-maestro
           readinessProbe:
             httpGet:
-              path: /maestro/api/playbooks
+              path: /maestro/api/swagger.json
               port: svc-maestro
           resources:
             {{- toYaml .Values.frontend.resources | nindent 12 }}
