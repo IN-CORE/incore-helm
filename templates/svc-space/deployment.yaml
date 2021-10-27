@@ -57,6 +57,11 @@ spec:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: SEMANTICS_SERVICE_URL
+            - name: MAESTRO_SERVICE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: MAESTRO_SERVICE_URL
             - name: DATA_MONGODB_URI
               valueFrom:
                 secretKeyRef:
@@ -82,6 +87,11 @@ spec:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: SEMANTICS_MONGODB_URI
+            - name: MAESTRO_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: MAESTRO_MONGODB_URI
             - name: AUTH_LDAP_URL
               valueFrom:
                 secretKeyRef:
