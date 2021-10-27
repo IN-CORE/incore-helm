@@ -47,3 +47,4 @@ annotations:
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
     - Added maestro service deployment
+    - Incore release 2.7.0
