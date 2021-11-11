@@ -72,7 +72,11 @@ spec:
       volumes:
         - name: {{ include "incore.name" . }}-auth
           persistentVolumeClaim:
+            {{- if .Values.auth.persistence.existingClaim }}
+            claimName: {{ .Values.auth.persistence.existingClaim }}
+            {{- else }}
             claimName: {{ include "incore.name" . }}-auth
+            {{- end }}
       {{- with .Values.auth.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
