@@ -53,6 +53,9 @@ spec:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: INFLUXDB_V2_TOKEN
+          volumeMounts:
+            - name: {{ include "incore.name" . }}-auth
+              mountPath: /srv/incore_auth/data
           ports:
             - containerPort: {{ .Values.auth.service.port }}
               name: auth
@@ -66,6 +69,10 @@ spec:
               port: auth
           resources:
             {{- toYaml .Values.auth.resources | nindent 12 }}
+      volumes:
+        - name: {{ include "incore.name" . }}-auth
+          persistentVolumeClaim:
+            claimName: {{ include "incore.name" . }}-auth
       {{- with .Values.auth.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

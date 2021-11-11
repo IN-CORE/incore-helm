@@ -112,6 +112,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.8.8
+- Made IP2Location variable in incore-auth
+
 ### 1.7.0
 - Added maestro service deployment
 - Incore release 2.7.0

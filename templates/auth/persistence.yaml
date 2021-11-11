@@ -1,0 +1,15 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "incore.name" . }}-auth
+  labels:
+{{- include "incore.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: {{ .Values.frontend.persistence.size | quote }}
+{{- if .Values.auth.persistence.storageClass }}
+  storageClassName: {{ .Values.auth.persistence.storageClass }}
+{{- end }}
