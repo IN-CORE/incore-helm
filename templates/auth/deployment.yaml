@@ -48,6 +48,8 @@ spec:
               value: {{ .Values.auth.influxdb.url | quote }}
             - name: INFLUXDB_V2_ORG
               value: {{ .Values.auth.influxdb.org | quote }}
+            - name: INFLUXDB_V2_FILE_LOCATION
+              value: {{ .Values.auth.influxdb.location | quote }}
             - name: INFLUXDB_V2_TOKEN
               valueFrom:
                 secretKeyRef:
