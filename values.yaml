@@ -156,7 +156,10 @@ auth:
   influxdb:
     url: "http://influxdb:8086/"
     org: "incore"
+    location: "data/IP2LOCATION-LITE-DB5.BIN"
     token: ""
+  persistence:
+    size: 5Gi
 
 # ----------------------------------------------------------------------
 # INCORE DOCUMENTATION CONFIGURATION

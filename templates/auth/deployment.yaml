@@ -48,11 +48,16 @@ spec:
               value: {{ .Values.auth.influxdb.url | quote }}
             - name: INFLUXDB_V2_ORG
               value: {{ .Values.auth.influxdb.org | quote }}
+            - name: INFLUXDB_V2_FILE_LOCATION
+              value: {{ .Values.auth.influxdb.location | quote }}
             - name: INFLUXDB_V2_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: INFLUXDB_V2_TOKEN
+          volumeMounts:
+            - name: {{ include "incore.name" . }}-auth
+              mountPath: /srv/incore_auth/data
           ports:
             - containerPort: {{ .Values.auth.service.port }}
               name: auth
@@ -66,6 +71,14 @@ spec:
               port: auth
           resources:
             {{- toYaml .Values.auth.resources | nindent 12 }}
+      volumes:
+        - name: {{ include "incore.name" . }}-auth
+          persistentVolumeClaim:
+            {{- if .Values.auth.persistence.existingClaim }}
+            claimName: {{ .Values.auth.persistence.existingClaim }}
+            {{- else }}
+            claimName: {{ include "incore.name" . }}-auth
+            {{- end }}
       {{- with .Values.auth.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
