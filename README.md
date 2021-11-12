@@ -112,7 +112,7 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
-### 1.8.0
+### 1.7.1
 - Made IP2Location variable in incore-auth
 
 ### 1.7.0
