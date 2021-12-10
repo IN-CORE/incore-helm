@@ -35,6 +35,11 @@ spec:
           image: "{{ .Values.image.project }}/{{ .Values.svc_plotting.image.repository }}:{{ .Values.svc_plotting.image.tag }}"
           imagePullPolicy: {{ .Values.svc_plotting.image.pullPolicy | default .Values.image.pullPolicy }}
           env:
+            - name: COMMON_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: COMMON_MONGODB_URI
             - name: AUTH_LDAP_URL
               valueFrom:
                 secretKeyRef:

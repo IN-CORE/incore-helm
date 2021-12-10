@@ -92,6 +92,11 @@ spec:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: MAESTRO_MONGODB_URI
+            - name: COMMON_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: COMMON_MONGODB_URI
             - name: AUTH_LDAP_URL
               valueFrom:
                 secretKeyRef:
