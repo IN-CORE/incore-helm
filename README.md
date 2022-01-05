@@ -112,6 +112,10 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.8.0
+- Added common_mongo_uri variable to incore services
+- Incore release 2.8.0
+
 ### 1.7.1
 - Made IP2Location variable in incore-auth
 

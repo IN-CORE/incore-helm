@@ -42,6 +42,11 @@ spec:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: SPACE_MONGODB_URI
+            - name: COMMON_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: COMMON_MONGODB_URI
             - name: DATA_REPO_DATA_DIR
               value: /home/incore/data
             - name: AUTH_LDAP_URL
