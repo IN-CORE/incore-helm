@@ -112,6 +112,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.9.0
+- Incore release 3.0.0
+
 ### 1.8.0
 - Added common_mongo_uri variable to incore services
 - Incore release 2.8.0
