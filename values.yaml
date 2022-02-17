@@ -485,7 +485,9 @@ jupyterhub:
       - name: incore
         mountPath: /etc/quota.json
         subPath: quota.json
-
+  scheduling:
+    userScheduler:
+      enabled: false
   singleuser:
     defaultUrl: "/lab"
     image:
