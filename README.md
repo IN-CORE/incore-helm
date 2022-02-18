@@ -112,7 +112,7 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
-### 1.10.0
+### 1.9.1
 
 - Disabled jupyterhub user scheduler to make incore-lab spawns from random node.
 ### 1.9.0
