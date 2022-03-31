@@ -70,7 +70,7 @@ traefik.ingress.kubernetes.io/whitelist-source-range: "141.142.0.0/16"
 ingress.kubernetes.io/auth-type: forward
 ingress.kubernetes.io/auth-url: http://{{ include "incore.fullname" . }}-auth.{{ .Release.Namespace }}.svc.cluster.local:5000/
 ingress.kubernetes.io/auth-trust-headers: "true"
-ingress.kubernetes.io/auth-response-headers: x-auth-userinfo, X-Auth-Userinfo
+ingress.kubernetes.io/auth-response-headers: x-auth-userinfo, X-Auth-Userinfo, x-auth-usergroup, X-Auth-UserGroup
 {{- end }}
 
 {{/*
