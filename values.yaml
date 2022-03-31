@@ -204,7 +204,7 @@ doc_pyincore_data:
   replicas: 1
   image:
     repository: doc/pyincore-data
-    tag: 0.4.0
+    tag: 0.4.1
   service:
     type: ClusterIP
     port: 80
