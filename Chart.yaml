@@ -47,3 +47,4 @@ annotations:
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
     - Fixed pyincore-data's documentation
+    - Pyincore-viz 1.5.1 release
