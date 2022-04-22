@@ -48,3 +48,4 @@ annotations:
   artifacthub.io/changes: |
     - Fixed pyincore-data's documentation
     - Pyincore-viz 1.5.1 release
+    - Pyincore 1.4.1 release

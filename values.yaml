@@ -180,7 +180,7 @@ doc_pyincore:
   replicas: 1
   image:
     repository: doc/pyincore
-    tag: 1.4.0
+    tag: 1.4.1
   service:
     type: ClusterIP
     port: 80
@@ -492,7 +492,7 @@ jupyterhub:
     defaultUrl: "/lab"
     image:
       name: hub.ncsa.illinois.edu/incore/jupyterlab-incore
-      tag: 1.4.0-1.5.0
+      tag: 1.4.1-1.5.1
       pullSecrets:
         - regcred
       command4: ["echo", "SUCCESS"]
