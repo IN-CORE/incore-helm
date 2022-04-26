@@ -112,6 +112,11 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.10.1
+- Fixed pyincore-data's documentation
+- Pyincore-viz 1.5.1 release
+- Pyincore 1.4.1 release
+
 ### 1.10.0
 - Incore release 3.1.0.
 
