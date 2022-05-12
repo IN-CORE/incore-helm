@@ -8,7 +8,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.10.1
+version: 1.10.2
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -46,6 +46,4 @@ annotations:
     - name: Helm Chart
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
-    - Fixed pyincore-data's documentation
-    - Pyincore-viz 1.5.1 release
-    - Pyincore 1.4.1 release
+    - Changed space service's livenessProb endpoint
