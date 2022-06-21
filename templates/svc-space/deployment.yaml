@@ -133,11 +133,11 @@ spec:
               name: svc-space
           livenessProbe:
             httpGet:
-              path: /space/api/allocations
+              path: /space/
               port: svc-space
           readinessProbe:
             httpGet:
-              path: /space/api/allocations
+              path: /space/
               port: svc-space
           resources:
             {{- toYaml .Values.svc_space.resources | nindent 12 }}
