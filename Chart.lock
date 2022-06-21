@@ -6,10 +6,10 @@ dependencies:
   repository: https://codecentric.github.io/helm-charts
   version: 9.0.8
 - name: postgresql
-  repository: https://charts.bitnami.com/bitnami
+  repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
   version: 9.3.4
 - name: mongodb
-  repository: https://charts.bitnami.com/bitnami
+  repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
   version: 9.3.1
-digest: sha256:900f44fe458fd7e87f6b8861a799f95b93a257206f49dc507759cba30b049785
-generated: "2021-05-05T22:05:37.638339-05:00"
+digest: sha256:e12188720aa43ee86d6d8c472c7f9ef291f62a50e13a7af9fc7f14b8ea758a13
+generated: "2022-06-21T16:45:46.843979-05:00"
