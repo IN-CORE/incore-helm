@@ -26,3 +26,4 @@ spec:
               command: ["python"]
               args:
                 - "/src/usergroups-sync/usergroups_sync_from_ldap.py"
+          restartPolicy: Never
