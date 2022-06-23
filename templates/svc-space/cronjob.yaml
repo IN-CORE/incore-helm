@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "incore.labels" . | nindent 4 }}
 spec:
-  schedule: "*/1 * * * *"
+  schedule: "*/15 * * * *"
   startingDeadlineSeconds: 3600
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1
