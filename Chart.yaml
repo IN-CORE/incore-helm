@@ -35,10 +35,10 @@ dependencies:
     repository: https://codecentric.github.io/helm-charts
   - name: postgresql
     version: ~9.3
-    repository: https://charts.bitnami.com/bitnami
+    repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
   - name: mongodb
     version: ~9
-    repository: https://charts.bitnami.com/bitnami
+    repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
 
 # annotations for artifact.io
 annotations:
