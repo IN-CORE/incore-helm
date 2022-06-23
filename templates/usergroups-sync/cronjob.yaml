@@ -1,0 +1,30 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "incore.fullname" . }}-usergroups-sync
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  schedule: "*/15 * * * *"
+  startingDeadlineSeconds: 3600
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      template:
+        spec:
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          containers:
+            - name: usergroups_sync
+              image: "{{ .Values.image.project }}/{{ .Values.usergroups_sync.image.repository }}:{{ .Values.usergroups_sync.image.tag }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              command:
+                - /bin/sh
+                - "python"
+                - /usergroups_sync_from_ldap.py
+          restartPolicy: Never
