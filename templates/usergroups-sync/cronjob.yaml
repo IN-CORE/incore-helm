@@ -26,4 +26,10 @@ spec:
               command: ["python"]
               args:
                 - "/src/usergroups-sync/usergroups_sync_from_ldap.py"
+              env:
+                - name: MONGODB_URI
+                  valueFrom:
+                    secretKeyRef:
+                      name: {{ include "incore.fullname" . }}-services
+                      key: MONGODB_URI
           restartPolicy: Never
