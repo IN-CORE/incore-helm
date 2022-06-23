@@ -23,8 +23,6 @@ spec:
             - name: usergroups-sync
               image: "{{ .Values.image.project }}/{{ .Values.usergroups_sync.image.repository }}:{{ .Values.usergroups_sync.image.tag }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
-              command:
-                - /bin/sh
-                - "python"
-                - /usergroups_sync_from_ldap.py
+              command: ["python"]
+              args: ["/src/usergroups-sync/usergroups_sync_from_ldap.py"]
           restartPolicy: Never
