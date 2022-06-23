@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "incore.labels" . | nindent 4 }}
 spec:
-  schedule: "*/15 * * * *"
+  schedule: "*/1 * * * *"
   startingDeadlineSeconds: 3600
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1
@@ -22,7 +22,7 @@ spec:
           containers:
             - name: usergroups-sync
               image: "{{ .Values.image.project }}/{{ .Values.usergroups_sync.image.repository }}:{{ .Values.usergroups_sync.image.tag }}"
-              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              imagePullPolicy: IfNotPresent
               command: ["python"]
-              args: ["/src/usergroups-sync/usergroups_sync_from_ldap.py"]
-          restartPolicy: Never
+              args:
+                - "/src/usergroups-sync/usergroups_sync_from_ldap.py"
