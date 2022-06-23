@@ -429,7 +429,7 @@ datawolf:
 usergroups_sync:
   replicas: 1
   image:
-    repository: usergroups_sync
+    repository: usergroups-sync
     tag: develop
 
 # ----------------------------------------------------------------------
