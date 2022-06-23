@@ -426,7 +426,7 @@ datawolf:
 # ----------------------------------------------------------------------
 # Usergroups sync configuration
 # ----------------------------------------------------------------------
-usergropus_sync:
+usergroups_sync:
   replicas: 1
   image:
     repository: usergroups_sync
