@@ -427,10 +427,9 @@ datawolf:
 # Usergroups sync configuration
 # ----------------------------------------------------------------------
 usergroups_sync:
-  replicas: 0
   image:
     repository: usergroups-sync
-    tag: develop
+    tag: 0.1.0
 
 # ----------------------------------------------------------------------
 # DEPENDENCIES CONFIGURATION
