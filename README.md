@@ -112,6 +112,10 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.11.0
+- Incore release 3.2.0
+- Added usergroups sync from ldap to database
+
 ### 1.10.2
 - Changed space service's livenessProb endpoint
 
