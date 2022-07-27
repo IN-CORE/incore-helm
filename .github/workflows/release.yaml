@@ -43,7 +43,7 @@ jobs:
 
       - name: Publish to NCSA OpenSource
         if: github.event_name != 'pull_request' && github.repository == env.MAIN_REPO
-        uses: bsord/helm-push@v3
+        uses: bsord/helm-push@v4.1.0
         with:
           username: ${{ secrets.HELM_USERNAME }}
           password: ${{ secrets.HELM_PASSWORD }}
