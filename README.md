@@ -112,6 +112,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.12.1
+- Renamed container name for jupyter hub and lab
+
 ### 1.12.0
 - Incore release 3.5.0
 - Upgrade postgresql to 11 (requires a dump/restore of the database)

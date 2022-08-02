@@ -461,8 +461,8 @@ geoserver:
 jupyterhub:
   hub:
     image:
-      name: hub.ncsa.illinois.edu/incore/jupyterhub
-      tag: 0.5.4
+      name: hub.ncsa.illinois.edu/incore/hub
+      tag: 1.2.0
       pullSecrets:
         - regcred
     baseUrl: /hub/
@@ -499,7 +499,7 @@ jupyterhub:
   singleuser:
     defaultUrl: "/lab"
     image:
-      name: hub.ncsa.illinois.edu/incore/jupyterlab-incore
+      name: hub.ncsa.illinois.edu/incore/lab
       tag: 1.6.0-1.7.0
       pullSecrets:
         - regcred
