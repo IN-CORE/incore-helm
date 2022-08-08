@@ -59,6 +59,7 @@ The following table lists the configurable parameters of the IN-CORE chart and t
 | Parameter                            | Description                                      | Default                                                 |
 | ------------------------------------ | ------------------------------------------------ | -------------------------------------------------------
 | ingress.hosts[0].host | ingress rule for incore  | incore.example.com
+| ingress.traefik | Use Traefik V2 middleware | false
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. Or more convenient
 use a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
@@ -111,6 +112,9 @@ IN-CORE will use a persistent storage to store all data that is uploaded as well
 For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.yaml).
 
 ## ChangeLog
+
+### 1.12.1
+- Enable traefik v2 middleware
 
 ### 1.12.0
 - Incore release 3.5.0

@@ -58,6 +58,8 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+  # should we add middleare annotations for traefik v2?
+  traefik: false
 
 # used by both data and hazard services
 persistence:

@@ -1,0 +1,15 @@
+{{- if .Values.ingress.traefik -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: auth
+spec:
+  forwardAuth:
+    address: http://{{ include "incore.fullname" . }}-auth.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.auth.service.port }}/
+    authResponseHeaders:
+      - x-auth-userinfo
+      - X-Auth-Userinfo
+      - x-auth-usergroup
+      - X-Auth-UserGroup
+    trustForwardHeader: true
+{{- end }}
