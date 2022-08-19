@@ -68,7 +68,7 @@ traefik.ingress.kubernetes.io/whitelist-source-range: "141.142.0.0/16"
 */}}
 {{- define "incore.authIngressAnnotation" }}
 {{- if .Values.ingress.traefik -}}
-traefik.ingress.kubernetes.io/router.middlewares: {{ .Release.Namespace }}-incore-auth@kubernetescrd
+traefik.ingress.kubernetes.io/router.middlewares: {{ .Release.Namespace }}-auth@kubernetescrd
 {{- else }}
 ingress.kubernetes.io/auth-type: forward
 ingress.kubernetes.io/auth-url: http://{{ include "incore.fullname" . }}-auth.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.auth.service.port }}/
