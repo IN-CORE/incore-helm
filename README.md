@@ -113,9 +113,13 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
-### 1.12.2
+### 1.12.3
 - Renamed container name for jupyter hub and lab
   
+### 1.12.2
+- Used wrong name for traefik middleware
+- Update keycloak to 18.3.0
+
 ### 1.12.1
 - Enable traefik v2 middleware
 

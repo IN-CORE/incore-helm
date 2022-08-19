@@ -24,37 +24,37 @@
 Following versions have been deployed:
 
 UI:
-- frontend     : {{ .Values.frontend.image.tag }}
+- frontend      : {{ .Values.frontend.image.tag }}
 {{- if .Values.playbook.enabled }}
-- playbook     : {{ .Values.playbook.image.tag }}
+- playbook      : {{ .Values.playbook.image.tag }}
 {{- end }}
 
 Documentation:
-- Manual       : {{ .Values.doc_incore.image.tag }}
-- API          : {{ .Values.doc_api.image.tag }}
-- PyIncore     : {{ .Values.doc_pyincore.image.tag }}
-- PyIncore Viz : {{ .Values.doc_pyincore_viz.image.tag }}
+- Manual        : {{ .Values.doc_incore.image.tag }}
+- API           : {{ .Values.doc_api.image.tag }}
+- PyIncore      : {{ .Values.doc_pyincore.image.tag }}
+- PyIncore Viz  : {{ .Values.doc_pyincore_viz.image.tag }}
 - PyIncore Data : {{ .Values.doc_pyincore_data.image.tag }}
 
 Services:
-- Auth         : {{ .Values.auth.image.tag }}
-- Data         : {{ .Values.svc_data.image.tag }}
-- DFR3         : {{ .Values.svc_dfr3.image.tag }}
-- Hazard       : {{ .Values.svc_hazard.image.tag }}
-- Semantics    : {{ .Values.svc_sema.image.tag }}
-- Space        : {{ .Values.svc_space.image.tag }}
-- Maestro      : {{ .Values.svc_maestro.image.tag }}
-- Plotting     : {{ .Values.svc_plotting.image.tag }}
+- Auth          : {{ .Values.auth.image.tag }}
+- Data          : {{ .Values.svc_data.image.tag }}
+- DFR3          : {{ .Values.svc_dfr3.image.tag }}
+- Hazard        : {{ .Values.svc_hazard.image.tag }}
+- Semantics     : {{ .Values.svc_sema.image.tag }}
+- Space         : {{ .Values.svc_space.image.tag }}
+- Maestro       : {{ .Values.svc_maestro.image.tag }}
+- Plotting      : {{ .Values.svc_plotting.image.tag }}
 
 Jupyter:
-- hub          : {{ .Values.jupyterhub.hub.image.tag }}
-- lab          : {{ .Values.jupyterhub.singleuser.image.tag }}
+- hub           : {{ .Values.jupyterhub.hub.image.tag }}
+- lab           : {{ .Values.jupyterhub.singleuser.image.tag }}
 
 Support:
 {{- if .Values.datawolf.enabled }}
-- DataWolf     : {{ .Values.datawolf.image.tag }}
+- DataWolf      : {{ .Values.datawolf.image.tag }}
 {{- end }}
-- Geoserver    : {{ .Values.geoserver.image.repository }}:{{ .Values.geoserver.image.tag }}
-- Postgresql   : {{ .Values.postgresql.image.tag }}
-- Keycloak     : {{ default .Values.keycloak.image.tag "unknown" }}
-- MongoDB      : {{ .Values.mongodb.image.tag }}
+- Geoserver     : {{ .Values.geoserver.image.repository }}:{{ .Values.geoserver.image.tag }}
+- Postgresql    : {{ .Values.postgresql.image.tag }}
+- Keycloak      : {{ default .Values.keycloak.image.tag "unknown" }}
+- MongoDB       : {{ .Values.mongodb.image.tag }}
