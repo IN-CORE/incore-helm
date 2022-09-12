@@ -115,6 +115,7 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ### 1.12.3
 - Renamed container name for jupyter hub and lab
+- Added auth_role and auth_group env variables to authenticator
   
 ### 1.12.2
 - Used wrong name for traefik middleware
