@@ -487,8 +487,8 @@ jupyterhub:
         c.CustomTokenAuthenticator.auth_uid_number_key = "uid_number"
         c.CustomTokenAuthenticator.enable_auth_state = True
         c.CustomTokenAuthenticator.auto_login = True
-        c.CustomTokenAuthenticator.auth_group =  os.getenv('AUTH_GROUP')
-        c.CustomTokenAuthenticator.auth_role =  os.getenv('AUTH_ROLE')
+        c.CustomTokenAuthenticator.auth_group = os.getenv('AUTH_GROUP')
+        c.CustomTokenAuthenticator.auth_role = os.getenv('AUTH_ROLE')
         c.CustomTokenAuthenticator.landing_page_login_url = "https://" + os.getenv('KEYCLOAK_HOSTNAME')
     extraVolumes:
       - name: incore
