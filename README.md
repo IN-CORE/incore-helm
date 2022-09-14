@@ -113,6 +113,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.13.0
+- Incore release 3.6.0
+
 ### 1.12.3
 - Renamed container name for jupyter hub and lab
 - Added auth_role and auth_group env variables to authenticator
