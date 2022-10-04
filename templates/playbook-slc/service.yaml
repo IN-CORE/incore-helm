@@ -1,0 +1,18 @@
+{{- if .Values.playbook_slc.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "incore.fullname" . }}-playbook-slc
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  selector:
+    app.kubernetes.io/name: {{ include "incore.name" . }}-playbook-slc
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  type: {{ .Values.playbook.service.type }}
+  ports:
+    - port: {{ .Values.playbook.service.port }}
+      name: playbook
+      targetPort: http
+      protocol: TCP
+{{- end }}

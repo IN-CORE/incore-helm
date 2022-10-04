@@ -392,7 +392,22 @@ playbook:
   replicas: 1
   image:
     repository: playbook/frontend
-    tag: d.1051-prod
+    tag: develop
+  service:
+    type: ClusterIP
+    port: 80
+
+# ----------------------------------------------------------------------
+# PLAYBOOK CONFIGURATION
+# ----------------------------------------------------------------------
+playbook_slc:
+  enabled: false
+  replicas: 1
+  image:
+    repository: playbook/slc
+    tag: develop
+  env:
+    deploy_env: production
   service:
     type: ClusterIP
     port: 80
