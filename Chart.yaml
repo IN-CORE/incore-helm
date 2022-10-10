@@ -47,4 +47,6 @@ annotations:
     - name: Helm Chart
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
-    - Added playbook templates
+    - Added SLC playbook template
+    - Added Joplin playbook template
+    - Added Galveston playbook tempate
