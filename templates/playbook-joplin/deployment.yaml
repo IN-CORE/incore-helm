@@ -1,22 +1,22 @@
-{{- if .Values.playbook_slc.enabled -}}
+{{- if .Values.playbook_joplin.enabled -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "incore.fullname" . }}-playbook-slc
+  name: {{ include "incore.fullname" . }}-playbook-joplin
   labels:
     {{- include "incore.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.playbook_slc.replicaCount }}
+  replicas: {{ .Values.playbook_joplin.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "incore.name" . }}-playbook-slc
+      app.kubernetes.io/name: {{ include "incore.name" . }}-playbook-joplin
       app.kubernetes.io/instance: {{ .Release.Name }}
   strategy:
     type: RollingUpdate
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "incore.name" . }}-playbook-slc
+        app.kubernetes.io/name: {{ include "incore.name" . }}-playbook-joplin
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       {{- with .Values.imagePullSecrets }}
@@ -24,31 +24,31 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
-        - name: playbook-slc
-          image: "{{ .Values.image.project }}/{{ .Values.playbook_slc.image.repository }}:{{ .Values.playbook.image.tag | default .Chart.AppVersion }}"
+        - name: playbook-joplin
+          image: "{{ .Values.image.project }}/{{ .Values.playbook_joplin.image.repository }}:{{ .Values.playbook.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.playbook.image.pullPolicy | default .Values.image.pullPolicy }}
           ports:
             - containerPort: 80
               name: http
           livenessProbe:
             httpGet:
-              path: /playbook/slc/
+              path: /playbook/joplin/
               port: http
           readinessProbe:
             httpGet:
-              path: /playbook/slc/
+              path: /playbook/joplin/
               port: http
           resources:
-            {{- toYaml .Values.playbook_slc.resources | nindent 12 }}
-      {{- with .Values.playbook_slc.nodeSelector }}
+            {{- toYaml .Values.playbook_joplin.resources | nindent 12 }}
+      {{- with .Values.playbook_joplin.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.playbook_slc.affinity }}
+      {{- with .Values.playbook_joplin.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.playbook_slc.tolerations }}
+      {{- with .Values.playbook_joplin.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}

@@ -398,7 +398,7 @@ playbook:
     port: 80
 
 # ----------------------------------------------------------------------
-# PLAYBOOK CONFIGURATION
+# PLAYBOOK SLC CONFIGURATION
 # ----------------------------------------------------------------------
 playbook_slc:
   enabled: false
@@ -406,8 +406,32 @@ playbook_slc:
   image:
     repository: playbook/slc
     tag: develop
-  env:
-    deploy_env: production
+  service:
+    type: ClusterIP
+    port: 80
+
+# ----------------------------------------------------------------------
+# PLAYBOOK Joplin CONFIGURATION
+# ----------------------------------------------------------------------
+playbook_joplin:
+  enabled: false
+  replicas: 1
+  image:
+    repository: playbook/joplin
+    tag: develop
+  service:
+    type: ClusterIP
+    port: 80
+
+# ----------------------------------------------------------------------
+# PLAYBOOK Galveston CONFIGURATION
+# ----------------------------------------------------------------------
+playbook_galveston:
+  enabled: false
+  replicas: 1
+  image:
+    repository: playbook/galveston
+    tag: develop
   service:
     type: ClusterIP
     port: 80
