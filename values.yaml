@@ -387,54 +387,19 @@ ldap:
 # ----------------------------------------------------------------------
 # PLAYBOOK CONFIGURATION
 # ----------------------------------------------------------------------
-playbook:
-  enabled: false
-  replicas: 1
-  image:
-    repository: playbook/frontend
-    tag: develop
-  service:
-    type: ClusterIP
-    port: 80
-
-# ----------------------------------------------------------------------
-# PLAYBOOK SLC CONFIGURATION
-# ----------------------------------------------------------------------
-playbook_slc:
-  enabled: false
-  replicas: 1
-  image:
-    repository: playbook/slc
-    tag: develop
-  service:
-    type: ClusterIP
-    port: 80
-
-# ----------------------------------------------------------------------
-# PLAYBOOK Joplin CONFIGURATION
-# ----------------------------------------------------------------------
-playbook_joplin:
-  enabled: false
-  replicas: 1
-  image:
-    repository: playbook/joplin
-    tag: develop
-  service:
-    type: ClusterIP
-    port: 80
-
-# ----------------------------------------------------------------------
-# PLAYBOOK Galveston CONFIGURATION
-# ----------------------------------------------------------------------
-playbook_galveston:
-  enabled: false
-  replicas: 1
-  image:
-    repository: playbook/galveston
-    tag: develop
-  service:
-    type: ClusterIP
-    port: 80
+playbooks:
+  slc:
+    enabled: true
+    image: playbook/slc:develop
+    replicas: 1
+  joplin:
+    enabled: false
+    image: playbook/joplin:develop
+    replicas: 1
+  galveston:
+    enabled: false
+    image: playbook/galveston:develop
+    replicas: 1
 
 # ----------------------------------------------------------------------
 # DATAWOLF CONFIGURATION
