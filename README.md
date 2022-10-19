@@ -113,6 +113,11 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.13.1
+- Added SLC playbook template
+- Added Joplin playbook template
+- Added Galveston playbook tempate
+
 ### 1.13.0
 - Incore release 3.6.0
 

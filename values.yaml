@@ -387,15 +387,19 @@ ldap:
 # ----------------------------------------------------------------------
 # PLAYBOOK CONFIGURATION
 # ----------------------------------------------------------------------
-playbook:
-  enabled: false
-  replicas: 1
-  image:
-    repository: playbook/frontend
-    tag: d.1051-prod
-  service:
-    type: ClusterIP
-    port: 80
+playbooks:
+  slc:
+    enabled: true
+    image: playbook/slc:develop
+    replicas: 1
+  joplin:
+    enabled: false
+    image: playbook/joplin:develop
+    replicas: 1
+  galveston:
+    enabled: false
+    image: playbook/galveston:develop
+    replicas: 1
 
 # ----------------------------------------------------------------------
 # DATAWOLF CONFIGURATION
