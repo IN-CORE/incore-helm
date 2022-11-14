@@ -25,8 +25,10 @@ Following versions have been deployed:
 
 UI:
 - frontend      : {{ .Values.frontend.image.tag }}
-{{- if .Values.playbook.enabled }}
-- playbook      : {{ .Values.playbook.image.tag }}
+{{- range $key, $val := .Values.playbooks }}
+{{- if or .enabled (not (hasKey . "enabled")) }}
+- playbooks-{{ $key }}: {{ .image | quote }}
+{{- end }}
 {{- end }}
 
 Documentation:

@@ -1,38 +1,44 @@
-{{- if .Values.playbook.enabled -}}
-{{- if .Values.ingress.enabled -}}
-  {{- $fullName := include "incore.fullname" . -}}
-  {{- $svcPort := .Values.playbook.service.port -}}
+{{- if .Values.playbooks }}
+{{- $fullname := include "incore.fullname" . }}
+{{- $labels := include "incore.labels" . }}
+{{- $ingressAnnotation := include "incore.authIngressAnnotation" . }}
+{{- range $key, $val := .Values.playbooks }}
+{{- if or .enabled (not (hasKey . "enabled")) }}
+{{- $svcPort := $.Values.service.port -}}
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ $fullName }}-playbook
+  name: {{ $fullname }}-playbook-{{ $key }}
   labels:
-    {{- include "incore.labels" . | nindent 4 }}
+    {{ $labels | nindent 4 }}
+    playbook: {{ $key | quote }}
   annotations:
-    {{- include "incore.authIngressAnnotation" . | nindent 4 }}
+    {{ $ingressAnnotation | nindent 4 }}
 spec:
-  {{- if .Values.ingress.tls }}
+  {{- if $.Values.ingress.tls }}
   tls:
-    {{- range .Values.ingress.tls }}
+    {{- range $.Values.ingress.tls }}
     - hosts:
-        {{- range .hosts }}
+        {{- range $.hosts }}
         - {{ . | quote }}
         {{- end }}
-      secretName: {{ .secretName }}
+      secretName: {{ $.secretName }}
     {{- end }}
   {{- end }}
   rules:
-    {{- range .Values.ingress.hosts }}
+    {{- range $.Values.ingress.hosts }}
     - host: {{ .host | quote }}
       http:
         paths:
-          - path: /playbook/
+          - path: /playbook/{{ $key }}/
             pathType: ImplementationSpecific
             backend:
               service:
-                name: {{ $fullName }}-playbook
+                name: {{ $fullname }}-playbook-{{ $key }}
                 port:
                   number: {{ $svcPort }}
     {{- end }}
   {{- end }}
+{{- end }}
 {{- end }}

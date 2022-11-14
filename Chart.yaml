@@ -8,12 +8,12 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.12.2
+version: 1.13.1
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
-appVersion: 3.5.0
+appVersion: 3.6.0
 
 # List of people that maintain this helm chart.
 maintainers:
@@ -47,5 +47,6 @@ annotations:
     - name: Helm Chart
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
-    - Renamed container name for jupyter hub and lab
-    - Added auth_role and auth_group env variables to authenticator
+    - Added SLC playbook template
+    - Added Joplin playbook template
+    - Added Galveston playbook tempate
