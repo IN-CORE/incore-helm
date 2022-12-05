@@ -419,7 +419,7 @@ datawolf:
     repository: datawolf
     tag: 0.9.1
   env:
-    server: datawolf@incore.illinios.edu
+    datawolf_admins: datawolf@incore.illinios.edu
     datawolf_use_auth: false
     db_source_url: db_address
     db_max_poolsize: 20
