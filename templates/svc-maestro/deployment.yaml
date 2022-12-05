@@ -44,11 +44,11 @@ spec:
               name: svc-maestro
           livenessProbe:
             httpGet:
-              path: /maestro
+              path: /maestro/alive
               port: svc-maestro
           readinessProbe:
             httpGet:
-              path: /maestro
+              path: /maestro/alive
               port: svc-maestro
           resources:
             {{- toYaml .Values.frontend.resources | nindent 12 }}
