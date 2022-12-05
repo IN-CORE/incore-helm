@@ -38,7 +38,7 @@ spec:
             - name: ROUTER_PREFIX
               value: {{ .Values.svc_maestro.env.prefix | quote }}
             - name: WORKERS
-              value: {{ .Values.svc_maestro.env.prefix | quote }}
+              value: {{ .Values.svc_maestro.env.workers | quote }}
           ports:
             - containerPort: {{ .Values.svc_maestro.service.port }}
               name: svc-maestro
