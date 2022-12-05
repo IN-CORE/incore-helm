@@ -28,17 +28,17 @@ spec:
             - name: POSTGRES_SERVER
               value: {{ .Values.svc_maestro.env.host | quote }}
             - name: POSTGRES_PORT
-              value: { { .Values.svc_maestro.env.port | quote } }
+              value: {{ .Values.svc_maestro.env.port | quote }}
             - name: POSTGRES_USER
-              value: { { .Values.svc_maestro.env.user | quote } }
+              value: {{ .Values.svc_maestro.env.user | quote }}
             - name: POSTGRES_PASSWORD
-              value: { { .Values.svc_maestro.env.password | quote } }
+              value: {{ .Values.svc_maestro.env.password | quote }}
             - name: POSTGRES_DB
-              value: { { .Values.svc_maestro.env.db_name | quote } }
+              value: {{ .Values.svc_maestro.env.db_name | quote }}
             - name: ROUTER_PREFIX
-              value: { { .Values.svc_maestro.env.prefix | quote } }
+              value: {{ .Values.svc_maestro.env.prefix | quote }}
             - name: WORKERS
-              value: { { .Values.svc_maestro.env.prefix | quote } }
+              value: {{ .Values.svc_maestro.env.prefix | quote }}
           ports:
             - containerPort: {{ .Values.svc_maestro.service.port }}
               name: svc-maestro
