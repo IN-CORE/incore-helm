@@ -16,73 +16,39 @@ spec:
         app.kubernetes.io/name: {{ include "incore.name" . }}-svc-maestro
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
-      {{- with .Values.imagePullSecrets }}
+      {{ - with .Values.imagePullSecrets }}
       imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+        {{ - toYaml . | nindent 8 }}
+      {{ - end }}
       containers:
-        - name: incore-maestro-jetty
+        - name: incore-maestro
           image: "{{ .Values.image.project }}/{{ .Values.svc_maestro.image.repository }}:{{ .Values.svc_maestro.image.tag }}"
           imagePullPolicy: {{ .Values.svc_maestro.image.pullPolicy | default .Values.image.pullPolicy }}
           env:
-            - name: JETTY_PORT
-              value: {{ .Values.svc_maestro.service.port | quote }}
-            - name: MAESTRO_MONGODB_URI
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: MAESTRO_MONGODB_URI
-            - name: SPACE_MONGODB_URI
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: SPACE_MONGODB_URI
-            - name: COMMON_MONGODB_URI
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: COMMON_MONGODB_URI
-            - name: AUTH_LDAP_URL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: AUTH_LDAP_URL
-            - name: AUTH_LDAP_USERDN
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: AUTH_LDAP_USERDN
-            - name: AUTH_LDAP_ADMINS
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: AUTH_LDAP_ADMINS
-            - name: AUTH_LDAP_CACHE_REFRESH_SECS
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: AUTH_LDAP_CACHE_REFRESH_SECS
-            - name: AUTH_LDAP_VIEW_ALL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: AUTH_LDAP_VIEW_ALL
-            - name: SERVICES_ALLOW_ORIGIN
-              value: {{ join "," .Values.cors.origin | quote }}
-            - name: SERVICES_ALLOW_METHODS
-              value: {{ .Values.cors.methods | quote }}
-            - name: SERVICES_ALLOW_HEADERS
-              value: {{ .Values.cors.headers | quote }}
+            - name: POSTGRES_SERVER
+              value: {{ .Values.svc_maestro.env.host | quote }}
+            - name: POSTGRES_PORT
+              value: { { .Values.svc_maestro.env.port | quote } }
+            - name: POSTGRES_USER
+              value: { { .Values.svc_maestro.env.user | quote } }
+            - name: POSTGRES_PASSWORD
+              value: { { .Values.svc_maestro.env.password | quote } }
+            - name: POSTGRES_DB
+              value: { { .Values.svc_maestro.env.db_name | quote } }
+            - name: ROUTER_PREFIX
+              value: { { .Values.svc_maestro.env.prefix | quote } }
+            - name: WORKERS
+              value: { { .Values.svc_maestro.env.prefix | quote } }
           ports:
             - containerPort: {{ .Values.svc_maestro.service.port }}
               name: svc-maestro
           livenessProbe:
             httpGet:
-              path: /maestro/api/swagger.json
+              path: /maestro
               port: svc-maestro
           readinessProbe:
             httpGet:
-              path: /maestro/api/swagger.json
+              path: /maestro
               port: svc-maestro
           resources:
             {{- toYaml .Values.frontend.resources | nindent 12 }}
