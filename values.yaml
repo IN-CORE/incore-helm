@@ -354,18 +354,13 @@ svc_maestro:
     type: ClusterIP
     port: 8000
   env:
-    datawolf_admins: datawolf@incore.illinios.edu
-    datawolf_use_auth: false
-    db_source_url: db_address
-    db_max_poolsize: 20
-    db_idle_timeout: 30000
-    db_user: username
-    db_password: password
-    engine_storelogs: false
-    engine_timeout: 3600
-    engine_extralocalexecutor: 1
-    engine_localexecutorthreads: 8
-    engine_pagesize: 250
+    host: incore-postgresql-headless
+    port: 5432
+    user: maestro
+    password: password
+    db_name: maestro
+    prefix: /maestro
+    workers: 2
   ingress:
     annotations:
 
@@ -424,13 +419,18 @@ datawolf:
     repository: datawolf
     tag: 0.9.1
   env:
-    host: incore-postgresql-headless
-    port: 5432
-    user: maestro
-    password: password
-    db_name: maestro
-    prefix: /maestro
-    workers: 2
+    server: datawolf@incore.illinios.edu
+    datawolf_use_auth: false
+    db_source_url: db_address
+    db_max_poolsize: 20
+    db_idle_timeout: 30000
+    db_user: username
+    db_password: password
+    engine_storelogs: false
+    engine_timeout: 3600
+    engine_extralocalexecutor: 1
+    engine_localexecutorthreads: 8
+    engine_pagesize: 250
   service:
     type: ClusterIP
     port: 8888
