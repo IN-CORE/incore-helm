@@ -45,8 +45,17 @@ Services:
 - Hazard        : {{ .Values.svc_hazard.image.tag }}
 - Semantics     : {{ .Values.svc_sema.image.tag }}
 - Space         : {{ .Values.svc_space.image.tag }}
-- Maestro       : {{ .Values.svc_maestro.image.tag }}
 - Plotting      : {{ .Values.svc_plotting.image.tag }}
+
+Maestro Services:
+- SLC           : {{ .Values.svc_maestro.slc.enabled }}
+- Joplin        : {{ .Values.svc_maestro.joplin.enabled }}
+- Galveston     : {{ .Values.svc_maestro.galveston.enabled }}
+
+Playbooks:
+- SLC           : {{ .Values.playbooks.slc.enabled }}
+- Joplin        : {{ .Values.playbooks.joplin.enabled }}
+- Galveston     : {{ .Values.playbooks.galveston.enabled }}
 
 Jupyter:
 - hub           : {{ .Values.jupyterhub.hub.image.tag }}

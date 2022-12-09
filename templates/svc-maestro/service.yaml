@@ -1,16 +1,26 @@
+{{- if .Values.svc_maestro }}
+{{- $fullname := include "incore.fullname" . }}
+{{- $labels := include "incore.labels" . }}
+{{- range $key, $val := .Values.svc_maestro }}
+{{- if or .enabled (not (hasKey . "enabled")) }}
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "incore.fullname" . }}-svc-maestro
+  name: {{ $fullname }}-svc-maestro-{{ $key }}
   labels:
-    {{- include "incore.labels" . | nindent 4 }}
+    {{ $labels | nindent 4 }}
+    playbook: {{ $key | quote }}
 spec:
   selector:
-    app.kubernetes.io/name: {{ include "incore.name" . }}-svc-maestro
-    app.kubernetes.io/instance: {{ .Release.Name }}
-  type: {{ .Values.svc_maestro.service.type }}
+    app.kubernetes.io/name: {{ $fullname }}-svc-maestro-{{ $key }}
+    app.kubernetes.io/instance: {{ $.Release.Name }}
+  type: {{ .service.type | default $.Values.service.type }}
   ports:
-    - port: {{ .Values.svc_maestro.service.port }}
-      name: svc-maestro
-      targetPort: {{ .Values.svc_maestro.service.port }}
+    - port: {{ .service.port | default $.Values.service.port }}
+      name: svc-maestro-{{ $key }}
+      targetPort: http
       protocol: TCP
+{{- end }}
+{{- end }}
+{{- end }}

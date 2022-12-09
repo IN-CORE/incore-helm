@@ -346,23 +346,49 @@ svc_sema:
 # MAESTRO SERVICE CONFIGURATION
 # ----------------------------------------------------------------------
 svc_maestro:
-  replicas: 1
-  image:
-    repository: maestro
-    tag: 1.12.0
-  service:
-    type: ClusterIP
-    port: 8000
-  env:
-    host: incore-postgresql-headless
-    port: 5432
-    user: maestro
-    password: password
-    db_name: maestro
-    prefix: /maestro
-    workers: 2
-  ingress:
-    annotations:
+  slc:
+    enabled: false
+    image: maestro:develop
+    service:
+      type: ClusterIP
+      port: 8000
+    env:
+      host: incore-postgresql-headless
+      port: 5432
+      user: user
+      password: password
+      db_name: maestro_slc
+      prefix: /maestro/slc
+      workers: 2
+    replicas: 1
+  joplin:
+    enabled: false
+    image: maestro:develop
+    service:
+      port: 8000
+    env:
+      host: incore-postgresql-headless
+      port: 5432
+      user: user
+      password: password
+      db_name: maestro_joplin
+      prefix: /maestro/joplin
+      workers: 2
+    replicas: 1
+  galveston:
+    enabled: false
+    image: maestro:develop
+    service:
+      port: 8000
+    env:
+      host: incore-postgresql-headless
+      port: 5432
+      user: user
+      password: password
+      db_name: maestro_galveston
+      prefix: /maestro/galveston
+      workers: 2
+    replicas: 1
 
 # ----------------------------------------------------------------------
 # PLOTTING SERVICE CONFIGURATION
