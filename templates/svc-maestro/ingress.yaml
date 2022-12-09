@@ -3,8 +3,8 @@
 {{- $labels := include "incore.labels" . }}
 {{- $ingressAnnotation := include "incore.authIngressAnnotation" . }}
 {{- range $key, $val := .Values.svc_maestro }}
-{{- if or .enabled (not (hasKey . "enabled")) }}
 {{- $svcPort := .service.port -}}
+{{- if or .enabled (not (hasKey . "enabled")) }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
