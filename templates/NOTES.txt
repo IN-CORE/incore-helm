@@ -48,14 +48,14 @@ Services:
 - Plotting      : {{ .Values.svc_plotting.image.tag }}
 
 Maestro Services:
-- SLC           : {{ .Values.svc_maestro.slc.enabled }}
-- Joplin        : {{ .Values.svc_maestro.joplin.enabled }}
-- Galveston     : {{ .Values.svc_maestro.galveston.enabled }}
+- SLC           : {{ .Values.svc_maestro.slc.enabled }}: {{ .Values.svc_maestro.slc.image.tag }}
+- Joplin        : {{ .Values.svc_maestro.joplin.enabled }}: {{ .Values.svc_maestro.slc.image.tag }}
+- Galveston     : {{ .Values.svc_maestro.galveston.enabled }}: {{ .Values.svc_maestro.slc.image.tag }}
 
 Playbooks:
-- SLC           : {{ .Values.playbooks.slc.enabled }}
-- Joplin        : {{ .Values.playbooks.joplin.enabled }}
-- Galveston     : {{ .Values.playbooks.galveston.enabled }}
+- SLC           : {{ .Values.playbooks.slc.enabled }}: {{ .Values.playbooks.slc.image.tag }}
+- Joplin        : {{ .Values.playbooks.joplin.enabled }}: {{ .Values.playbooks.joplin.image.tag }}
+- Galveston     : {{ .Values.playbooks.galveston.enabled }}: {{ .Values.playbooks.galveston.image.tag }}
 
 Jupyter:
 - hub           : {{ .Values.jupyterhub.hub.image.tag }}

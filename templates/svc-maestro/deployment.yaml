@@ -31,7 +31,7 @@ spec:
       {{- end }}
       containers:
         - name: svc-maestro-{{ $key }}
-          image: {{ .image | quote }}
+          image: "{{ $.Values.image.project }}/{{ .image.repository }}:{{ .image.tag | default $.Chart.AppVersion }}"
           imagePullPolicy: {{ .pullPolicy | default $.Values.image.pullPolicy }}
           env:
             - name: POSTGRES_SERVER

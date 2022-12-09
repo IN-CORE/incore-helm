@@ -348,7 +348,9 @@ svc_sema:
 svc_maestro:
   slc:
     enabled: false
-    image: maestro:develop
+    image:
+      repository: maestro
+      tag: develop
     service:
       type: ClusterIP
       port: 8000
@@ -363,7 +365,9 @@ svc_maestro:
     replicas: 1
   joplin:
     enabled: false
-    image: maestro:develop
+    image:
+      repository: maestro
+      tag: develop
     service:
       port: 8000
     env:
@@ -377,7 +381,9 @@ svc_maestro:
     replicas: 1
   galveston:
     enabled: false
-    image: maestro:develop
+    image:
+      repository: maestro
+      tag: develop
     service:
       port: 8000
     env:
@@ -424,15 +430,21 @@ ldap:
 playbooks:
   slc:
     enabled: false
-    image: playbook/slc:develop
+    image:
+      repository: playbook/slc
+      tag: develop
     replicas: 1
   joplin:
     enabled: false
-    image: playbook/joplin:develop
+    image:
+      repository: playbook/joplin
+      tag: develop
     replicas: 1
   galveston:
     enabled: false
-    image: playbook/galveston:develop
+    image:
+      repository: playbook/galveston
+      tag: develop
     replicas: 1
 
 # ----------------------------------------------------------------------
