@@ -2,8 +2,8 @@
 {{- $fullname := include "incore.fullname" . }}
 {{- $labels := include "incore.labels" . }}
 {{- $ingressAnnotation := include "incore.authIngressAnnotation" . }}
-{{- range $key, $val := .Values.svc_maestro }}
-{{- $svcPort := .service.port -}}
+{{- range $key, $val := .Values.svc_maestro.testbeds }}
+{{- $svcPort := $.Values.svc_maestro.common.service.port -}}
 {{- if or .enabled (not (hasKey . "enabled")) }}
 ---
 apiVersion: networking.k8s.io/v1

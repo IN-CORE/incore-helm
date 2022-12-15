@@ -1,7 +1,7 @@
 {{- if .Values.svc_maestro }}
 {{- $fullname := include "incore.fullname" . }}
 {{- $labels := include "incore.labels" . }}
-{{- range $key, $val := .Values.svc_maestro }}
+{{- range $key, $val := .Values.svc_maestro.testbeds }}
 {{- if or .enabled (not (hasKey . "enabled")) }}
 ---
 apiVersion: apps/v1
@@ -31,8 +31,8 @@ spec:
       {{- end }}
       containers:
         - name: svc-maestro-{{ $key }}
-          image: "{{ $.Values.image.project }}/{{ .image.repository }}:{{ .image.tag | default $.Chart.AppVersion }}"
-          imagePullPolicy: {{ .pullPolicy | default $.Values.image.pullPolicy }}
+          image: "{{ $.Values.image.project }}/{{ $.Values.svc_maestro.common.image.repository }}:{{ $.Values.svc_maestro.common.image.tag | default $.Chart.AppVersion }}"
+          imagePullPolicy: {{ $.Values.svc_maestro.common.image.pullPolicy | default $.Values.image.pullPolicy }}
           env:
             - name: POSTGRES_SERVER
               value: {{ .env.host | quote }}
@@ -52,7 +52,7 @@ spec:
             - name: WORKERS
               value: {{ .env.workers | quote }}
           ports:
-            - containerPort: {{ .service.port }}
+            - containerPort: {{ $.Values.svc_maestro.common.service.port }}
               name: http
           livenessProbe:
             httpGet:

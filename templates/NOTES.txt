@@ -48,9 +48,9 @@ Services:
 - Plotting      : {{ .Values.svc_plotting.image.tag }}
 
 Maestro Services:
-- SLC           : {{ .Values.svc_maestro.slc.enabled }}: {{ .Values.svc_maestro.slc.image.tag }}
-- Joplin        : {{ .Values.svc_maestro.joplin.enabled }}: {{ .Values.svc_maestro.slc.image.tag }}
-- Galveston     : {{ .Values.svc_maestro.galveston.enabled }}: {{ .Values.svc_maestro.slc.image.tag }}
+- SLC           : {{ .Values.svc_maestro.testbeds.slc.enabled }}: {{ .Values.svc_maestro.common.image.tag }}
+- Joplin        : {{ .Values.svc_maestro.testbeds.joplin.enabled }}: {{ .Values.svc_maestro.common.image.tag }}
+- Galveston     : {{ .Values.svc_maestro.testbeds.galveston.enabled }}: {{ .Values.svc_maestro.common.image.tag }}
 
 Playbooks:
 - SLC           : {{ .Values.playbooks.slc.enabled }}: {{ .Values.playbooks.slc.image.tag }}

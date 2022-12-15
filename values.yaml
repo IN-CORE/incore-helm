@@ -346,55 +346,48 @@ svc_sema:
 # MAESTRO SERVICE CONFIGURATION
 # ----------------------------------------------------------------------
 svc_maestro:
-  slc:
-    enabled: false
+  common:
     image:
       repository: maestro
       tag: latest
+      pullPolicy: Always
     service:
       type: ClusterIP
       port: 8000
-    env:
-      host: incore-postgresql-headless
-      port: 5432
-      user: user
-      password: password
-      db_name: maestro_slc
-      prefix: /maestro/slc
-      workers: 2
-    replicas: 1
-  joplin:
-    enabled: false
-    image:
-      repository: maestro
-      tag: latest
-    service:
-      port: 8000
-    env:
-      host: incore-postgresql-headless
-      port: 5432
-      user: user
-      password: password
-      db_name: maestro_joplin
-      prefix: /maestro/joplin
-      workers: 2
-    replicas: 1
-  galveston:
-    enabled: false
-    image:
-      repository: maestro
-      tag: latest
-    service:
-      port: 8000
-    env:
-      host: incore-postgresql-headless
-      port: 5432
-      user: user
-      password: password
-      db_name: maestro_galveston
-      prefix: /maestro/galveston
-      workers: 2
-    replicas: 1
+  testbeds:
+    slc:
+      enabled: false
+      env:
+        host: incore-postgresql-headless
+        port: 5432
+        user: user
+        password: password
+        db_name: maestro_slc
+        prefix: /maestro/slc
+        workers: 2
+      replicas: 1
+    joplin:
+      enabled: false
+      env:
+        host: incore-postgresql-headless
+        port: 5432
+        user: user
+        password: password
+        db_name: maestro_joplin
+        prefix: /maestro/joplin
+        workers: 2
+      replicas: 1
+    galveston:
+      enabled: false
+      env:
+        host: incore-postgresql-headless
+        port: 5432
+        user: user
+        password: password
+        db_name: maestro_galveston
+        prefix: /maestro/galveston
+        workers: 2
+      replicas: 1
 
 # ----------------------------------------------------------------------
 # PLOTTING SERVICE CONFIGURATION

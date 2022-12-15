@@ -1,7 +1,7 @@
 {{- if .Values.svc_maestro }}
 {{- $fullname := include "incore.fullname" . }}
 {{- $labels := include "incore.labels" . }}
-{{- range $key, $val := .Values.svc_maestro }}
+{{- range $key, $val := .Values.svc_maestro.testbeds }}
 {{- if or .enabled (not (hasKey . "enabled")) }}
 ---
 apiVersion: v1
@@ -15,9 +15,9 @@ spec:
   selector:
     app.kubernetes.io/name: {{ $fullname }}-svc-maestro-{{ $key }}
     app.kubernetes.io/instance: {{ $.Release.Name }}
-  type: {{ .service.type | default $.Values.service.type }}
+  type: {{ $.Values.svc_maestro.common.service.type | default $.Values.service.type }}
   ports:
-    - port: {{ .service.port | default $.Values.service.port }}
+    - port: {{ $.Values.svc_maestro.common.service.port | default $.Values.service.port }}
       name: svc-maestro-{{ $key }}
       targetPort: http
       protocol: TCP
