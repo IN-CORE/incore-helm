@@ -350,7 +350,7 @@ svc_maestro:
     enabled: false
     image:
       repository: maestro
-      tag: develop
+      tag: latest
     service:
       type: ClusterIP
       port: 8000
@@ -367,7 +367,7 @@ svc_maestro:
     enabled: false
     image:
       repository: maestro
-      tag: develop
+      tag: latest
     service:
       port: 8000
     env:
@@ -383,7 +383,7 @@ svc_maestro:
     enabled: false
     image:
       repository: maestro
-      tag: develop
+      tag: latest
     service:
       port: 8000
     env:
