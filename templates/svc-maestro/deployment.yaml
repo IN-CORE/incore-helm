@@ -41,7 +41,10 @@ spec:
             - name: POSTGRES_USER
               value: {{ .env.user | quote }}
             - name: POSTGRES_PASSWORD
-              value: {{ .env.password | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $fullname }}-services
+                  key: MAESTRO_{{ $key }}_DB_PW
             - name: POSTGRES_DB
               value: {{ .env.db_name | quote }}
             - name: ROUTER_PREFIX
