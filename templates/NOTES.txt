@@ -48,25 +48,21 @@ Services:
 - Plotting      : {{ .Values.svc_plotting.image.tag }}
 
 Maestro Services:
-{{- if .Values.svc_maestro.testbeds.slc.enabled }}
--  SLC          : {{ .Values.svc_maestro.common.image.tag }}
+{{- if .Values.svc_maestro.testbeds }}
+{{- range $key, $val := .Values.svc_maestro.testbeds }}
+{{- if or .enabled (not (hasKey . "enabled")) }}
+- {{ $key }} : {{ $.Values.svc_maestro.common.image.tag }}
 {{- end }}
-{{- if .Values.svc_maestro.testbeds.joplin.enabled }}
-- Joplin        : {{ .Values.svc_maestro.common.image.tag }}
 {{- end }}
-{{- if .Values.svc_maestro.testbeds.galveston.enabled }}
-- Galveston     : {{ .Values.svc_maestro.common.image.tag }}
 {{- end }}
 
 Playbooks:
-{{- if .Values.playbooks.slc.enabled }}
-- SLC           : {{ .Values.playbooks.slc.image.tag }}
+{{- if .Values.playbooks }}
+{{- range $key, $val := .Values.playbooks }}
+{{- if or .enabled (not (hasKey . "enabled")) }}
+- {{ $key }} : {{ .image.tag }}
 {{- end }}
-{{- if .Values.playbooks.joplin.enabled }}
-- Joplin        : {{ .Values.playbooks.joplin.image.tag }}
 {{- end }}
-{{- if .Values.playbooks.galveston.enabled }}
-- Galveston     : {{ .Values.playbooks.galveston.image.tag }}
 {{- end }}
 
 Jupyter:
