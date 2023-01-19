@@ -1,39 +1,44 @@
-{{- if .Values.ingress.enabled -}}
-  {{- $fullName := include "incore.fullname" . -}}
-  {{- $svcPort := .Values.svc_maestro.service.port -}}
+{{- if .Values.svc_maestro }}
+{{- $fullname := include "incore.fullname" . }}
+{{- $labels := include "incore.labels" . }}
+{{- $ingressAnnotation := include "incore.authIngressAnnotation" . }}
+{{- range $key, $val := .Values.svc_maestro.testbeds }}
+{{- $svcPort := $.Values.svc_maestro.common.service.port -}}
+{{- if or .enabled (not (hasKey . "enabled")) }}
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ $fullName }}-svc-maestro
+  name: {{ $fullname }}-svc-maestro-{{ $key }}
   labels:
-    {{- include "incore.labels" . | nindent 4 }}
+    {{ $labels | nindent 4 }}
+    maestro: {{ $key | quote }}
   annotations:
-    {{- include "incore.authIngressAnnotation" . | nindent 4 }}
-    {{- with .Values.svc_maestro.ingress.annotations }}
-    {{- toYaml . | nindent 4 }}
-    {{- end }}
+    {{ $ingressAnnotation | nindent 4 }}
 spec:
-  {{- if .Values.ingress.tls }}
+  {{- if $.Values.ingress.tls }}
   tls:
-    {{- range .Values.ingress.tls }}
+    {{- range $.Values.ingress.tls }}
     - hosts:
         {{- range .hosts }}
         - {{ . | quote }}
         {{- end }}
-      secretName: {{ .secretName }}
+      secretName: {{ $.secretName }}
     {{- end }}
   {{- end }}
   rules:
-    {{- range .Values.ingress.hosts }}
+    {{- range $.Values.ingress.hosts }}
     - host: {{ .host | quote }}
       http:
         paths:
-          - path: /maestro/
+          - path: /maestro/{{ $key }}/
             pathType: ImplementationSpecific
             backend:
               service:
-                name: {{ $fullName }}-svc-maestro
+                name: {{ $fullname }}-svc-maestro-{{ $key }}
                 port:
                   number: {{ $svcPort }}
     {{- end }}
   {{- end }}
+{{- end }}
+{{- end }}

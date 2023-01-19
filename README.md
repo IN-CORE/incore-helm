@@ -113,6 +113,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.14.1
+- Updated maestro service
+
 ### 1.14.0
 - Incore release 3.7.0
 

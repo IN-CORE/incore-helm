@@ -31,7 +31,7 @@ spec:
       {{- end }}
       containers:
         - name: playbook-{{ $key }}
-          image: {{ .image | quote }}
+          image: "{{ $.Values.image.project }}/{{ .image.repository }}:{{ .image.tag | default $.Chart.AppVersion }}"
           imagePullPolicy: {{ .pullPolicy | default $.Values.image.pullPolicy }}
           ports:
             - containerPort: 80
