@@ -45,8 +45,25 @@ Services:
 - Hazard        : {{ .Values.svc_hazard.image.tag }}
 - Semantics     : {{ .Values.svc_sema.image.tag }}
 - Space         : {{ .Values.svc_space.image.tag }}
-- Maestro       : {{ .Values.svc_maestro.image.tag }}
 - Plotting      : {{ .Values.svc_plotting.image.tag }}
+
+Maestro Services:
+{{- if .Values.svc_maestro.testbeds }}
+{{- range $key, $val := .Values.svc_maestro.testbeds }}
+{{- if or .enabled (not (hasKey . "enabled")) }}
+- {{ $key }} : {{ $.Values.svc_maestro.common.image.tag }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+Playbooks:
+{{- if .Values.playbooks }}
+{{- range $key, $val := .Values.playbooks }}
+{{- if or .enabled (not (hasKey . "enabled")) }}
+- {{ $key }} : {{ .image.tag }}
+{{- end }}
+{{- end }}
+{{- end }}
 
 Jupyter:
 - hub           : {{ .Values.jupyterhub.hub.image.tag }}
