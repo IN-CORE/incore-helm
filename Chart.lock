@@ -4,12 +4,15 @@ dependencies:
   version: 0.11.1
 - name: keycloak
   repository: https://codecentric.github.io/helm-charts
-  version: 18.3.0
+  version: 18.4.0
 - name: postgresql
-  repository: https://charts.bitnami.com/bitnami
+  repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
   version: 10.16.2
 - name: mongodb
   repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
   version: 9.3.1
-digest: sha256:bc14b03a36ccb07a2f2e6fa77101ffa55857bcd294086f96741c250e4d00e8ab
-generated: "2022-08-19T09:21:23.980848-05:00"
+- name: datawolf
+  repository: https://opensource.ncsa.illinois.edu/charts
+  version: 1.0.0
+digest: sha256:0ebcead8bd848e6b595680ae18b1e46b30fff6f81f4e613c4170c5488ebb0b9d
+generated: "2023-01-20T13:50:59.073922-06:00"
