@@ -492,9 +492,10 @@ datawolf:
     ## @param existingSecret Name of existing secret to use for PostgreSQL passwords
     ## The secret has to contain the keys postgresql-password which is the password for postgresqlUsername
     # existingSecret:
+    postgresqlPostgresPassword: datawolf
     postgresqlUsername: datawolf
-    #postgresqlPassword: password
-    #postgresqlDatabase: database
+    postgresqlPassword: datawolf
+    postgresqlDatabase: database
 
     max_poolsize: 20
     idle_timeout: 30000
@@ -664,6 +665,8 @@ mongodb:
 # ----------------------------------------------------------------------
 postgresql:
   postgresqlPassword: incorerocks
+  postgresqlPostgresPassword: incorerocks
+
   initdbScripts:
     keycloak.sql: |
       CREATE DATABASE keycloak;
