@@ -588,7 +588,6 @@ mongodb:
 # ----------------------------------------------------------------------
 postgresql:
   postgresqlPassword: incorerocks
-  postgresqlPostgresPassword: incorerocks
 
   initdbScripts:
     keycloak.sql: |
