@@ -24,6 +24,7 @@ jobs:
           helm repo add bitnami https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
           helm repo add jupyterhub https://jupyterhub.github.io/helm-chart
           helm repo add keycloak https://codecentric.github.io/helm-charts
+          helm repo add ncsa https://opensource.ncsa.illinois.edu/charts
           helm dep build
 
       - name: get release info
