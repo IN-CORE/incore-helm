@@ -13,7 +13,7 @@ version: 1.15.0
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
-appVersion: 3.7.0
+appVersion: 4.0.0
 
 # List of people that maintain this helm chart.
 maintainers:
@@ -50,4 +50,5 @@ annotations:
     - name: Helm Chart
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
+    - release 4.0.0 of IN-CORE
     - use datawolf subchart

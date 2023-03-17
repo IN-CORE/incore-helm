@@ -114,6 +114,7 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 ## ChangeLog
 
 ### 1.15.0
+- IN-CORE release 4.0.0
 - Use datawolf subchart
 
 ### 1.14.1

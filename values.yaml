@@ -133,7 +133,7 @@ frontend:
   replicas: 1
   image:
     repository: frontend
-    tag: 1.4.0
+    tag: v1.5.0
   service:
     type: ClusterIP
     port: 80
@@ -151,7 +151,7 @@ auth:
   audience: INCORE
   image:
     repository: incore-auth
-    tag: 1.5.0
+    tag: 1.6.0
   service:
     type: ClusterIP
     port: 5000
@@ -170,7 +170,7 @@ doc_incore:
   replicas: 1
   image:
     repository: doc/incore
-    tag: 3.7.0
+    tag: 4.0.0
   service:
     type: ClusterIP
     port: 80
@@ -182,7 +182,7 @@ doc_pyincore:
   replicas: 1
   image:
     repository: doc/pyincore
-    tag: 1.8.0
+    tag: 1.9.0
   service:
     type: ClusterIP
     port: 80
@@ -206,7 +206,7 @@ doc_pyincore_data:
   replicas: 1
   image:
     repository: doc/pyincore-data
-    tag: 0.5.2
+    tag: 0.6.0
   service:
     type: ClusterIP
     port: 80
@@ -218,7 +218,7 @@ doc_api:
   replicas: 1
   image:
     repository: doc/api
-    tag: 1.12.0
+    tag: 1.13.0
   service:
     type: ClusterIP
     port: 80
@@ -231,7 +231,7 @@ svc_data:
   repo: /home/incore/data/
   image:
     repository: data-jetty
-    tag: 1.12.0
+    tag: 1.13.2
   service:
     type: ClusterIP
     port: 8888
@@ -257,7 +257,7 @@ svc_dfr3:
   replicas: 4
   image:
     repository: dfr3-jetty
-    tag: 1.12.0
+    tag: 1.13.2
   service:
     type: ClusterIP
     port: 8888
@@ -280,7 +280,7 @@ svc_hazard:
   replicas: 4
   image:
     repository: hazard-jetty
-    tag: 1.12.0
+    tag: 1.13.2
   service:
     type: ClusterIP
     port: 8888
@@ -303,7 +303,7 @@ svc_space:
   replicas: 2
   image:
     repository: space-jetty
-    tag: 1.12.0
+    tag: 1.13.2
   service:
     type: ClusterIP
     port: 8888
@@ -326,7 +326,7 @@ svc_sema:
   replicas: 1
   image:
     repository: semantics-jetty
-    tag: 1.12.0
+    tag: 1.13.2
   service:
     type: ClusterIP
     port: 8888
@@ -356,7 +356,7 @@ svc_maestro:
       port: 8000
   testbeds:
     slc:
-      enabled: false
+      enabled: true
       env:
         host: incore-postgresql-headless
         port: 5432
@@ -422,10 +422,10 @@ ldap:
 # ----------------------------------------------------------------------
 playbooks:
   slc:
-    enabled: false
+    enabled: true
     image:
       repository: playbook/slc
-      tag: 0.1.0
+      tag: 0.1.2
     replicas: 1
   joplin:
     enabled: false
@@ -444,12 +444,20 @@ playbooks:
 # DATAWOLF CONFIGURATION
 # ----------------------------------------------------------------------
 datawolf:
+  image:
+    repository: hub.ncsa.illinois.edu/incore/datawolf
+    tag: 1.9.1
   auth:
     enabled: false
     admins:
       - datawolf@incore.illinios.edu
 
   dataset: public
+
+  loglevel: INFO
+
+  engine:
+    storelogs: true
 
   persistence:
     #existingClaim:
@@ -547,7 +555,7 @@ jupyterhub:
     defaultUrl: "/lab"
     image:
       name: hub.ncsa.illinois.edu/incore/lab
-      tag: 3.7.0
+      tag: 4.0.0
       pullSecrets:
         - regcred
       command4: ["echo", "SUCCESS"]
@@ -598,6 +606,14 @@ postgresql:
       CREATE DATABASE datawolf;
       CREATE USER datawolf WITH PASSWORD 'datawolf';
       GRANT ALL PRIVILEGES ON DATABASE datawolf TO datawolf;
+    maestro.sql: |
+      CREATE DATABASE maestro_galveston;
+      CREATE DATABASE maestro_joplin;
+      CREATE DATABASE maestro_slc;
+      CREATE USER maestro WITH PASSWORD 'maestro';
+      GRANT ALL PRIVILEGES ON DATABASE maestro_galveston TO maestro;
+      GRANT ALL PRIVILEGES ON DATABASE maestro_joplin TO maestro;
+      GRANT ALL PRIVILEGES ON DATABASE maestro_slc TO maestro;
 
 # ----------------------------------------------------------------------
 # KEYCLOAK
