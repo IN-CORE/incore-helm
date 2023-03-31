@@ -478,9 +478,33 @@ datawolf:
 # Usergroups sync configuration
 # ----------------------------------------------------------------------
 usergroups_sync:
+  replicas: 0
   image:
     repository: usergroups-sync
     tag: 0.1.0
+
+# ----------------------------------------------------------------------
+# Maestro usersync configuration
+# ----------------------------------------------------------------------
+maestro_usersync:
+  replicas: 0
+  image:
+    repository: maestro-usersync
+    tag: 0.1.0
+  env:
+    PYTHONUNBUFFERED: 1
+    REALM: "In-core"
+    SERVER_BASE_URL: "url"
+    TOKEN_URL: "url"
+    TOKEN_USERNAME: "username"
+    TOKEN_PASSWORD: "password"
+    ADMIN_USERNAME: "username"
+    ADMIN_PASSWORD: "password"
+    SLC_GROUP_ID: "slc_id"
+    JOPLIN_GROUP_ID: "joplin_id"
+    GALVESTON_GROUP_ID: "galveston_id"
+    NCSA_DEVELOPER_LIST: "developers"
+    FIRST_RUN: 0
 
 # ----------------------------------------------------------------------
 # DEPENDENCIES CONFIGURATION

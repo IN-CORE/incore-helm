@@ -76,3 +76,7 @@ Support:
 - Keycloak      : {{ .Values.keycloak.image.tag | default .Subcharts.keycloak.Chart.AppVersion }} 
 - MongoDB       : {{ .Values.mongodb.image.tag | default .Subcharts.mongodb.Chart.AppVersion }}
 
+Cron Job:
+- Allocation User Sync  : {{ .Values.usergroups_sync.image.tag }}
+- Maestro User Sync     : {{ .Values.maestro_usersync.image.tag }}
+- Version tag Sync      : {{ .Values.frontend.image.tag }}
