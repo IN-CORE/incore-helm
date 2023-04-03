@@ -1,0 +1,29 @@
+{
+  "MAP_BOUNDS":[
+	-96.211436,
+	30.541297,
+	-93.611436,
+	27.941297
+  ],
+  "MAP_CENTER": [-94.911436, 29.241297],
+  "ZOOM": 5,
+  "MIN_ZOOM": 4,
+  "MAX_ZOOM": 15,
+  "LAYER_STYLES": {
+	"BldgDamage": "incore:bldg-dmg-summary",
+	"BldgFunctionality": "incore:joplin-bldg-func",
+	"BldgMCS": "incore:joplin-bldg-mcs",
+	"Interdependency": "incore:joplin-substations-label",
+	"PoleDamage": "incore:epf-dmg-summary",
+	"PopulationDislocation": {
+	  "bldgMaxDamageStateINCOREId": "incore:bldg-dmg-summary",
+	  "popdislHeatmapINCOREId": "incore:heatmap"
+	},
+	"SubstationDamage": "incore:epf-dmg-summary",
+	"MapUtil": {
+	  "earthquake": "incore:earthquake-pga-g",
+	  "tornado": "incore:tornado",
+	  "hurricane": "incore:hurricane-wind"
+	}
+  }
+}

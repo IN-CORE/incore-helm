@@ -1,0 +1,31 @@
+{{- if .Values.playbooks }}
+{{- $fullname := include "incore.fullname" . }}
+{{- $labels := include "incore.labels" . }}
+{{- range $key, $val := .Values.playbooks }}
+{{- if or $val.enabled (not (hasKey $val "enabled")) }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ $fullname }}-playbook-{{ $key }}
+  labels:
+    {{ $labels | nindent 4 }}
+    playbook: {{ $key | quote }}
+data:
+  asset.config.json: |-
+    {{- $.Files.Get (printf "playbook-configs/%s/asset.config.json" $key ) | nindent 4 }}
+  cgeInfo.json: |-
+    {{- $.Files.Get (printf "playbook-configs/%s/cgeInfo.json" $key ) | nindent 4 }}
+  datawolf.config.json: |-
+    {{- $.Files.Get (printf "playbook-configs/%s/datawolf.config.%s.json" $key $.Values.level ) | nindent 4 }}
+  datawolfWorkflow.config.json: |-
+    {{- $.Files.Get (printf "playbook-configs/%s/datawolfWorkflow.config.%s.json" $key $.Values.level ) | nindent 4 }}
+  globals.config.json: |-
+    {{- $.Files.Get (printf "playbook-configs/%s/globals.config.%s.json" $key $.Values.level ) | nindent 4 }}
+  hhsInfo.json: |-
+    {{- $.Files.Get (printf "playbook-configs/%s/hhsInfo.json" $key ) | nindent 4 }}
+  map.config.json: |-
+    {{- $.Files.Get (printf "playbook-configs/%s/asset.config.json" $key ) | nindent 4 }}
+{{- end }}
+{{- end }}
+{{- end }}

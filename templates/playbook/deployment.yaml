@@ -33,6 +33,9 @@ spec:
         - name: playbook-{{ $key }}
           image: "{{ $.Values.image.project }}/{{ .image.repository }}:{{ .image.tag | default $.Chart.AppVersion }}"
           imagePullPolicy: {{ .pullPolicy | default $.Values.image.pullPolicy }}
+          volumeMounts:
+            - name: configs
+              mountPath: /usr/share/nginx/html/playbook/{{ $key }}/config
           ports:
             - containerPort: 80
               name: http
@@ -46,6 +49,25 @@ spec:
               port: http
           resources:
             {{- toYaml $.resources | nindent 12 }}
+      volumes:
+          - name: configs
+            configMap:
+              name: {{ $fullname }}-playbook-{{ $key }}
+              items:
+                - key: asset.config.json
+                  path: asset.config.json
+                - key: cgeInfo.json
+                  path: cgeInfo.json
+                - key: datawolf.config.json
+                  path: datawolf.config.json
+                - key: datawolfWorkflow.config.json
+                  path: datawolfWorkflow.config.json
+                - key: globals.config.json
+                  path: globals.config.json
+                - key: hhsInfo.json
+                  path: hhsInfo.json
+                - key: map.config.json
+                  path: map.config.json
       {{- with $.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

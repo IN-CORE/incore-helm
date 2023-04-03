@@ -2,6 +2,9 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# what level is the server, this is used to read some config files
+level: prod
+
 replicaCount: 1
 
 image:
