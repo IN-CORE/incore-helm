@@ -38,12 +38,12 @@ spec:
                 - name: TOKEN_USERNAME
                   valueFrom:
                     secretKeyRef:
-                      name: { { include "incore.fullname" . } }-maestro-usersync
+                      name: {{ include "incore.fullname" . }}-maestro-usersync
                       key: TOKEN_PASSWORD
                 - name: TOKEN_USERNAME
                   valueFrom:
                     secretKeyRef:
-                      name: { { include "incore.fullname" . } }-maestro-usersync
+                      name: {{ include "incore.fullname" . }}-maestro-usersync
                       key: TOKEN_PASSWORD
                 - name: ADMIN_USERNAME
                   value: {{ .Values.maestro_usersync.env.ADMIN_USERNAME | quote }}
