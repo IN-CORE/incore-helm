@@ -349,6 +349,7 @@ svc_sema:
 # MAESTRO SERVICE CONFIGURATION
 # ----------------------------------------------------------------------
 svc_maestro:
+  password: password
   common:
     image:
       repository: maestro
@@ -484,6 +485,24 @@ usergroups_sync:
   image:
     repository: usergroups-sync
     tag: 0.1.0
+
+# ----------------------------------------------------------------------
+# Maestro usersync configuration
+# ----------------------------------------------------------------------
+maestro_usersync:
+  image:
+    repository: maestro-usersync
+    tag: 0.1.0
+  env:
+    REALM: "In-core"
+    SERVER_BASE_URL: "url"
+    TOKEN_URL: "url"
+    ADMIN_USERNAME: "username"
+    ADMIN_PASSWORD: "password"
+    SLC_GROUP_ID: "slc_id"
+    JOPLIN_GROUP_ID: "joplin_id"
+    GALVESTON_GROUP_ID: "galveston_id"
+    NCSA_DEVELOPER_LIST: "developers"
 
 # ----------------------------------------------------------------------
 # DEPENDENCIES CONFIGURATION
@@ -622,6 +641,8 @@ postgresql:
 # KEYCLOAK
 # ----------------------------------------------------------------------
 keycloak:
+  user: keycloak
+  password: keycloak
   postgresql:
     enabled: false
   ingress:

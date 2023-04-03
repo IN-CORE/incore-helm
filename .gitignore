@@ -60,6 +60,7 @@ incore-*-pvc.yaml
 
 # secrets
 helm/incore/templates/secrets.yaml
+*secrets.yaml
 
 # list of dependency charts
 charts/
@@ -71,4 +72,3 @@ keycloak-incore-realm.json
 regcred.json
 regcred.sh
 helm/incore/templates/secrets.yaml
-
