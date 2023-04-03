@@ -35,7 +35,7 @@ spec:
           imagePullPolicy: {{ .pullPolicy | default $.Values.image.pullPolicy }}
           volumeMounts:
             - name: configs
-              mountPath: /usr/share/nginx/html/playbook/{{ $key }}/public
+              mountPath: /usr/share/nginx/html/playbook/{{ $key }}/config
           ports:
             - containerPort: 80
               name: http
