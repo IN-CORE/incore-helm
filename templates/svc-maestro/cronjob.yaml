@@ -28,27 +28,29 @@ spec:
                 - "/src/maestro-usersync/sync_users_role_steps_playbook.py"
               env:
                 - name: PYTHONUNBUFFERED
-                  value: {{ .Values.maestro_usersync.env.PYTHONUNBUFFERED | quote }}
+                  value: "1"
                 - name: REALM
                   value: {{ .Values.maestro_usersync.env.REALM | quote }}
                 - name: SERVER_BASE_URL
+                  # TOOD use internal endpoint so we don't need a user
+                  #value: incore-svc_maestroy-slc.internal......
                   value: {{ .Values.maestro_usersync.env.SERVER_BASE_URL | quote }}
                 - name: TOKEN_URL
                   value: {{ .Values.maestro_usersync.env.TOKEN_URL | quote }}
                 - name: TOKEN_USERNAME
+                  value: "slcdemo"
+                - name: TOKEN_PASSWORD
                   valueFrom:
                     secretKeyRef:
-                      name: {{ include "incore.fullname" . }}-maestro-usersync
-                      key: TOKEN_PASSWORD
-                - name: TOKEN_USERNAME
-                  valueFrom:
-                    secretKeyRef:
-                      name: {{ include "incore.fullname" . }}-maestro-usersync
-                      key: TOKEN_PASSWORD
+                      name: {{ include "incore.fullname" . }}-services
+                      key: MAESTRO_USER_PASSWORD
                 - name: ADMIN_USERNAME
-                  value: {{ .Values.maestro_usersync.env.ADMIN_USERNAME | quote }}
+                  value: {{ .Values.keycloak.user | quote }}
                 - name: ADMIN_PASSWORD
-                  value: {{ .Values.maestro_usersync.env.ADMIN_PASSWORD | quote }}
+                  valueFrom:
+                    secretKeyRef:
+                      name: {{ include "incore.fullname" . }}-services
+                      key: KEYCLOAK_PASSWORD
                 - name: SLC_GROUP_ID
                   value: {{ .Values.maestro_usersync.env.SLC_GROUP_ID | quote }}
                 - name: JOPLIN_GROUP_ID
@@ -58,5 +60,5 @@ spec:
                 - name: NCSA_DEVELOPER_LIST
                   value: {{ .Values.maestro_usersync.env.NCSA_DEVELOPER_LIST | quote }}
                 - name: FIRST_RUN
-                  value: {{ .Values.maestro_usersync.env.FIRST_RUN | quote }}
+                  value: "0"
           restartPolicy: Never
