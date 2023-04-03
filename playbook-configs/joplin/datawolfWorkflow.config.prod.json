@@ -1415,6 +1415,57 @@
 		]
 	  },
 	  {
+		"title": "HH Categories",
+		"description": "Household categories",
+		"variableName": "hhCategories",
+		"widget": null,
+		"hidden": true,
+		"defaultValue": "HH1,HH2,HH3,HH4,HH5",
+		"parametersMap": [
+		  {
+			"paramId": "fc7b149e-61be-4b34-a884-1234af9e98b0",
+			"parameters": {
+			  "step": "CGE-Output-Process",
+			  "title": "HH Categories"
+			}
+		  }
+		]
+	  },
+	  {
+		"title": "Demand Categories",
+		"description": "Demand Categories employment",
+		"variableName": "demCategories",
+		"widget": null,
+		"hidden": true,
+		"defaultValue": "GOODS,TRADE,OTHER",
+		"parametersMap": [
+		  {
+			"paramId": "e838c579-15d3-43e7-dada-0f8345e15b21",
+			"parameters": {
+			  "step": "CGE-Output-Process",
+			  "title": "Demand Categories"
+			}
+		  }
+		]
+	  },
+	  {
+		"title": "Supply Categories",
+		"description": "Supply Categories",
+		"variableName": "supCategories",
+		"widget": null,
+		"hidden": true,
+		"defaultValue": "Goods,Trades,Others,HS1,HS2,HS3",
+		"parametersMap": [
+		  {
+			"paramId": "7c88cdbf-3801-4371-e709-50be083c7f75",
+			"parameters": {
+			  "step": "CGE-Output-Process",
+			  "title": "Supply Categories"
+			}
+		  }
+		]
+	  },
+	  {
 		"title": "Housing Unit Allocation",
 		"description": "",
 		"variableName": "selectedHuaId",
