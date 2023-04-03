@@ -496,8 +496,6 @@ maestro_usersync:
     REALM: "In-core"
     SERVER_BASE_URL: "url"
     TOKEN_URL: "url"
-    TOKEN_USERNAME: "username"
-    TOKEN_PASSWORD: "password"
     ADMIN_USERNAME: "username"
     ADMIN_PASSWORD: "password"
     SLC_GROUP_ID: "slc_id"
