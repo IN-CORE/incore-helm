@@ -492,7 +492,6 @@ maestro_usersync:
     repository: maestro-usersync
     tag: 0.1.0
   env:
-    PYTHONUNBUFFERED: 1
     REALM: "In-core"
     SERVER_BASE_URL: "url"
     TOKEN_URL: "url"
