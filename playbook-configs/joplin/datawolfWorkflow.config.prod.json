@@ -12,7 +12,7 @@
 		"variableName": "serviceUrl",
 		"widget": null,
 		"hidden": true,
-		"defaultValue": "https://incore-dev.ncsa.illinois.edu",
+		"defaultValue": "https://incore.ncsa.illinois.edu",
 		"parametersMap": [
 		  {
 			"paramId": "ad3f373b-83a4-4a64-9a52-286989e8fae1",
@@ -768,7 +768,7 @@
 		"variableName": "buildingMappingId",
 		"widget": null,
 		"hidden": true,
-		"defaultValue": "5e8e3a21eaa8b80001f04f1c",
+		"defaultValue": "5d8942dfb9219c068ea795ea",
 		"parametersMap": [
 		  {
 			"paramId": "590311bd-4ba7-414f-e249-7a3d5524bef0",
@@ -802,7 +802,7 @@
 		"variableName": "archetypeMapping",
 		"widget": null,
 		"hidden": true,
-		"defaultValue": "5fca915fb34b193f7a44059b",
+		"defaultValue": "5fca92781ab3d87c35db1e54",
 		"parametersMap": [
 		  {
 			"paramId": "631955b9-06df-45d4-8136-b56c78193b22",
@@ -1232,7 +1232,7 @@
 		"description": "",
 		"variableName": "sam",
 		"widget": null,
-		"defaultValue": "6138f39fca423a005e42232a",
+		"defaultValue": "5dd85ae7b9219c06d4da8de4",
 		"hidden": true,
 		"parametersMap": [
 		  {
@@ -1249,7 +1249,7 @@
 		"description": "",
 		"variableName": "bb",
 		"widget": null,
-		"defaultValue": "6138f3faca423a005e4223bc",
+		"defaultValue": "5dc1e620b9219c06dd2f473a",
 		"hidden": true,
 		"parametersMap": [
 		  {
@@ -1266,7 +1266,7 @@
 		"description": "",
 		"variableName": "IOUT",
 		"widget": null,
-		"defaultValue": "6138f427ca423a005e42244e",
+		"defaultValue": "5dc1e6d8b9219c06dd2f475e",
 		"hidden": true,
 		"parametersMap": [
 		  {
@@ -1283,7 +1283,7 @@
 		"description": "",
 		"variableName": "MISC",
 		"widget": null,
-		"defaultValue": "6138f452ca423a005e4224e0",
+		"defaultValue": "5dc1e736b9219c06dd2f4782",
 		"hidden": true,
 		"parametersMap": [
 		  {
@@ -1300,7 +1300,7 @@
 		"description": "",
 		"variableName": "MISCH",
 		"widget": null,
-		"defaultValue": "6138fda7ca423a005e422574",
+		"defaultValue": "5dc1e7b5b9219c06dd2f47a6",
 		"hidden": true,
 		"parametersMap": [
 		  {
@@ -1317,7 +1317,7 @@
 		"description": "",
 		"variableName": "LANDCAP",
 		"widget": null,
-		"defaultValue": "6138fdcfca423a005e422606",
+		"defaultValue": "5dc1e810b9219c06dd2f47ca",
 		"hidden": true,
 		"parametersMap": [
 		  {
@@ -1334,7 +1334,7 @@
 		"description": "",
 		"variableName": "EMPLOY",
 		"widget": null,
-		"defaultValue": "6138fe38ca423a005e422698",
+		"defaultValue": "5dc1e85ab9219c06dd2f47ee",
 		"hidden": true,
 		"parametersMap": [
 		  {
@@ -1351,7 +1351,7 @@
 		"description": "",
 		"variableName": "IGTD",
 		"widget": null,
-		"defaultValue": "6138fe68ca423a005e42272a",
+		"defaultValue": "5dc1e895b9219c06dd2f4812",
 		"hidden": true,
 		"parametersMap": [
 		  {
@@ -1368,7 +1368,7 @@
 		"description": "",
 		"variableName": "TAUFF",
 		"widget": null,
-		"defaultValue": "6138fe99ca423a005e4227bc",
+		"defaultValue": "5dc1e8eeb9219c06dd2f4836",
 		"hidden": true,
 		"parametersMap": [
 		  {
@@ -1385,7 +1385,7 @@
 		"description": "",
 		"variableName": "JOBCR",
 		"widget": null,
-		"defaultValue": "6138fecbca423a005e42284e",
+		"defaultValue": "5dc1e962b9219c06dd2f487e",
 		"hidden": true,
 		"parametersMap": [
 		  {
@@ -1402,7 +1402,7 @@
 		"description": "",
 		"variableName": "OUTCR",
 		"widget": null,
-		"defaultValue": "6138fef6ca423a005e4228e0",
+		"defaultValue": "5dc1e9aeb9219c06dd2f48bc",
 		"hidden": true,
 		"parametersMap": [
 		  {
@@ -1519,7 +1519,7 @@
 		"variableName": "nationalVulnerabilityFeatureAverages",
 		"widget": null,
 		"hidden": true,
-		"defaultValue": "63daa9ad695e0f57262c7d8f",
+		"defaultValue": "63d178c2a011a9746c948115",
 		"parametersMap": [
 		  {
 			"paramId": "23ce8682-cdfa-4fcd-a335-219a40332e6b",
@@ -1536,7 +1536,7 @@
 		"variableName": "demFactor",
 		"widget": null,
 		"hidden": true,
-		"defaultValue": "63daac32695e0f57262c844a",
+		"defaultValue": "63d17d89c4b5713b9c0bb8c1",
 		"parametersMap": [
 		  {
 			"paramId": "1eb72116-ce74-4e66-fab5-495995fd084e",
@@ -1587,7 +1587,7 @@
 		"variableName": "tpm",
 		"widget": null,
 		"hidden": true,
-		"defaultValue": "60ef513802897f12fcd9765c",
+		"defaultValue": "60f5e2ae544e944c3cec0794",
 		"parametersMap": [
 		  {
 			"paramId": "d0619a7b-e5f6-4b79-8830-8935c30463dc",
@@ -1604,7 +1604,7 @@
 		"variableName": "initialStageProbabilities",
 		"widget": null,
 		"hidden": true,
-		"defaultValue": "60ef532e02897f12fcd9ac63",
+		"defaultValue": "60f5e918544e944c3cec668b",
 		"parametersMap": [
 		  {
 			"paramId": "599cd8f2-e8c9-4512-80b8-8ddd3d89ae61",

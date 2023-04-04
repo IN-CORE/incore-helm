@@ -25,7 +25,7 @@ data:
   hhsInfo.json: |-
     {{- $.Files.Get (printf "playbook-configs/%s/hhsInfo.json" $key ) | nindent 4 }}
   map.config.json: |-
-    {{- $.Files.Get (printf "playbook-configs/%s/asset.config.json" $key ) | nindent 4 }}
+    {{- $.Files.Get (printf "playbook-configs/%s/map.config.json" $key ) | nindent 4 }}
 {{- end }}
 {{- end }}
 {{- end }}
