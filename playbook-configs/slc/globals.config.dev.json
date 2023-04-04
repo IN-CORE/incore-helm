@@ -9,7 +9,16 @@
   "maestroServiceBase": "https://incore-dev.ncsa.illinois.edu/maestro/slc/",
   "setGravatarURL": "https://en.gravatar.com/support/activating-your-account/",
   "allowUpload": false,
-  "allowedRegions": ["R1", "R2"],
+  "allowedRegions": [
+	{
+	  "name": "R1",
+	  "value": "R1"
+	},
+	{
+	  "name": "R2",
+	  "value": "R2"
+	}
+  ],
   "testbedSpace": "commresilienceslc",
   "testbedGroup": "incore_slc_user",
   "registerNewUserURL": "https://identity.ncsa.illinois.edu/register/BSKC2UKQPU",

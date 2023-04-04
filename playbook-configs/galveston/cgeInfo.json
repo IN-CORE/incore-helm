@@ -31,11 +31,7 @@
 	  "Acco": "Accommodation and Food Services",
 	  "HS1": "Lower-value homes (less than $100k)",
 	  "HS2": "Middle-value homes (100k - 200k)",
-	  "HS3": "Higher - value homes (more than 200k)",
-	  "L1": "less than $15K",
-	  "L2": "15k - 40k",
-	  "L3": "40k - 100k",
-	  "L4": "more than 100K"
+	  "HS3": "Higher - value homes (more than 200k)"
 	}
   },
   "employment": {
@@ -55,14 +51,7 @@
 	  "Edu": "Educational Services",
 	  "Health": "Health Care and Social Assistance",
 	  "Art": "Arts, Entertainment, and Recreation",
-	  "Acco": "Accommodation and Food Services",
-	  "HS1": "Lower-value homes (less than $100k)",
-	  "HS2": "Middle-value homes (100k - 200k)",
-	  "HS3": "Higher - value homes (more than 200k)",
-	  "L1": "less than $15K",
-	  "L2": "15k - 40k",
-	  "L3": "40k - 100k",
-	  "L4": "more than 100K"
+	  "Acco": "Accommodation and Food Services"
 	}
   }
 }

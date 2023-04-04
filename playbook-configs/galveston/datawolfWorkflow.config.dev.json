@@ -1037,11 +1037,11 @@
 	  },
 	  {
 		"title": "Demand Categories",
-		"description": "Demand Categories",
+		"description": "Demand Categories employment",
 		"variableName": "demCategories",
 		"widget": null,
 		"hidden": true,
-		"defaultValue": "IAGMIN,IUTIL,ICONS,IMANU,IWHOLE,IRETAIL,ITRANS,IPROFSER,IREALE,IEDU,IHEALTH,IART,IACCO,MAGMIN,MUTIL,MCONS,MMANU,MWHOLE,MRETAIL,MTRANS,MPROFSER,MREALE,MEDU,MHEALTH,MART,MACCO,HS1I,HS2I,HS3I,HS1M,HS2M,HS3M",
+		"defaultValue": "IAGMIN,IUTIL,ICONS,IMANU,IWHOLE,IRETAIL,ITRANS,IPROFSER,IREALE,IEDU,IHEALTH,IART,IACCO,MAGMIN,MUTIL,MCONS,MMANU,MWHOLE,MRETAIL,MTRANS,MPROFSER,MREALE,MEDU,MHEALTH,MART,MACCO",
 		"parametersMap": [
 		  {
 			"paramId": "e838c579-15d3-43e7-dada-0f8345e15b21",
