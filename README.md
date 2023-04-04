@@ -115,6 +115,7 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ### 1.16.0
 - Added maestro user sync
+- Added playbook ocnfigmap
 
 ### 1.15.1
 - update playbook to 0.2.0
