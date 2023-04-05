@@ -2,6 +2,9 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# what level is the server, this is used to read some config files
+level: prod
+
 replicaCount: 1
 
 image:
@@ -346,6 +349,7 @@ svc_sema:
 # MAESTRO SERVICE CONFIGURATION
 # ----------------------------------------------------------------------
 svc_maestro:
+  password: password
   common:
     image:
       repository: maestro
@@ -446,7 +450,7 @@ playbooks:
 datawolf:
   image:
     repository: hub.ncsa.illinois.edu/incore/datawolf
-    tag: 1.9.1
+    tag: 1.10.0rc1
   auth:
     enabled: false
     admins:
@@ -481,6 +485,24 @@ usergroups_sync:
   image:
     repository: usergroups-sync
     tag: 0.1.0
+
+# ----------------------------------------------------------------------
+# Maestro usersync configuration
+# ----------------------------------------------------------------------
+maestro_usersync:
+  image:
+    repository: maestro-usersync
+    tag: 1.0.0
+  env:
+    REALM: "In-core"
+    SERVER_BASE_URL: "url"
+    TOKEN_URL: "url"
+    ADMIN_USERNAME: "username"
+    ADMIN_PASSWORD: "password"
+    SLC_GROUP_ID: "slc_id"
+    JOPLIN_GROUP_ID: "joplin_id"
+    GALVESTON_GROUP_ID: "galveston_id"
+    NCSA_DEVELOPER_LIST: "developers"
 
 # ----------------------------------------------------------------------
 # DEPENDENCIES CONFIGURATION
@@ -619,6 +641,8 @@ postgresql:
 # KEYCLOAK
 # ----------------------------------------------------------------------
 keycloak:
+  user: keycloak
+  password: keycloak
   postgresql:
     enabled: false
   ingress:
