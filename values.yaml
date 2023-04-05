@@ -450,7 +450,7 @@ playbooks:
 datawolf:
   image:
     repository: hub.ncsa.illinois.edu/incore/datawolf
-    tag: 1.9.1
+    tag: 1.10.0rc1
   auth:
     enabled: false
     admins:
@@ -492,7 +492,7 @@ usergroups_sync:
 maestro_usersync:
   image:
     repository: maestro-usersync
-    tag: 0.1.0
+    tag: 1.0.0
   env:
     REALM: "In-core"
     SERVER_BASE_URL: "url"
