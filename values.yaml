@@ -371,7 +371,7 @@ svc_maestro:
         workers: 2
       replicas: 1
     joplin:
-      enabled: false
+      enabled: true
       env:
         host: incore-postgresql-headless
         port: 5432
@@ -382,7 +382,7 @@ svc_maestro:
         workers: 2
       replicas: 1
     galveston:
-      enabled: false
+      enabled: true
       env:
         host: incore-postgresql-headless
         port: 5432
@@ -429,19 +429,19 @@ playbooks:
     enabled: true
     image:
       repository: playbook/slc
-      tag: 0.2.0
+      tag: 0.2.2
     replicas: 1
   joplin:
-    enabled: false
+    enabled: true
     image:
       repository: playbook/joplin
-      tag: 0.2.0
+      tag: 0.1.1
     replicas: 1
   galveston:
-    enabled: false
+    enabled: true
     image:
       repository: playbook/galveston
-      tag: 0.2.0
+      tag: 0.1.1
     replicas: 1
 
 # ----------------------------------------------------------------------
@@ -450,7 +450,7 @@ playbooks:
 datawolf:
   image:
     repository: hub.ncsa.illinois.edu/incore/datawolf
-    tag: 1.10.0rc1
+    tag: 1.10.0rc4
   auth:
     enabled: false
     admins:
