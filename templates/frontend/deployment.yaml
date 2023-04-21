@@ -22,17 +22,6 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      initContainers:
-        - name: tags
-          image: "{{ .Values.image.project }}/{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
-          imagePullPolicy: {{ .Values.frontend.image.pullPolicy | default .Values.image.pullPolicy }}
-          command:
-            - /bin/sh
-            - "-ec"
-            - /getVersionTags.sh
-          volumeMounts:
-            - name: {{ include "incore.name" . }}-frontend-tags
-              mountPath: /usr/share/nginx/html/tags
       containers:
         - name: frontend
           image: "{{ .Values.image.project }}/{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
