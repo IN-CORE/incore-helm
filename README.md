@@ -113,6 +113,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.16.1
+- Removed version tag cronjob
+
 ### 1.16.0
 - Added maestro user sync
 
