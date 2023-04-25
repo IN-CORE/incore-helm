@@ -50,4 +50,4 @@ annotations:
     - name: Helm Chart
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
-    - removed version tag cronjob
+    - IN-CORE release 4.1.0
