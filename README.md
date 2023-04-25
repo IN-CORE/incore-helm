@@ -115,12 +115,14 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ### 1.17.0
 - IN-CORE release 4.1.0
+- Removed version tag cronjob
 
 ### 1.16.1
-- Removed version tag cronjob
+- Updated playbook config files
 
 ### 1.16.0
 - Added maestro user sync
+- Added playbook configmap
 
 ### 1.15.1
 - update playbook to 0.2.0
