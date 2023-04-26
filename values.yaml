@@ -136,7 +136,7 @@ frontend:
   replicas: 1
   image:
     repository: frontend
-    tag: v1.5.0
+    tag: v1.6.0
   service:
     type: ClusterIP
     port: 80
@@ -173,7 +173,7 @@ doc_incore:
   replicas: 1
   image:
     repository: doc/incore
-    tag: 4.0.0
+    tag: v4.1.0
   service:
     type: ClusterIP
     port: 80
@@ -185,7 +185,7 @@ doc_pyincore:
   replicas: 1
   image:
     repository: doc/pyincore
-    tag: 1.9.0
+    tag: v1.10.0
   service:
     type: ClusterIP
     port: 80
@@ -450,7 +450,8 @@ playbooks:
 datawolf:
   image:
     repository: hub.ncsa.illinois.edu/incore/datawolf
-    tag: 1.10.0rc4
+    tag: 1.10.0
+
   auth:
     enabled: false
     admins:
@@ -577,7 +578,7 @@ jupyterhub:
     defaultUrl: "/lab"
     image:
       name: hub.ncsa.illinois.edu/incore/lab
-      tag: 4.0.0
+      tag: 4.1.0
       pullSecrets:
         - regcred
       command4: ["echo", "SUCCESS"]

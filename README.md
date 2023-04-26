@@ -113,6 +113,10 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.17.0
+- IN-CORE release 4.1.0
+- Removed version tag cronjob
+
 ### 1.16.1
 - Updated playbook config files
 
