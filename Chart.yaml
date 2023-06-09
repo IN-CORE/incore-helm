@@ -51,3 +51,4 @@ annotations:
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
     - IN-CORE release 4.2.0
+    - Add X-Auth-User header

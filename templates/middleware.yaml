@@ -11,5 +11,7 @@ spec:
       - X-Auth-Userinfo
       - x-auth-usergroup
       - X-Auth-UserGroup
+      - x-auth-user
+      - X-Auth-User
     trustForwardHeader: true
 {{- end }}

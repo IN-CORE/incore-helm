@@ -115,6 +115,7 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ### 1.18.0
 - IN-CORE release 4.2.0
+- add X-Aauth-User header
 
 ### 1.17.0
 - IN-CORE release 4.1.0
