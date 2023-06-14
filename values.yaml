@@ -411,17 +411,6 @@ svc_plotting:
     size: 5Gi
 
 # ----------------------------------------------------------------------
-# LDAP CONFIGURATION
-# ----------------------------------------------------------------------
-# used to get groups the user belongs to to give access to spaces etc.
-ldap:
-  url: ldap.example.com
-  userdn: "OU=People,OU=example,OU=com"
-  admins: admin
-  refresh: "900"
-  viewall: vieall
-
-# ----------------------------------------------------------------------
 # PLAYBOOK CONFIGURATION
 # ----------------------------------------------------------------------
 playbooks:
