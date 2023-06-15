@@ -154,7 +154,7 @@ auth:
   audience: INCORE
   image:
     repository: incore-auth
-    tag: 1.6.0
+    tag: 1.7.0
   service:
     type: ClusterIP
     port: 5000
@@ -173,7 +173,7 @@ doc_incore:
   replicas: 1
   image:
     repository: doc/incore
-    tag: v4.1.0
+    tag: v4.2.0
   service:
     type: ClusterIP
     port: 80
@@ -185,7 +185,7 @@ doc_pyincore:
   replicas: 1
   image:
     repository: doc/pyincore
-    tag: v1.10.0
+    tag: v1.11.0
   service:
     type: ClusterIP
     port: 80
@@ -197,7 +197,7 @@ doc_pyincore_viz:
   replicas: 1
   image:
     repository: doc/pyincore-viz
-    tag: 1.8.1
+    tag: v1.8.2
   service:
     type: ClusterIP
     port: 80
@@ -221,7 +221,7 @@ doc_api:
   replicas: 1
   image:
     repository: doc/api
-    tag: 1.13.0
+    tag: 1.14.0
   service:
     type: ClusterIP
     port: 80
@@ -234,7 +234,7 @@ svc_data:
   repo: /home/incore/data/
   image:
     repository: data-jetty
-    tag: 1.13.2
+    tag: 1.14.0
   service:
     type: ClusterIP
     port: 8888
@@ -260,7 +260,7 @@ svc_dfr3:
   replicas: 4
   image:
     repository: dfr3-jetty
-    tag: 1.13.2
+    tag: 1.14.0
   service:
     type: ClusterIP
     port: 8888
@@ -283,7 +283,7 @@ svc_hazard:
   replicas: 4
   image:
     repository: hazard-jetty
-    tag: 1.13.2
+    tag: 1.14.0
   service:
     type: ClusterIP
     port: 8888
@@ -306,7 +306,7 @@ svc_space:
   replicas: 2
   image:
     repository: space-jetty
-    tag: 1.13.2
+    tag: 1.14.0
   service:
     type: ClusterIP
     port: 8888
@@ -329,7 +329,7 @@ svc_sema:
   replicas: 1
   image:
     repository: semantics-jetty
-    tag: 1.13.2
+    tag: 1.14.0
   service:
     type: ClusterIP
     port: 8888
@@ -409,17 +409,6 @@ svc_plotting:
   persistence:
     enabled: true
     size: 5Gi
-
-# ----------------------------------------------------------------------
-# LDAP CONFIGURATION
-# ----------------------------------------------------------------------
-# used to get groups the user belongs to to give access to spaces etc.
-ldap:
-  url: ldap.example.com
-  userdn: "OU=People,OU=example,OU=com"
-  admins: admin
-  refresh: "900"
-  viewall: vieall
 
 # ----------------------------------------------------------------------
 # PLAYBOOK CONFIGURATION
@@ -536,7 +525,7 @@ jupyterhub:
   hub:
     image:
       name: hub.ncsa.illinois.edu/incore/hub
-      tag: 0.6.0
+      tag: 0.7.0
       pullSecrets:
         - regcred
     baseUrl: /hub/
@@ -578,7 +567,7 @@ jupyterhub:
     defaultUrl: "/lab"
     image:
       name: hub.ncsa.illinois.edu/incore/lab
-      tag: 4.1.0
+      tag: 4.2.0
       pullSecrets:
         - regcred
       command4: ["echo", "SUCCESS"]

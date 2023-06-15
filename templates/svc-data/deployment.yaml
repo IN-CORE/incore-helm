@@ -60,36 +60,11 @@ spec:
                   key: GEOSERVER_PW
             - name: GEOSERVER_ENABLE
               value: {{ .Values.svc_data.geoserver.enabled | quote }}
-            - name: AUTH_LDAP_URL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: AUTH_LDAP_URL
             - name: HAZARD_SERVICE_URL
               valueFrom:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: HAZARD_SERVICE_URL
-            - name: AUTH_LDAP_USERDN
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: AUTH_LDAP_USERDN
-            - name: AUTH_LDAP_ADMINS
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: AUTH_LDAP_ADMINS
-            - name: AUTH_LDAP_CACHE_REFRESH_SECS
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: AUTH_LDAP_CACHE_REFRESH_SECS
-            - name: AUTH_LDAP_VIEW_ALL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: AUTH_LDAP_VIEW_ALL
             - name: SERVICES_ALLOW_ORIGIN
               value: {{ join "," .Values.cors.origin | quote }}
             - name: SERVICES_ALLOW_METHODS

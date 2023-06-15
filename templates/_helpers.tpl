@@ -73,7 +73,7 @@ traefik.ingress.kubernetes.io/router.middlewares: {{ .Release.Namespace }}-auth@
 ingress.kubernetes.io/auth-type: forward
 ingress.kubernetes.io/auth-url: http://{{ include "incore.fullname" . }}-auth.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.auth.service.port }}/
 ingress.kubernetes.io/auth-trust-headers: "true"
-ingress.kubernetes.io/auth-response-headers: x-auth-userinfo, X-Auth-Userinfo, x-auth-usergroup, X-Auth-UserGroup
+ingress.kubernetes.io/auth-response-headers: x-auth-userinfo, X-Auth-Userinfo, x-auth-usergroup, X-Auth-UserGroup, x-auth-user, X-Auth-User
 {{- end }}
 {{- end }}
 
