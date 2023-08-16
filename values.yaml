@@ -173,7 +173,7 @@ doc_incore:
   replicas: 1
   image:
     repository: doc/incore
-    tag: v4.2.0
+    tag: v4.3.0
   service:
     type: ClusterIP
     port: 80
@@ -221,7 +221,7 @@ doc_api:
   replicas: 1
   image:
     repository: doc/api
-    tag: 1.14.0
+    tag: 1.20.0
   service:
     type: ClusterIP
     port: 80
@@ -559,7 +559,7 @@ jupyterhub:
     defaultUrl: "/lab"
     image:
       name: hub.ncsa.illinois.edu/incore/lab
-      tag: 4.2.0
+      tag: 4.3.0
       pullSecrets:
         - regcred
       command4: ["echo", "SUCCESS"]
