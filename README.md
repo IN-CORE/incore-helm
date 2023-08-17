@@ -113,6 +113,10 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.19.0
+- IN-CORE release 4.3.0
+- Removed usergroup sync for allocation
+
 ### 1.18.0
 - IN-CORE release 4.2.0
 - add X-Auth-User header
