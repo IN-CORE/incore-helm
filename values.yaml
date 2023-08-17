@@ -559,7 +559,7 @@ jupyterhub:
     defaultUrl: "/lab"
     image:
       name: hub.ncsa.illinois.edu/incore/lab
-      tag: 4.5.0
+      tag: 4.3.0
       pullSecrets:
         - regcred
       command4: ["echo", "SUCCESS"]
