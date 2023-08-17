@@ -77,6 +77,5 @@ Support:
 - MongoDB       : {{ .Values.mongodb.image.tag | default .Subcharts.mongodb.Chart.AppVersion }}
 
 Cron Job:
-- Allocation User Sync  : {{ .Values.usergroups_sync.image.tag }}
 - Maestro User Sync     : {{ .Values.maestro_usersync.image.tag }}
 - Version Tag Sync      : {{ .Values.frontend.image.tag }}
