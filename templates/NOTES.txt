@@ -65,10 +65,6 @@ Playbooks:
 {{- end }}
 {{- end }}
 
-Jupyter:
-- hub           : {{ .Values.jupyterhub.hub.image.tag }}
-- lab           : {{ .Values.jupyterhub.singleuser.image.tag }}
-
 Support:
 - DataWolf      : {{ .Values.datawolf.image.tag | default .Subcharts.datawolf.Chart.AppVersion }}
 - Geoserver     : {{ .Values.geoserver.image.repository }}:{{ .Values.geoserver.image.tag }}
