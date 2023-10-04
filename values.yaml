@@ -74,8 +74,6 @@ persistence:
 # - groups, quotas per group, weight is used to order
 # - default quotas
 # each quota will have:
-# - cpu [min, max] for jupyterhub
-# - mem [min, max] for jupyterhub
 # - disk max total disk quota for user
 # - service [number of objects, size] quota for each of the services
 quota: |
