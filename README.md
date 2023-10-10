@@ -113,6 +113,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.20.0
+- Geoserver updated to 2.23.1
+
 ### 1.19.0
 - IN-CORE release 4.5.0
 - Removed usergroup sync for allocation
