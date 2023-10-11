@@ -499,8 +499,8 @@ geoserver:
   url: http://incore-geoserver:8080/geoserver/
   replicas: 1
   image:
-    repository: kartoza/geoserver
-    tag: 2.17.2
+    repository: hub.ncsa.illinois.edu/incore/geoserver
+    tag: 2.23.1
   service:
     type: ClusterIP
     port: 8080
