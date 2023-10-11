@@ -39,6 +39,7 @@ $ helm install --name my-release ncsa/incore
 The command deploys IN-CORE  on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation. This will also install MongoDB, RabbitMQ, elasticsearch as well as some extractors.
 
 > **Tip**: List all releases using `helm list`
+> **Note**: Using the jupyterhub helm chart, you can also run an instance of jupyterhub in your cluster
 
 ## Uninstalling the Chart
 
@@ -78,16 +79,6 @@ ingress:
   hosts:
     - host: *hostname
 
-jupyterhub:
-  hub:
-    extraEnv:
-      KEYCLOAK_HOSTNAME: *hostname
-  ingress:
-    hosts:
-      - *hostname
-  singleuser:
-    extraEnv:
-      INCORE_SERVER: *hostname
       
 keycloak:
   ingress:
@@ -112,6 +103,10 @@ IN-CORE will use a persistent storage to store all data that is uploaded as well
 For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.yaml).
 
 ## ChangeLog
+
+### 1.20.0
+- Geoserver updated to 2.23.1
+- Seperated Jupyterhub from charts in order to upgrade them seperately
 
 ### 1.19.0
 - IN-CORE release 4.5.0

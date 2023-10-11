@@ -51,7 +51,6 @@ helm/incore/charts
 *values.postgresql.yaml
 
 # config
-*config_jupyterhub*
 __pycache__
 
 # values for deployment
