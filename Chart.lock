@@ -1,7 +1,4 @@
 dependencies:
-- name: jupyterhub
-  repository: https://jupyterhub.github.io/helm-chart/
-  version: 0.11.1
 - name: keycloak
   repository: https://codecentric.github.io/helm-charts
   version: 18.4.3
@@ -14,5 +11,5 @@ dependencies:
 - name: datawolf
   repository: https://opensource.ncsa.illinois.edu/charts
   version: 1.0.1
-digest: sha256:cd94a622994cfa270353848c306ec97f603f49379b5a41340972cef556784caa
-generated: "2023-05-25T15:21:29.9640574-05:00"
+digest: sha256:90fdbc158ade11459f9aaa49f450dcb01045108cefa9b785c752b79c9caa3b12
+generated: "2023-10-03T15:08:15.24658-05:00"
