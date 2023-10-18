@@ -104,7 +104,7 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
-### 1.20.1
+### Unreleased
 - Geoserver uses the official image instead of custom-built image
 
 ### 1.20.0
