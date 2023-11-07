@@ -508,6 +508,8 @@ geoserver:
     #existingClaim:
     size: 2Ti
   whitelist: incore.example.com
+  envs:
+    extraJavaOpts: "-Xms512m -Xmx1g"
 
 # ----------------------------------------------------------------------
 # MONGODB

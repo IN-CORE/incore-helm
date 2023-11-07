@@ -40,6 +40,8 @@ spec:
                   key: GEOSERVER_PW
             - name: GEOSERVER_CSRF_WHITELIST
               value: {{ .Values.geoserver.whitelist }}
+            - name: EXTRA_JAVA_OPTS
+              value: {{ .Values.geoserver.envs.extraJavaOpts | quote }}
           ports:
             - containerPort: 8080
               name: geoserver
