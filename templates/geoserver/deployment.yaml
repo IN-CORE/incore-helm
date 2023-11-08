@@ -38,12 +38,16 @@ spec:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: GEOSERVER_PW
+            - name: GEOSERVER_CSRF_WHITELIST
+              value: {{ .Values.geoserver.whitelist }}
+            - name: EXTRA_JAVA_OPTS
+              value: {{ .Values.geoserver.envs.extraJavaOpts | quote }}
           ports:
             - containerPort: 8080
               name: geoserver
           volumeMounts:
             - name: {{ include "incore.name" . }}-geoserver
-              mountPath: /opt/geoserver/data_dir
+              mountPath: /opt/geoserver_data
           startupProbe:
             httpGet:
               path: /geoserver/index.html

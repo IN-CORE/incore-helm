@@ -499,7 +499,7 @@ geoserver:
   url: http://incore-geoserver:8080/geoserver/
   replicas: 1
   image:
-    repository: hub.ncsa.illinois.edu/incore/geoserver
+    repository: docker.osgeo.org/geoserver
     tag: 2.23.1
   service:
     type: ClusterIP
@@ -507,6 +507,9 @@ geoserver:
   persistence:
     #existingClaim:
     size: 2Ti
+  whitelist: incore.example.com
+  envs:
+    extraJavaOpts: "-Xms512m -Xmx1g"
 
 # ----------------------------------------------------------------------
 # MONGODB
