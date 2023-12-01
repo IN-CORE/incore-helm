@@ -497,6 +497,7 @@ geoserver:
   enabled : true
   username: admin
   password: password
+  workspace: incore
   url: http://geoserver:8080/geoserver/
 
 # ----------------------------------------------------------------------
