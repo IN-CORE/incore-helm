@@ -104,7 +104,7 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
-### 1.22.0
+### Unreleased
 - Removed Geoserver from the chart
 
 ### 1.21.0
