@@ -67,7 +67,6 @@ Playbooks:
 
 Support:
 - DataWolf      : {{ .Values.datawolf.image.tag | default .Subcharts.datawolf.Chart.AppVersion }}
-- Geoserver     : {{ .Values.geoserver.image.repository }}:{{ .Values.geoserver.image.tag }}
 - Postgresql    : {{ .Values.postgresql.image.tag | default .Subcharts.postgresql.Chart.AppVersion }}
 - Keycloak      : {{ .Values.keycloak.image.tag | default .Subcharts.keycloak.Chart.AppVersion }} 
 - MongoDB       : {{ .Values.mongodb.image.tag | default .Subcharts.mongodb.Chart.AppVersion }}
