@@ -10,6 +10,7 @@ type: application
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
 version: 1.22.0
 
+
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
@@ -48,3 +49,4 @@ annotations:
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
     - Removed Geoserver from the Chart
+    - Added script to update jupyterhub charts

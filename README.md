@@ -106,6 +106,7 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ### Unreleased
 - Removed Geoserver from the chart
+- Added script to update jupyterhub charts
 
 ### 1.21.0
 - IN-CORE release 4.7.0
