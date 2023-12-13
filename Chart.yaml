@@ -47,4 +47,6 @@ annotations:
     - name: Helm Chart
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
+    - IN-CORE release 4.8.0
     - Removed Geoserver from the Chart
+    - Added script to update jupyterhub charts
