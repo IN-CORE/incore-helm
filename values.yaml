@@ -171,7 +171,7 @@ doc_incore:
   replicas: 1
   image:
     repository: doc/incore
-    tag: 4.8.0
+    tag: 4.8.1
   service:
     type: ClusterIP
     port: 80
@@ -183,7 +183,7 @@ doc_pyincore:
   replicas: 1
   image:
     repository: doc/pyincore
-    tag: 1.15.0
+    tag: 1.15.1
   service:
     type: ClusterIP
     port: 80
@@ -219,7 +219,7 @@ doc_api:
   replicas: 1
   image:
     repository: doc/api
-    tag: v4.8.0
+    tag: v4.8.1
   service:
     type: ClusterIP
     port: 80
