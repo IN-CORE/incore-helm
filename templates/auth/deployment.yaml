@@ -58,7 +58,7 @@ spec:
             - name: MONGODB_URI
               valueFrom:
                 secretKeyRef:
-                  name: { { include "incore.fullname" . } }-services
+                  name: {{ include "incore.fullname" . }}-services
                   key: COMMON_MONGODB_URI
           volumeMounts:
             - name: {{ include "incore.name" . }}-auth
