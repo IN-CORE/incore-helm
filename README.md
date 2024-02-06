@@ -106,6 +106,7 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ### 1.23.0
 - IN-CORE release 4.8.2
+- Added MONGODB_URI to auth deployment
 
 ### 1.22.1
 - IN-CORE release 4.8.1

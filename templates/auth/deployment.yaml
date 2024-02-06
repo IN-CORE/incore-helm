@@ -55,6 +55,11 @@ spec:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: INFLUXDB_V2_TOKEN
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: COMMON_MONGODB_URI
           volumeMounts:
             - name: {{ include "incore.name" . }}-auth
               mountPath: /srv/incore_auth/data
