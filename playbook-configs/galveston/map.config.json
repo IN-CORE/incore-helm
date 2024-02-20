@@ -8,7 +8,7 @@
   "MAP_CENTER": [-94.911436, 29.241297],
   "ZOOM": 5,
   "MIN_ZOOM": 4,
-  "MAX_ZOOM": 19,
+  "MAX_ZOOM": 15,
   "LAYER_STYLES": {
 	"BldgDamage": "incore:bldg-dmg-summary",
 	"BldgFunctionality": "incore:joplin-bldg-func",

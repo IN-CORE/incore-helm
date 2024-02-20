@@ -104,9 +104,6 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
-### Unreleased
-- Increase max zoom level of playbook maps
-
 ### 1.23.0
 - IN-CORE release 5.0.0
 - Added MONGODB_URI to auth deployment
