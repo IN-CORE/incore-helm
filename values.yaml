@@ -171,7 +171,7 @@ doc_incore:
   replicas: 1
   image:
     repository: doc/incore
-    tag: 4.8.2
+    tag: 4.9.0
   service:
     type: ClusterIP
     port: 80
@@ -183,7 +183,7 @@ doc_pyincore:
   replicas: 1
   image:
     repository: doc/pyincore
-    tag: 1.16.0
+    tag: 1.17.0
   service:
     type: ClusterIP
     port: 80
@@ -219,7 +219,7 @@ doc_api:
   replicas: 1
   image:
     repository: doc/api
-    tag: v4.8.2
+    tag: v4.9.0
   service:
     type: ClusterIP
     port: 80
@@ -232,7 +232,7 @@ svc_data:
   repo: /home/incore/data/
   image:
     repository: data-jetty
-    tag: 1.24.0
+    tag: 1.25.0
   service:
     type: ClusterIP
     port: 8888
@@ -258,7 +258,7 @@ svc_dfr3:
   replicas: 4
   image:
     repository: dfr3-jetty
-    tag: 1.24.0
+    tag: 1.25.0
   service:
     type: ClusterIP
     port: 8888
@@ -281,7 +281,7 @@ svc_hazard:
   replicas: 4
   image:
     repository: hazard-jetty
-    tag: 1.24.0
+    tag: 1.25.0
   service:
     type: ClusterIP
     port: 8888
@@ -304,7 +304,7 @@ svc_space:
   replicas: 2
   image:
     repository: space-jetty
-    tag: 1.24.0
+    tag: 1.25.0
   service:
     type: ClusterIP
     port: 8888
@@ -327,7 +327,7 @@ svc_sema:
   replicas: 1
   image:
     repository: semantics-jetty
-    tag: 1.24.0
+    tag: 1.25.0
   service:
     type: ClusterIP
     port: 8888
