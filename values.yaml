@@ -437,7 +437,7 @@ playbooks:
 datawolf:
   image:
     repository: hub.ncsa.illinois.edu/incore/datawolf
-    tag: 1.10.0
+    tag: 1.11.0
 
   auth:
     enabled: false
