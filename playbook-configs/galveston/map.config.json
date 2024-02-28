@@ -1,14 +1,14 @@
 {
   "MAP_BOUNDS":[
 	-96.211436,
-	30.541297,
+	27.941297,
 	-93.611436,
-	27.941297
+	30.541297
   ],
   "MAP_CENTER": [-94.911436, 29.241297],
   "ZOOM": 5,
   "MIN_ZOOM": 4,
-  "MAX_ZOOM": 19,
+  "MAX_ZOOM": 15,
   "LAYER_STYLES": {
 	"BldgDamage": "incore:bldg-dmg-summary",
 	"BldgFunctionality": "incore:joplin-bldg-func",

@@ -104,6 +104,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### Unreleased
+- Updated map bounding box order for community app
+
 ### 1.24.0
 - IN-CORE release 5.1.0
 - Increase max zoom level of playbook maps
