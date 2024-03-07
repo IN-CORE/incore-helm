@@ -859,7 +859,7 @@
         ]
       },
       {
-        "title": "retrofit strategy",
+        "title": "retrofit strategies",
         "description": "retrofit_strategy",
         "variableName": "selectedRetrofitStrategyId",
         "widget": "RetrofitStrategies",
