@@ -1725,7 +1725,7 @@
             "datasets": {
               "step": "Disl-Post-Process",
               "title": "Dislocation Heatmap",
-              "variableName": "popdislHeatmapINCOREId",
+              "variableName": "popdislHeatmapShp",
               "widget": "PopDislocation"
             }
           },
