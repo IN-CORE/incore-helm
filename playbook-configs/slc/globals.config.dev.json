@@ -17,6 +17,26 @@
     {
       "name": "R2",
       "value": "R2"
+    },
+    {
+      "name": "R3",
+      "value": "R3"
+    },
+    {
+      "name": "R4",
+      "value": "R4"
+    },
+    {
+      "name": "R5",
+      "value": "R5"
+    },
+    {
+      "name": "R6",
+      "value": "R6"
+    },
+    {
+      "name": "R7",
+      "value": "R7"
     }
   ],
   "testbedSpace": "commresilienceslc",
