@@ -915,7 +915,7 @@
         "variableName": "regions",
         "widget": null,
         "hidden": true,
-        "defaultValue": "R1,R2",
+        "defaultValue": "R1,R2,R3,R4,R5,R6,R7",
         "parametersMap": [
           {
             "paramId": "46509d68-7f9e-447f-eb76-de5a884cf3b0",
@@ -966,7 +966,7 @@
         "variableName": "supCategories",
         "widget": null,
         "hidden": true,
-        "defaultValue": "AG_MI,UTIL,CONS,MANU,COMMER,EDU,HEALTH,ART_ACC,RELIG,HS1,HS2,HS3",
+        "defaultValue": "AG_MI,UTIL,CONS,MANU,COMMER,EDU,HEALTH,ART_ACC,RELIG,HS1,HS2",
         "parametersMap": [
           {
             "paramId": "7c88cdbf-3801-4371-e709-50be083c7f75",
