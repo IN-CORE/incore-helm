@@ -14,6 +14,7 @@
 	"MAX_ZOOM": 19,
 	"LAYER_STYLES": {
 		"RetrofitStrategy": "incore:retrofit-rules",
+		"RetrofitStrategyHighlight": "incore:retrofit-rules-highlight",
 		"Zone": "incore:zone",
 		"BldgDamage": "incore:galveston-bldg-dmg-fema",
 		"BldgFunctionality": "incore:bldg-func",
