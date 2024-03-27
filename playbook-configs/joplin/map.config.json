@@ -19,15 +19,15 @@
 	"MIN_ZOOM": 4,
 	"MAX_ZOOM": 19,
 	"LAYER_STYLES": {
+		"RetrofitStrategy": "incore:retrofit-rules",
+		"RetrofitStrategyHighlight": "incore:retrofit-rules-highlight",
+		"Zone": "incore:zone",
 		"BldgDamage": "incore:bldg-dmg-summary",
 		"BldgFunctionality": "incore:bldg-func",
 		"BldgMCS": "incore:bldg-mcs",
 		"Interdependency": "incore:substations-label",
 		"PoleDamage": "incore:epf-dmg-summary",
-		"PopulationDislocation": {
-			"bldgMaxDamageStateINCOREId": "incore:bldg-dmg-summary",
-			"popdislHeatmapINCOREId": "incore:heatmap"
-		},
+		"PopulationDislocation": "incore:joplin-pop-dis",
 		"SubstationDamage": "incore:epf-dmg-summary",
 		"MapUtil": {
 			"earthquake": "incore:earthquake-pga-g",

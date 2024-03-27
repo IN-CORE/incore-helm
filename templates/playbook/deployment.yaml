@@ -62,6 +62,10 @@ spec:
                   path: datawolf.config.json
                 - key: datawolfWorkflow.config.json
                   path: datawolfWorkflow.config.json
+                - key: datawolfRS.config.json
+                  path: datawolfRS.config.json
+                - key: datawolfRSWorkflow.config.json
+                  path: datawolfRSWorkflow.config.json
                 - key: globals.config.json
                   path: globals.config.json
                 - key: hhsInfo.json
