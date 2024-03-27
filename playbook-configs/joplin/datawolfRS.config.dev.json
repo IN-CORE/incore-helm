@@ -1,0 +1,8 @@
+{
+	"hostname": "https://incore-dev.ncsa.illinois.edu",
+	"executionGetURL": "https://incore-dev.ncsa.illinois.edu/datawolf/workflows/efc14b0f-1848-4dc7-ad0d-69ef6d7f0d9c/executions",
+	"executionPostURL": "https://incore-dev.ncsa.illinois.edu/datawolf/executions",
+	"datasetBaseURL": "https://incore-dev.ncsa.illinois.edu/datawolf/datasets",
+	"datawolfPersonsDetail": "https://incore-dev.ncsa.illinois.edu/datawolf/persons?email=",
+	"retreiveTimeInterval": 1000
+}
