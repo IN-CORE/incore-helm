@@ -1,77 +1,186 @@
 {
-  "baseUrlRoute": "playbook",
-  "geoServerWMS": "https://incore-dev.ncsa.illinois.edu/geoserver/incore/wms",
-  "client_id": "react-auth",
-  "authService": "https://incore-dev.ncsa.illinois.edu/auth/realms/In-core/protocol/openid-connect/token",
-  "hazardServiceBase": "https://incore-dev.ncsa.illinois.edu/hazard/api/",
-  "dataServiceBase": "https://incore-dev.ncsa.illinois.edu/data/api/",
-  "spaceServiceBase": "https://incore-dev.ncsa.illinois.edu/space/api/",
-  "maestroServiceBase": "https://incore-dev.ncsa.illinois.edu/maestro/slc/",
-  "setGravatarURL": "https://en.gravatar.com/support/activating-your-account/",
-  "allowUpload": false,
-  "allowedRegions": [
-	{
-	  "name": "R1",
-	  "value": "R1"
+	"baseUrlRoute": "playbook",
+	"geoServerWMS": "https://incore-dev.ncsa.illinois.edu/geoserver/incore/wms",
+	"geoServerWFS": "https://incore-dev.ncsa.illinois.edu/geoserver/incore/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json",
+	"client_id": "react-auth",
+	"authService": "https://incore-dev.ncsa.illinois.edu/auth/realms/In-core/protocol/openid-connect/token",
+	"hazardServiceBase": "https://incore-dev.ncsa.illinois.edu/hazard/api/",
+	"dataServiceBase": "https://incore-dev.ncsa.illinois.edu/data/api/",
+	"spaceServiceBase": "https://incore-dev.ncsa.illinois.edu/space/api/",
+	"maestroServiceBase": "https://incore-dev.ncsa.illinois.edu/maestro/slc/",
+	"setGravatarURL": "https://en.gravatar.com/support/activating-your-account/",
+	"allowUpload": false,
+	"allowedRegions": [
+		{
+			"name": "R1",
+			"value": "R1"
+		},
+		{
+			"name": "R2",
+			"value": "R2"
+		}
+	],
+	"testbedSpace": "commresilienceslc",
+	"testbedGroup": "incore_slc_user",
+	"registerNewUserURL": "https://identity.ncsa.illinois.edu/register/BSKC2UKQPU",
+	"resetPasswordURL": "https://identity.ncsa.illinois.edu/reset",
+	"inputDatasetTypes": {
+		"buildings": [
+			{
+				"type": "ergo:buildingInventoryVer6",
+				"format": "shapefile",
+				"isSocioeconomics": false,
+				"dispatchKey": "RECEIVE_BLDGS"
+			}
+		],
+		"retrofitStrategies": [
+			{
+				"type": "incore:retrofitStrategy",
+				"format": "table",
+				"num": 50,
+				"isSocioeconomics": false,
+				"dispatchKey": "RECEIVE_RETROFIT_STRATEGIES"
+			}
+		],
+		"epfs": [
+			{
+				"type": "incore:epf",
+				"format": "shapefile",
+				"isSocioeconomics": false,
+				"dispatchKey": "RECEIVE_EPFS"
+			}
+		],
+		"interdNetworks": [
+			{
+				"type": "incore:buildingInterdependencyDict",
+				"format": "json",
+				"isSocioeconomics": false,
+				"dispatchKey": "RECEIVE_INTERD"
+			}
+		],
+		"sectorShocks": [
+			{
+				"description": "Buildings to sectors mapping",
+				"type": "incore:buildingsToSectors",
+				"format": "table",
+				"isSocioeconomics": true,
+				"dispatchKey": "RECEIVE_SECTOR_SHOCKS"
+			}
+		],
+		"huas": [
+			{
+				"description": "Housing unit allocation",
+				"type": "incore:housingUnitAllocation",
+				"format": "table",
+				"num": 5,
+				"isSocioeconomics": true,
+				"dispatchKey": "RECEIVE_HUA"
+			}
+		],
+		"blockGroups": [
+			{
+				"description": "Block group census of racial and ethnic distribution",
+				"type": "incore:blockGroupData",
+				"format": "table",
+				"num": 5,
+				"isSocioeconomics": true,
+				"dispatchKey": "RECEIVE_BLOCK_GROUP"
+			}
+		],
+		"valueLosses": [
+			{
+				"description": "Value loss beta distribution parameters",
+				"type": "incore:valuLossParam",
+				"format": "table",
+				"num": 5,
+				"isSocioeconomics": true,
+				"dispatchKey": "RECEIVE_VALUE_LOSS"
+			}
+		]
 	},
-	{
-	  "name": "R2",
-	  "value": "R2"
+	"comparisonKey": [
+		"A",
+		"B"
+	],
+	"testbed": "slc",
+	"retrofitStrategyBuilder": {
+		"colorCodes": [
+			"#C32541",
+			"#1B3EBB",
+			"#76930F",
+			"#268FB0",
+			"#BB772B",
+			"#F54362",
+			"#456AEA",
+			"#98BB1D",
+			"#47B4D6",
+			"#E29D50",
+			"#FC7F95",
+			"#7C95EC",
+			"#C9DF7A",
+			"#83DEF2",
+			"#F4C189",
+			"#FDBBC9",
+			"#DBD2FC",
+			"#E0E9C2",
+			"#CDECF0",
+			"#FFE3C4"
+		],
+		"maxStrategies": 5,
+		"conditions": [
+			{
+				"label": "City Council District",
+				"type": "mapSelect",
+				"key": "zones",
+				"possibleOptions": []
+			},
+			{
+				"label": "Building Structural Type",
+				"type": "select",
+				"key": "strtypes",
+				"possibleOptions": [
+					{
+						"label": "Mid-Rise Unreinforced Masonry Bearing Walls",
+						"value": "URMM"
+					},
+					{
+						"label": "Low-Rise Unreinforced Masonry Bearing Walls",
+						"value": "URML"
+					}
+				]
+			},
+			{
+				"label": "% number of Buildings",
+				"type": "number",
+				"key": "pcts",
+				"possibleOptions": null
+			}
+		],
+		"retrofitMethods": [
+			{
+				"label": "Retrofit Method",
+				"type": "select",
+				"key": "retrofits",
+				"possibleOptions": [
+					{
+						"label": "Wood or Metal Deck Diaphragms",
+						"value": {
+							"ret_key": "Wood or Metal Deck Diaphragms",
+							"ret_val": ""
+						}
+					}
+				]
+			}
+		],
+		"zoneLayerId": "65f509b6e42f3b0da55d74cf",
+		"activeLayerNames": "Zone",
+		"activeLayerFieldname": "NAME",
+		"zoneMapBounds": [
+			-112.10137778755622,
+			40.69990503292076,
+			-111.74045871645396,
+			40.853385059088794
+		],
+		"zoneMapStyle": "incore:zone"
 	}
-  ],
-  "testbedSpace": "commresilienceslc",
-  "testbedGroup": "incore_slc_user",
-  "registerNewUserURL": "https://identity.ncsa.illinois.edu/register/BSKC2UKQPU",
-  "resetPasswordURL": "https://identity.ncsa.illinois.edu/reset",
-  "inputDatasetTypes":{
-	"buildings": [{
-	  "type": "ergo:buildingInventoryVer6",
-	  "format": "shapefile",
-	  "isSocioeconomics":false,
-	  "dispatchKey":"RECEIVE_BLDGS"
-	}],
-	"epfs": [{
-	  "type": "incore:epf",
-	  "format": "shapefile",
-	  "isSocioeconomics":false,
-	  "dispatchKey":"RECEIVE_EPFS"
-	}],
-	"interdNetworks": [{
-	  "type": "incore:buildingInterdependencyDict",
-	  "format": "json",
-	  "isSocioeconomics":false,
-	  "dispatchKey":"RECEIVE_INTERD"
-	}],
-	"sectorShocks": [{
-	  "description": "Buildings to sectors mapping",
-	  "type": "incore:buildingsToSectors",
-	  "format": "table",
-	  "isSocioeconomics":true,
-	  "dispatchKey":"RECEIVE_SECTOR_SHOCKS"
-	}],
-	"huas": [{
-	  "description": "Housing unit allocation",
-	  "type": "incore:housingUnitAllocation",
-	  "format": "table",
-	  "num": 5,
-	  "isSocioeconomics":true,
-	  "dispatchKey": "RECEIVE_HUA"
-	}],
-	"blockGroups": [{
-	  "description": "Block group census of racial and ethnic distribution",
-	  "type": "incore:blockGroupData",
-	  "format": "table",
-	  "num": 5,
-	  "isSocioeconomics":true,
-	  "dispatchKey": "RECEIVE_BLOCK_GROUP"
-	}],
-	"valueLosses": [{
-	  "description": "Value loss beta distribution parameters",
-	  "type": "incore:valuLossParam",
-	  "format": "table",
-	  "num": 5,
-	  "isSocioeconomics":true,
-	  "dispatchKey": "RECEIVE_VALUE_LOSS"
-	}]
-  }
 }

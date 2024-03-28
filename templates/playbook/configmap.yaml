@@ -20,6 +20,10 @@ data:
     {{- $.Files.Get (printf "playbook-configs/%s/datawolf.config.%s.json" $key $.Values.level ) | nindent 4 }}
   datawolfWorkflow.config.json: |-
     {{- $.Files.Get (printf "playbook-configs/%s/datawolfWorkflow.config.%s.json" $key $.Values.level ) | nindent 4 }}
+  datawolfRS.config.json: |-
+    {{- $.Files.Get (printf "playbook-configs/%s/datawolfRS.config.%s.json" $key $.Values.level ) | nindent 4 }}
+  datawolfRSWorkflow.config.json: |-
+    {{- $.Files.Get (printf "playbook-configs/%s/datawolfRSWorkflow.config.%s.json" $key $.Values.level ) | nindent 4 }}
   globals.config.json: |-
     {{- $.Files.Get (printf "playbook-configs/%s/globals.config.%s.json" $key $.Values.level ) | nindent 4 }}
   hhsInfo.json: |-
