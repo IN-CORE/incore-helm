@@ -63,7 +63,7 @@
 				"variableName": "incoreServiceUrl",
 				"widget": null,
 				"hidden": true,
-				"defaultValue": "https://incore-dev.ncsa.illinois.edu",
+				"defaultValue": "https://incore.ncsa.illinois.edu",
 				"parametersMap": [
 					{
 						"paramId": "c67ef86a-568f-46dd-aced-3cdaa851da97",
