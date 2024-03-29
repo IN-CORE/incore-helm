@@ -104,6 +104,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.25.1
+- Fix config for Galveston and SLC Playbooks
+
 ### 1.25.0
 - IN-CORE release 5.2.0
 - Updated map bounding box order for community app
