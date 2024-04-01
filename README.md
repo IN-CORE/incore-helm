@@ -103,7 +103,9 @@ IN-CORE will use a persistent storage to store all data that is uploaded as well
 For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.yaml).
 
 ## ChangeLog
-
+### 1.25.2
+- Fix space and max num of condition config for Galveston Playbooks
+- 
 ### 1.25.1
 - Fix config for Galveston and SLC Playbooks
 
