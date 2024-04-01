@@ -126,7 +126,7 @@
 			"#CDECF0",
 			"#FFE3C4"
 		],
-		"maxStrategies": 20,
+		"maxStrategies": 14,
 		"conditions": [
 			{
 				"label": "Flood Zone",
