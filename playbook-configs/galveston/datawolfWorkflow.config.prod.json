@@ -1461,7 +1461,7 @@
         "variableName": "space",
         "widget": null,
         "hidden": true,
-        "defaultValue": "commresiliencegal",
+        "defaultValue": "galveston-app",
         "parametersMap": [
           {
             "paramId": "c528ca2d-f572-45b0-b038-2954415b4b09",
