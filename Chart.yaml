@@ -47,8 +47,6 @@ annotations:
     - name: Helm Chart
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
-    - IN-CORE release 5.2.0
-    - Updated map bounding box order for community app
-    - New playbooks using incore-playbook 0.6.3 and configuration accordingly
-    - Upgraded maestro service
+    - Update Galveston configuration CPU number to acheive best performance
+
 
