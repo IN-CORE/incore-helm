@@ -8,7 +8,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.25.2
+version: 1.25.3
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -47,8 +47,6 @@ annotations:
     - name: Helm Chart
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
-    - IN-CORE release 5.2.0
-    - Updated map bounding box order for community app
-    - New playbooks using incore-playbook 0.6.3 and configuration accordingly
-    - Upgraded maestro service
+    - Update Galveston configuration CPU number to acheive best performance
+
 
