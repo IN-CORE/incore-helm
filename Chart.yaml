@@ -48,5 +48,6 @@ annotations:
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
     - Update Galveston configuration CPU number to acheive best performance
+    - Update SLC regions and add new regions for Playbook Config
 
 
