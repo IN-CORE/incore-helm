@@ -103,10 +103,20 @@ IN-CORE will use a persistent storage to store all data that is uploaded as well
 For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.yaml).
 
 ## ChangeLog
+### 1.25.3
+- Update Galveston configuration CPU number to acheive best performance
 
-### Unreleased
+### 1.25.2
+- Fix space and max num of condition config for Galveston Playbooks
+
+### 1.25.1
+- Fix config for Galveston and SLC Playbooks
+
+### 1.25.0
+- IN-CORE release 5.2.0
 - Updated map bounding box order for community app
-- New playbooks using incore-playbook 0.6.0 and configuration accordingly
+- New playbooks using incore-playbook 0.6.3 and configuration accordingly
+- Upgraded maestro service
 
 ### 1.24.0
 - IN-CORE release 5.1.0

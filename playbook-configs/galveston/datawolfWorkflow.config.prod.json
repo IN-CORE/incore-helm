@@ -306,7 +306,7 @@
         "variableName": "numCPUs",
         "widget": null,
         "hidden": true,
-        "defaultValue": 8,
+        "defaultValue": 14,
         "parametersMap": [
           {
             "paramId": "72d2212a-9aa6-4511-c0b8-6990e5f51667",
@@ -517,7 +517,7 @@
         ]
       },
       {
-        "title": "hazard_type",
+        "title": "Hazard Type",
         "description": "hazard_type",
         "variableName": "selectedHazardType",
         "widget": "AllowedHazardTypes",
@@ -555,7 +555,7 @@
         ]
       },
       {
-        "title": "hazard_id",
+        "title": "Hazard ID",
         "description": "hazard_id",
         "variableName": "selectedHazardId",
         "widget": "Hazards",
@@ -859,12 +859,12 @@
         ]
       },
       {
-        "title": "retrofit strategies",
+        "title": "Retrofit Strategy",
         "description": "retrofit_strategy",
         "variableName": "selectedRetrofitStrategyId",
         "widget": "RetrofitStrategies",
         "hidden": false,
-        "defaultValue": "",
+        "defaultValue": null,
         "parametersMap": [
           {
             "paramId": "3091cc60-86cf-44ce-9dcf-2ef2b227aab4",
@@ -885,7 +885,7 @@
       {
         "title": "retrofit strategy not needed",
         "description": "retrofit_strategy not needed",
-        "variableName": "selectedRetrofitStrategyId",
+        "variableName": "retrofitStrategyNotNeededId",
         "widget": null,
         "hidden": true,
         "defaultValue": "",
@@ -900,7 +900,7 @@
         ]
       },
       {
-        "title": "epfs pole",
+        "title": "Epfs Pole",
         "description": "epfs pole",
         "variableName": "selectedPoleId",
         "widget": "Epfs",
@@ -992,7 +992,7 @@
         ]
       },
       {
-        "title": "housing_unit_allocation",
+        "title": "Housing Unit Allocation",
         "description": "housing_unit_allocation",
         "variableName": "selectedHuaId",
         "widget": "Huas",
@@ -1009,7 +1009,7 @@
         ]
       },
       {
-        "title": "block_group_data",
+        "title": "Block Group Data",
         "description": "block_group_data",
         "variableName": "selectedBlockGroupId",
         "widget": "BlockGroups",
@@ -1026,7 +1026,7 @@
         ]
       },
       {
-        "title": "value_loss_param",
+        "title": "Value Loss Param",
         "description": "value_loss_param",
         "variableName": "valueLosses",
         "widget": "ValueLosses",
@@ -1241,7 +1241,7 @@
         ]
       },
       {
-        "title": "buildings_to_sectors",
+        "title": "Buildings To Sectors Table",
         "description": "buildings_to_sectors",
         "variableName": "selectedBldgToSector",
         "widget": "SectorShocks",
@@ -1461,7 +1461,7 @@
         "variableName": "space",
         "widget": null,
         "hidden": true,
-        "defaultValue": "commresiliencegal",
+        "defaultValue": "galveston-app",
         "parametersMap": [
           {
             "paramId": "c528ca2d-f572-45b0-b038-2954415b4b09",
@@ -1518,7 +1518,7 @@
         ]
       },
       {
-        "title": "interdependency_dictionary",
+        "title": "Interdependency Dictionary",
         "description": "interdependency_dictionary",
         "variableName": "selectedInterdNetworkId",
         "widget": "InterdNetworks",
@@ -1904,7 +1904,7 @@
             "datasets": {
               "step": "Disl-Post-Process",
               "title": "Dislocation Heatmap",
-              "variableName": "popdislHeatmapINCOREId",
+              "variableName": "popdislHeatmapShp",
               "widget": "PopDislocation"
             }
           },

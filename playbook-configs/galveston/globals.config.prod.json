@@ -1,100 +1,210 @@
 {
-  "baseUrlRoute": "playbook",
-  "geoServerWMS": "https://incore.ncsa.illinois.edu/geoserver/incore/wms",
-  "client_id": "react-auth",
-  "authService": "https://incore.ncsa.illinois.edu/auth/realms/In-core/protocol/openid-connect/token",
-  "hazardServiceBase": "https://incore.ncsa.illinois.edu/hazard/api/",
-  "dataServiceBase": "https://incore.ncsa.illinois.edu/data/api/",
-  "spaceServiceBase": "https://incore.ncsa.illinois.edu/space/api/",
-  "maestroServiceBase": "https://incore.ncsa.illinois.edu/maestro/galveston/",
-  "setGravatarURL": "https://en.gravatar.com/support/activating-your-account/",
-  "allowUpload": false,
-  "allowedRegions": [
-    {
-      "name": "Island",
-      "value": "I"
-    },
-    {
-      "name": "Mainland",
-      "value": "M"
-    }
-  ],
-  "testbedSpace": "galveston-app",
-  "testbedGroup": "incore_galveston_user",
-  "registerNewUserURL": "https://identity.ncsa.illinois.edu/register/BSKC2UKQPU",
-  "resetPasswordURL": "https://identity.ncsa.illinois.edu/reset",
-  "inputDatasetTypes": {
-    "buildings": [
-      {
-        "type": "ergo:buildingInventoryVer7",
-        "format": "shapefile",
-        "isSocioeconomics": false,
-        "dispatchKey": "RECEIVE_BLDGS"
-      }
-    ],
-    "retrofitStrategies": [
-      {
-        "type": "incore:retrofitStrategy",
-        "format": "table",
-        "num": 50,
-        "isSocioeconomics": false,
-        "dispatchKey": "RECEIVE_RETROFIT_STRATEGIES"
-      }
-    ],
-    "epfs": [
-      {
-        "type": "incore:epf",
-        "format": "shapefile",
-        "isSocioeconomics": false,
-        "dispatchKey": "RECEIVE_EPFS"
-      }
-    ],
-    "interdNetworks": [
-      {
-        "type": "incore:buildingInterdependencyDict",
-        "format": "json",
-        "isSocioeconomics": false,
-        "dispatchKey": "RECEIVE_INTERD"
-      }
-    ],
-    "sectorShocks": [
-      {
-        "description": "Buildings to sectors mapping",
-        "type": "incore:buildingsToSectors",
-        "format": "table",
-        "isSocioeconomics": true,
-        "dispatchKey": "RECEIVE_SECTOR_SHOCKS"
-      }
-    ],
-    "huas": [
-      {
-        "description": "Housing unit allocation",
-        "type": "incore:housingUnitAllocation",
-        "format": "table",
-        "num": 5,
-        "isSocioeconomics": true,
-        "dispatchKey": "RECEIVE_HUA"
-      }
-    ],
-    "blockGroups": [
-      {
-        "description": "Block group census of racial and ethnic distribution",
-        "type": "incore:blockGroupData",
-        "format": "table",
-        "num": 5,
-        "isSocioeconomics": true,
-        "dispatchKey": "RECEIVE_BLOCK_GROUP"
-      }
-    ],
-    "valueLosses": [
-      {
-        "description": "Value loss beta distribution parameters",
-        "type": "incore:valuLossParam",
-        "format": "table",
-        "num": 5,
-        "isSocioeconomics": true,
-        "dispatchKey": "RECEIVE_VALUE_LOSS"
-      }
-    ]
-  }
+	"baseUrlRoute": "playbook",
+	"geoServerWMS": "https://incore.ncsa.illinois.edu/geoserver/incore/wms",
+	"geoServerWFS": "https://incore.ncsa.illinois.edu/geoserver/incore/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json",
+	"client_id": "react-auth",
+	"authService": "https://incore.ncsa.illinois.edu/auth/realms/In-core/protocol/openid-connect/token",
+	"hazardServiceBase": "https://incore.ncsa.illinois.edu/hazard/api/",
+	"dataServiceBase": "https://incore.ncsa.illinois.edu/data/api/",
+	"spaceServiceBase": "https://incore.ncsa.illinois.edu/space/api/",
+	"maestroServiceBase": "https://incore.ncsa.illinois.edu/maestro/galveston/",
+	"setGravatarURL": "https://en.gravatar.com/support/activating-your-account/",
+	"allowUpload": false,
+	"allowedRegions": [
+		{
+			"name": "Island",
+			"value": "I"
+		},
+		{
+			"name": "Mainland",
+			"value": "M"
+		}
+	],
+	"testbedSpace": "galveston-app",
+	"testbedGroup": "incore_galveston_user",
+	"registerNewUserURL": "https://identity.ncsa.illinois.edu/register/BSKC2UKQPU",
+	"resetPasswordURL": "https://identity.ncsa.illinois.edu/reset",
+	"inputDatasetTypes": {
+		"buildings": [
+			{
+				"type": "ergo:buildingInventoryVer7",
+				"format": "shapefile",
+				"isSocioeconomics": false,
+				"dispatchKey": "RECEIVE_BLDGS"
+			}
+		],
+		"retrofitStrategies": [
+			{
+				"type": "incore:retrofitStrategy",
+				"format": "table",
+				"num": 50,
+				"isSocioeconomics": false,
+				"dispatchKey": "RECEIVE_RETROFIT_STRATEGIES"
+			}
+		],
+		"epfs": [
+			{
+				"type": "incore:epf",
+				"format": "shapefile",
+				"isSocioeconomics": false,
+				"dispatchKey": "RECEIVE_EPFS"
+			}
+		],
+		"interdNetworks": [
+			{
+				"type": "incore:buildingInterdependencyDict",
+				"format": "json",
+				"isSocioeconomics": false,
+				"dispatchKey": "RECEIVE_INTERD"
+			}
+		],
+		"sectorShocks": [
+			{
+				"description": "Buildings to sectors mapping",
+				"type": "incore:buildingsToSectors",
+				"format": "table",
+				"isSocioeconomics": true,
+				"dispatchKey": "RECEIVE_SECTOR_SHOCKS"
+			}
+		],
+		"huas": [
+			{
+				"description": "Housing unit allocation",
+				"type": "incore:housingUnitAllocation",
+				"format": "table",
+				"num": 5,
+				"isSocioeconomics": true,
+				"dispatchKey": "RECEIVE_HUA"
+			}
+		],
+		"blockGroups": [
+			{
+				"description": "Block group census of racial and ethnic distribution",
+				"type": "incore:blockGroupData",
+				"format": "table",
+				"num": 5,
+				"isSocioeconomics": true,
+				"dispatchKey": "RECEIVE_BLOCK_GROUP"
+			}
+		],
+		"valueLosses": [
+			{
+				"description": "Value loss beta distribution parameters",
+				"type": "incore:valuLossParam",
+				"format": "table",
+				"num": 5,
+				"isSocioeconomics": true,
+				"dispatchKey": "RECEIVE_VALUE_LOSS"
+			}
+		]
+	},
+	"comparisonKey": [
+		"A",
+		"B"
+	],
+	"testbed": "galveston",
+	"retrofitStrategyBuilder": {
+		"colorCodes": [
+			"#C32541",
+			"#1B3EBB",
+			"#76930F",
+			"#268FB0",
+			"#BB772B",
+			"#F54362",
+			"#456AEA",
+			"#98BB1D",
+			"#47B4D6",
+			"#E29D50",
+			"#FC7F95",
+			"#7C95EC",
+			"#C9DF7A",
+			"#83DEF2",
+			"#F4C189",
+			"#FDBBC9",
+			"#DBD2FC",
+			"#E0E9C2",
+			"#CDECF0",
+			"#FFE3C4"
+		],
+		"maxStrategies": 14,
+		"conditions": [
+			{
+				"label": "Flood Zone",
+				"type": "mapSelect",
+				"key": "zones",
+				"possibleOptions": [
+					{
+						"label": "1% annual chance flood hazard",
+						"value": "1p"
+					},
+					{
+						"label": "0.2% annual chance flood hazard",
+						"value": "0.2p"
+					}
+				]
+			},
+			{
+				"label": "Building Archetypes",
+				"type": "select",
+				"key": "strtypes",
+				"possibleOptions": [
+					{
+						"label": "1 story residential wood building (small rectangular plan and gable roof)",
+						"value": "1"
+					},
+					{
+						"label": "2 stories residential wood building (small square plan and gable roof)",
+						"value": "2"
+					},
+					{
+						"label": "1 story residential building (medium rectangular plan and gable roof)",
+						"value": "3"
+					},
+					{
+						"label": "2 stories residential building (medium rectangular plan and hip roof)",
+						"value": "4"
+					}
+				]
+			},
+			{
+				"label": "% number of Buildings",
+				"type": "number",
+				"key": "pcts",
+				"possibleOptions": null
+			}
+		],
+		"retrofitMethods": [
+			{
+				"label": "Retrofit Method",
+				"type": "select",
+				"key": "retrofits",
+				"possibleOptions": [
+					{
+						"label": "Elevated by 5 feet",
+						"value": {
+							"ret_key": "elevation",
+							"ret_val": 5
+						}
+					},
+					{
+						"label": "Elevated by 10 feet",
+						"value": {
+							"ret_key": "elevation",
+							"ret_val": 10
+						}
+					}
+				]
+			}
+		],
+		"zoneLayerId": "65f50cfb36b03d433855c661",
+		"activeLayerNames": "Zone",
+		"activeLayerFieldname": "fld_zone",
+		"zoneMapBounds": [
+			-95.23304467554465,
+			29.07743684291063,
+			-94.37074997273265,
+			29.598309974710844
+		],
+		"zoneMapStyle": "incore:zone"
+	}
 }
