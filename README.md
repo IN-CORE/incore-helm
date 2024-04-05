@@ -103,6 +103,10 @@ IN-CORE will use a persistent storage to store all data that is uploaded as well
 For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.yaml).
 
 ## ChangeLog
+
+### [Unreleased]
+- Update labels for Joplin Retrofit Strategy Builder [#450](https://github.com/IN-CORE/incore-playbook/issues/450)
+
 ### 1.25.3
 - Update Galveston configuration CPU number to acheive best performance
 
