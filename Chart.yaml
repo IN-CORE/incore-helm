@@ -47,7 +47,6 @@ annotations:
     - name: Helm Chart
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
-    - Update Galveston configuration CPU number to acheive best performance
     - Update labels for Joplin Retrofit Strategy Builder 
 
 
