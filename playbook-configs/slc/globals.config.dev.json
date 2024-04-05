@@ -132,7 +132,44 @@
 				"label": "City Council District",
 				"type": "mapSelect",
 				"key": "zones",
-				"possibleOptions": []
+				"possibleOptions": [
+					{
+						"label": "District 1",
+						"value": "1"
+					},
+					{
+						"label": "District 2",
+						"value": "2"
+					},
+					{
+						"label": "District 3",
+						"value": "3"
+					},
+					{
+						"label": "District 4",
+						"value": "4"
+					},
+					{
+						"label": "District 5",
+						"value": "5"
+					},
+					{
+						"label": "District 6",
+						"value": "6"
+					},
+					{
+						"label": "District 7",
+						"value": "7"
+					},
+					{
+						"label": "District 8",
+						"value": "8"
+					},
+					{
+						"label": "District 9",
+						"value": "9"
+					}
+				]
 			},
 			{
 				"label": "Building Structural Type",
@@ -174,7 +211,7 @@
 		],
 		"zoneLayerId": "65f509b6e42f3b0da55d74cf",
 		"activeLayerNames": "Zone",
-		"activeLayerFieldname": "NAME",
+		"activeLayerFieldname": "COUNCIL_ID",
 		"zoneMapBounds": [
 			-112.10137778755622,
 			40.69990503292076,
