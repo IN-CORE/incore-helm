@@ -414,7 +414,7 @@
         "variableName": "fragilityKey",
         "widget": null,
         "hidden": true,
-        "defaultValue": "",
+        "defaultValue": "retrofit_1",
         "parametersMap": [
           {
             "paramId": "28e71889-26b7-4178-b3c3-55b71b18d6bc",
