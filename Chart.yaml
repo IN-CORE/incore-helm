@@ -50,3 +50,4 @@ annotations:
     - Update configuration for SLC Retrofit Strategy Builder 
     - Update SLC regions and add new regions for Playbook Config
     - Update labels for Joplin Retrofit Strategy Builder
+    - Update number of CPUs for best performance
