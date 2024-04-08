@@ -541,7 +541,7 @@
         "variableName": "numCpus",
         "widget": null,
         "hidden": true,
-        "defaultValue": 8,
+        "defaultValue": 14,
         "parametersMap": [
           {
             "paramId": "937224ee-0e6c-40d7-dd2e-6a40018c1a02",

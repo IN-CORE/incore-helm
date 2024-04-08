@@ -18,6 +18,26 @@
 		{
 			"name": "R2",
 			"value": "R2"
+		},
+		{
+		  "name": "R3",
+		  "value": "R3"
+		},
+		{
+		  "name": "R4",
+		  "value": "R4"
+		},
+		{
+		  "name": "R5",
+		  "value": "R5"
+		},
+		{
+		  "name": "R6",
+		  "value": "R6"
+		},
+		{
+		  "name": "R7",
+		  "value": "R7"
 		}
 	],
 	"testbedSpace": "slc-app",
@@ -126,13 +146,50 @@
 			"#CDECF0",
 			"#FFE3C4"
 		],
-		"maxStrategies": 5,
+		"maxStrategies": 18,
 		"conditions": [
 			{
 				"label": "City Council District",
 				"type": "mapSelect",
 				"key": "zones",
-				"possibleOptions": []
+				"possibleOptions": [
+					{
+						"label": "District 1",
+						"value": "1"
+					},
+					{
+						"label": "District 2",
+						"value": "2"
+					},
+					{
+						"label": "District 3",
+						"value": "3"
+					},
+					{
+						"label": "District 4",
+						"value": "4"
+					},
+					{
+						"label": "District 5",
+						"value": "5"
+					},
+					{
+						"label": "District 6",
+						"value": "6"
+					},
+					{
+						"label": "District 7",
+						"value": "7"
+					},
+					{
+						"label": "District 8",
+						"value": "8"
+					},
+					{
+						"label": "District 9",
+						"value": "9"
+					}
+				]
 			},
 			{
 				"label": "Building Structural Type",
@@ -165,7 +222,7 @@
 					{
 						"label": "Wood or Metal Deck Diaphragms",
 						"value": {
-							"ret_key": "Wood or Metal Deck Diaphragms",
+							"ret_key": "WMDD",
 							"ret_val": ""
 						}
 					}
@@ -174,7 +231,7 @@
 		],
 		"zoneLayerId": "65f50c2b36b03d433855ae81",
 		"activeLayerNames": "Zone",
-		"activeLayerFieldname": "NAME",
+		"activeLayerFieldname": "COUNCIL_ID",
 		"zoneMapBounds": [
 			-112.10137778755622,
 			40.69990503292076,
