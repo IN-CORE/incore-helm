@@ -416,19 +416,19 @@ playbooks:
     enabled: true
     image:
       repository: playbook/slc
-      tag: 0.3.0
+      tag: 0.3.1
     replicas: 1
   joplin:
     enabled: true
     image:
       repository: playbook/joplin
-      tag: 0.2.0
+      tag: 0.2.1
     replicas: 1
   galveston:
     enabled: true
     image:
       repository: playbook/galveston
-      tag: 0.2.0
+      tag: 0.2.1
     replicas: 1
 
 # ----------------------------------------------------------------------
@@ -437,7 +437,7 @@ playbooks:
 datawolf:
   image:
     repository: hub.ncsa.illinois.edu/incore/datawolf
-    tag: 1.12.0
+    tag: 1.13.0
 
   auth:
     enabled: false
