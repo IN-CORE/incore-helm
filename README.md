@@ -105,6 +105,7 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 ## ChangeLog
 
 ### [Unreleased]
+- Update configuration for SLC Retrofit Strategy Builder [#122](https://github.com/IN-CORE/incore-helm/issues/122)
 - Update slc regions and remove additional sector [#388](https://github.com/IN-CORE/incore-playbook/issues/388)
 - Update labels for Joplin Retrofit Strategy Builder [#450](https://github.com/IN-CORE/incore-playbook/issues/450)
 
