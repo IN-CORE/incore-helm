@@ -104,6 +104,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.27.0
+- IN-CORE release 5.3.0
+
 ### 1.26.0
 - Update configuration for SLC Retrofit Strategy Builder
 - Update slc regions and remove additional sector
