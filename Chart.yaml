@@ -8,7 +8,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.27.0
+version: 1.28.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -47,4 +47,4 @@ annotations:
     - name: Helm Chart
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
-    - IN-CORE release 5.3.0
+    - New playbooks using incore-playbook 0.6.5 and configuration accordingly

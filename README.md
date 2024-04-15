@@ -104,6 +104,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### 1.28.0
+- New playbooks using incore-playbook 0.6.5 and configuration accordingly
+
 ### 1.27.0
 - IN-CORE release 5.3.0
 
