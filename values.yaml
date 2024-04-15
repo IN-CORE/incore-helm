@@ -416,19 +416,19 @@ playbooks:
     enabled: true
     image:
       repository: playbook/slc
-      tag: 0.3.1
+      tag: 0.3.2
     replicas: 1
   joplin:
     enabled: true
     image:
       repository: playbook/joplin
-      tag: 0.2.1
+      tag: 0.2.2
     replicas: 1
   galveston:
     enabled: true
     image:
       repository: playbook/galveston
-      tag: 0.2.1
+      tag: 0.2.2
     replicas: 1
 
 # ----------------------------------------------------------------------
