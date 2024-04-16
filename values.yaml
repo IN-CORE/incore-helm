@@ -135,6 +135,8 @@ frontend:
   image:
     repository: frontend
     tag: 1.10.0
+  env:
+    gaKey: GA_KEY
   service:
     type: ClusterIP
     port: 80

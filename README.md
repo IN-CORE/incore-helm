@@ -104,6 +104,9 @@ For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.
 
 ## ChangeLog
 
+### Unreleased
+- Added Google Analytics to frontend
+
 ### 1.28.0
 - New playbooks using incore-playbook 0.6.5 and configuration accordingly
 
