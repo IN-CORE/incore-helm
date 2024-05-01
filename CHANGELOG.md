@@ -5,9 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## 1.28.1 - 2024-04-30
+## 1.29.0 - 2024-05-01
+- IN-CORE release 5.3.1
 
-Copied CHANGELOG from README
+## 1.28.1 - 2024-04-30
+- Copied CHANGELOG from README
 
 ### Fixed
 - middleware for traefik is now under traefik.io
