@@ -554,6 +554,25 @@ keycloak:
         paths:
           - path: /auth/
             pathType: ImplementationSpecific
+  extraInitContainers: |
+    - name: theme-provider
+      image: incorencsa/keycloak-theme:1.0.0
+      command: 
+        - sh
+      args:
+        - -c
+        - |
+          echo "Copying theme..."
+          cp -R /app/keycloak_theme/* /theme
+      volumeMounts:
+        - name: incore-theme
+          mountPath: /theme
+  extraVolumes: |
+    - name: incore-theme
+      emptyDir: {}
+  extraVolumeMounts: |
+    - name: incore-theme
+      mountPath: /opt/jboss/keycloak/themes/incore-theme
   extraEnv: |
     - name: PROXY_ADDRESS_FORWARDING
       value: "true"
