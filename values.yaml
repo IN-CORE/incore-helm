@@ -556,7 +556,7 @@ keycloak:
             pathType: ImplementationSpecific
   extraInitContainers: |
     - name: theme-provider
-      image: ywkim312/keycloak-theme:1.0.0
+      image: incorencsa/keycloak-theme:1.0.0
       command: 
         - sh
       args:
@@ -567,9 +567,6 @@ keycloak:
       volumeMounts:
         - name: incore-theme
           mountPath: /theme
-#  extraPodAnnotations: |
-#    imagePullSecrets: |
-#      - name: regcred
   extraVolumes: |
     - name: incore-theme
       emptyDir: {}
