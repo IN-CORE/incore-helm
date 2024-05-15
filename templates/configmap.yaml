@@ -5,3 +5,5 @@ metadata:
 data:
   quota.json: |
     {{- .Values.quota | nindent 4 }}
+  ga_key.json: |
+    {{- .Values.ga_key | nindent 4 }}
