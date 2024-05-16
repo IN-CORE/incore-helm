@@ -539,22 +539,32 @@ postgresql:
 # KEYCLOAK
 # ----------------------------------------------------------------------
 keycloak:
-  user: keycloak
-  password: keycloak
+  httpRelativePath: /auth/
+  auth:
+    adminUser: admin
+    adminPassword: admin
+  ingress:
+    enabled: true
+    tls: []
+    servicePort: http
+    hostname: incore.example.com
+    path: /auth
+  service:
+    type: ClusterIP
   postgresql:
     enabled: false
-  ingress:
-    tls: []
-    enabled: true
-    servicePort: http
-    hosts:
-      - incore.example.com
-    rules:
-      - host: incore.example.com
-        paths:
-          - path: /auth/
-            pathType: ImplementationSpecific
-  extraInitContainers: |
+#    auth:
+#      username: keycloak
+#      password: password
+#      postgresPassword: password
+#      database: keycloak
+  externalDatabase:
+    host: incore-postgresql
+    user: keycloak
+    password: keycloak
+    database: keycloak
+    port: 5432
+  initContainers: |
     - name: theme-provider
       image: incorencsa/keycloak-theme:1.0.0
       command: 
@@ -573,23 +583,59 @@ keycloak:
   extraVolumeMounts: |
     - name: incore-theme
       mountPath: /opt/jboss/keycloak/themes/incore-theme
-  extraEnv: |
-    - name: PROXY_ADDRESS_FORWARDING
-      value: "true"
-    - name: KEYCLOAK_USER
-      value: keycloak
-    - name: KEYCLOAK_PASSWORD
-      value: keycloak
-    - name: DB_VENDOR
-      value: postgres
-    - name: DB_ADDR
-      value: incore-postgresql
-    - name: DB_PORT
-      value: "5432"
-    - name: DB_DATABASE
-      value: keycloak
-    - name: DB_USER
-      value: keycloak
-    - name: DB_PASSWORD
-      value: keycloak
 
+#######
+#  user: keycloak
+#  password: keycloak
+#  postgresql:
+#    enabled: false
+#  ingress:
+#    tls: []
+#    enabled: true
+#    servicePort: http
+#    hosts:
+#      - incore.example.com
+#    rules:
+#      - host: incore.example.com
+#        paths:
+#          - path: /auth/
+#            pathType: ImplementationSpecific
+#  extraInitContainers: |
+#    - name: theme-provider
+#      image: incorencsa/keycloak-theme:1.0.0
+#      command:
+#        - sh
+#      args:
+#        - -c
+#        - |
+#          echo "Copying theme..."
+#          cp -R /app/keycloak_theme/* /theme
+#      volumeMounts:
+#        - name: incore-theme
+#          mountPath: /theme
+#  extraVolumes: |
+#    - name: incore-theme
+#      emptyDir: {}
+#  extraVolumeMounts: |
+#    - name: incore-theme
+#      mountPath: /opt/jboss/keycloak/themes/incore-theme
+#  extraEnv: |
+#    - name: PROXY_ADDRESS_FORWARDING
+#      value: "true"
+#    - name: KEYCLOAK_USER
+#      value: keycloak
+#    - name: KEYCLOAK_PASSWORD
+#      value: keycloak
+#    - name: DB_VENDOR
+#      value: postgres
+#    - name: DB_ADDR
+#      value: incore-postgresql
+#    - name: DB_PORT
+#      value: "5432"
+#    - name: DB_DATABASE
+#      value: keycloak
+#    - name: DB_USER
+#      value: keycloak
+#    - name: DB_PASSWORD
+#      value: keycloak
+####
