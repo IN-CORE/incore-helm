@@ -548,16 +548,16 @@ keycloak:
     tls: []
     servicePort: http
     hostname: incore.example.com
-    path: /auth
+    rules:
+      - host: incore.example.com
+        http:
+          paths:
+            - path: /auth/
+              pathType: ImplementationSpecific
   service:
     type: ClusterIP
   postgresql:
     enabled: false
-#    auth:
-#      username: keycloak
-#      password: password
-#      postgresPassword: password
-#      database: keycloak
   externalDatabase:
     host: incore-postgresql
     user: keycloak
@@ -584,7 +584,7 @@ keycloak:
     - name: incore-theme
       mountPath: /opt/jboss/keycloak/themes/incore-theme
 
-#######
+####### old lines for revert back to previous setting
 #  user: keycloak
 #  password: keycloak
 #  postgresql:
