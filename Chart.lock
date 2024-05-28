@@ -1,7 +1,7 @@
 dependencies:
 - name: keycloak
   repository: https://charts.bitnami.com/bitnami
-  version: 20.0.1
+  version: 21.2.2
 - name: postgresql
   repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
   version: 10.16.2
@@ -11,5 +11,5 @@ dependencies:
 - name: datawolf
   repository: https://opensource.ncsa.illinois.edu/charts
   version: 1.0.1
-digest: sha256:f134c6244fe27414645faf7014c01f1370c51fef95a67e41531bc033ed1a8b3f
-generated: "2024-05-21T10:31:10.2886879-05:00"
+digest: sha256:5b18b2aed80bb88628a33a034cdfba4489a720a523df7fbf56e71a6ba1ded6c8
+generated: "2024-05-21T16:09:03.0293756-05:00"
