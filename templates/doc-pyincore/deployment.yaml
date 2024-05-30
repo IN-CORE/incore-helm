@@ -29,6 +29,10 @@ spec:
           ports:
             - containerPort: 80
               name: http
+          volumeMounts:
+            - name: {{ include "incore.name" . }}-config
+              mountPath: /usr/share/nginx/html/doc/pyincore/config/config.json
+              subPath: ga_key.json
           livenessProbe:
             httpGet:
               path: /
@@ -39,6 +43,10 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.doc_pyincore.resources | nindent 12 }}
+      volumes:
+        - name: {{ include "incore.name" . }}-config
+          configMap:
+            name: {{ include "incore.name" . }}
       {{- with .Values.doc_pyincore.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

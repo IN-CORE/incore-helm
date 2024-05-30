@@ -33,7 +33,7 @@ spec:
             - name: {{ include "incore.name" . }}-frontend-tags
               mountPath: /usr/share/nginx/html/tags
             - name: {{ include "incore.name" . }}-config
-              mountPath: /etc/ga_key.json
+              mountPath: /usr/share/nginx/html/config/config.json
               subPath: ga_key.json
           livenessProbe:
             httpGet:

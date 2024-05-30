@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 - Custom theme to Keycloak login page
+- Added Google Analytics information
 
 ## 1.29.0 - 2024-05-01
 - IN-CORE release 5.3.1
