@@ -48,3 +48,4 @@ annotations:
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
     - Custom theme to Keycloak login page
+    - Added Google Analytics information
