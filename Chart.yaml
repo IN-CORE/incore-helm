@@ -49,3 +49,4 @@ annotations:
   artifacthub.io/changes: |
     - Custom theme to Keycloak login page
     - Upgrade keycloak to 24.0.4
+    - Added Google Analytics information
