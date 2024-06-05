@@ -29,8 +29,8 @@ sources:
 # dependencies for the helm chart, use helm dep install to the install them.
 dependencies:
   - name: keycloak
-    version: ~18
-    repository: https://codecentric.github.io/helm-charts
+    version: ~21
+    repository: https://charts.bitnami.com/bitnami
   - name: postgresql
     version: ~10
     repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
@@ -48,4 +48,5 @@ annotations:
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
     - Custom theme to Keycloak login page
+    - Upgrade keycloak to 24.0.4
     - Added Google Analytics information
