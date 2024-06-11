@@ -6,4 +6,6 @@ data:
   quota.json: |
     {{- .Values.quota | nindent 4 }}
   ga_key.json: |
-    {{- .Values.ga_key | nindent 4 }}
+    {
+      "GA_KEY": "{{- .Values.google_analytics }}"
+    }

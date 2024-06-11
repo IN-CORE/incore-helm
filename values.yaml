@@ -102,10 +102,13 @@ quota: |
      }
   }
 
-ga_key: |
-  {
-    "GA_KEY": "GA_KEY"
-  }
+# the following information is for embedding google analytics into IN-CORE sites
+# it WILL NOT impact the operation of the site if this is NOT set up
+# it is used to track usage of the site and to help improve the site
+# to set up Google Analytics, you need to create a Google Analytics account
+# and get the tracking id, which is a string that looks like "G-AB12CDEFGH"
+# you can then set the GA_KEY to this value
+google_analytics: "GA-1234"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -139,7 +142,7 @@ frontend:
   replicas: 1
   image:
     repository: frontend
-    tag: 1.11.0
+    tag: 1.12.0
   service:
     type: ClusterIP
     port: 80
@@ -176,7 +179,7 @@ doc_incore:
   replicas: 1
   image:
     repository: doc/incore
-    tag: 4.11.0
+    tag: 4.12.0
   service:
     type: ClusterIP
     port: 80
@@ -188,7 +191,7 @@ doc_pyincore:
   replicas: 1
   image:
     repository: doc/pyincore
-    tag: 1.18.1
+    tag: 1.19.0
   service:
     type: ClusterIP
     port: 80
@@ -200,7 +203,7 @@ doc_pyincore_viz:
   replicas: 1
   image:
     repository: doc/pyincore-viz
-    tag: 1.10.0
+    tag: 1.10.1
   service:
     type: ClusterIP
     port: 80
@@ -212,7 +215,7 @@ doc_pyincore_data:
   replicas: 1
   image:
     repository: doc/pyincore-data
-    tag: 0.6.2
+    tag: 0.6.3
   service:
     type: ClusterIP
     port: 80
@@ -224,7 +227,7 @@ doc_api:
   replicas: 1
   image:
     repository: doc/api
-    tag: v4.11.0
+    tag: v4.12.0
   service:
     type: ClusterIP
     port: 80
@@ -565,8 +568,8 @@ keycloak:
   postgresql:
     enabled: false
   externalDatabase:
-    host: incore-postgresql
-    user: keycloak
+    host: incore-postgresql # if the chart name is changed this needs to change as well
+    user: keycloak  # if the chart name is changed this needs to change as well
     password: keycloak
     database: keycloak
     port: 5432

@@ -5,7 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## 1.30.0 - 2024-06-12
+- IN-CORE release 5.4.0
 - Custom theme to Keycloak login page
 - Upgraded Keycloak to 24.0.4
 - Added Google Analytics information
