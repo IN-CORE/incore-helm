@@ -5,3 +5,7 @@ metadata:
 data:
   quota.json: |
     {{- .Values.quota | nindent 4 }}
+  ga_key.json: |
+    {
+      "GA_KEY": "{{- .Values.google_analytics }}"
+    }
