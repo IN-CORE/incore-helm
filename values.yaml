@@ -549,8 +549,8 @@ postgresql:
 keycloak:
   httpRelativePath: /auth/
   auth:
-    adminUser: admin
-    adminPassword: admin
+    adminUser: keycloak
+    adminPassword: keycloakAdminPassword
   proxy: edge
   ingress:
     enabled: true
