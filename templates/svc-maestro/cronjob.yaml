@@ -45,7 +45,7 @@ spec:
                       name: {{ include "incore.fullname" . }}-services
                       key: MAESTRO_USER_PASSWORD
                 - name: ADMIN_USERNAME
-                  value: {{ .Values.keycloak.user | quote }}
+                  value: {{ .Values.keycloak.auth.adminUser | quote }}
                 - name: ADMIN_PASSWORD
                   valueFrom:
                     secretKeyRef:
