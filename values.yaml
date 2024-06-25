@@ -523,31 +523,8 @@ mongodb:
 # POSTGRESQL
 # ----------------------------------------------------------------------
 postgresql:
-#  postgresqlPassword: incorerocks
-#
-#  initdbScripts:
-#    keycloak.sql: |
-#      CREATE DATABASE keycloak;
-#      CREATE USER keycloak WITH PASSWORD 'keycloak';
-#      GRANT ALL PRIVILEGES ON DATABASE keycloak TO keycloak;
-#    datawolf.sql: |
-#      CREATE DATABASE datawolf;
-#      CREATE USER datawolf WITH PASSWORD 'datawolf';
-#      GRANT ALL PRIVILEGES ON DATABASE datawolf TO datawolf;
-#    maestro.sql: |
-#      CREATE DATABASE maestro_galveston;
-#      CREATE DATABASE maestro_joplin;
-#      CREATE DATABASE maestro_slc;
-#      CREATE USER maestro WITH PASSWORD 'maestro';
-#      GRANT ALL PRIVILEGES ON DATABASE maestro_galveston TO maestro;
-#      GRANT ALL PRIVILEGES ON DATABASE maestro_joplin TO maestro;
-#      GRANT ALL PRIVILEGES ON DATABASE maestro_slc TO maestro;
   auth:
     postgresPassword: incorerocks
-#  global:
-#    postgresql:
-#      auth:
-#        password: test
   primary:
     initdb:
       scripts:
