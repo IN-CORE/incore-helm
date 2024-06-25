@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+- Upgraded postgresql to bitnami/postgresql:15.5.10
+
 ## 1.30.1 - 2024-06-13
 - Fix missing keycloak admin username for cronjob
 
