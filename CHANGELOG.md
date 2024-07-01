@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.30.2 - 2024-07-01
+- Minor release to correct the chart version number
+
 ## 1.30.1 - 2024-06-13
 - Fix missing keycloak admin username for cronjob
 
