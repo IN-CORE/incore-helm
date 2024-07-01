@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-- Upgraded postgresql to bitnami/postgresql:15.5.11
+- Upgraded postgresql to bitnami/postgresql:15.5.11. This requires an upgrade of the database, which can be done using a dump and restore.
 
 ## 1.30.1 - 2024-06-13
 - Fix missing keycloak admin username for cronjob
