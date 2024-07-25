@@ -570,7 +570,7 @@ keycloak:
   postgresql:
     enabled: false
   externalDatabase:
-    host: incore-postgresql # if the chart name is changed this needs to change as well
+    host: incore-postgresql-hl # if the chart name is changed this needs to change as well
     user: keycloak  # if the chart name is changed this needs to change as well
     password: keycloak
     database: keycloak
