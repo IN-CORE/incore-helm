@@ -32,8 +32,8 @@ dependencies:
     version: ~21
     repository: https://charts.bitnami.com/bitnami
   - name: postgresql
-    version: ~10
-    repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
+    version: ~15
+    repository: https://charts.bitnami.com/bitnami
   - name: mongodb
     version: ~9
     repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami

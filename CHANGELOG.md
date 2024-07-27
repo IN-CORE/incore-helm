@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+- Upgraded postgresql to bitnami/postgresql:15.5.11. This requires an upgrade of the database, which can be done using a dump and restore.
+
 ## 1.30.2 - 2024-07-01
 - Minor release to correct the chart version number
 
