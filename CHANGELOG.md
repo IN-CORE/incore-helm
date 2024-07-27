@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 - Upgraded postgresql to bitnami/postgresql:15.5.11. This requires an upgrade of the database, which can be done using a dump and restore.
 
+## 1.30.2 - 2024-07-01
+- Minor release to correct the chart version number
+
 ## 1.30.1 - 2024-06-13
 - Fix missing keycloak admin username for cronjob
 
