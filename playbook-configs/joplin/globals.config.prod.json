@@ -13,8 +13,8 @@
 	"allowedRegions": null,
 	"testbedSpace": "joplin-app",
 	"testbedGroup": "incore_joplin_user",
-	"registerNewUserURL": "https://identity.ncsa.illinois.edu/register/BSKC2UKQPU",
-	"resetPasswordURL": "https://identity.ncsa.illinois.edu/reset",
+	"registerNewUserURL": "https://incore.ncsa.illinois.edu/auth/realms/In-core/login-actions/registration?client_id=react-auth",
+	"resetPasswordURL": "https://incore.ncsa.illinois.edu/auth/realms/In-core/login-actions/reset-credentials?client_id=react-auth",
 	"inputDatasetTypes": {
 		"buildings": [
 			{
