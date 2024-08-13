@@ -577,7 +577,7 @@ keycloak:
     port: 5432
   initContainers: |
     - name: theme-provider
-      image: incorencsa/keycloak-theme:1.0.0
+      image: incorencsa/keycloak-theme:1.1.0
       command: 
         - sh
       args:
