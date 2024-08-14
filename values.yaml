@@ -578,7 +578,6 @@ keycloak:
   initContainers: |
     - name: theme-provider
       image: incorencsa/keycloak-theme:1.2.0
-
       command: 
         - sh
       args:
