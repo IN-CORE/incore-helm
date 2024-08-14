@@ -42,7 +42,7 @@
 	],
 	"testbedSpace": "commresilienceslc",
 	"testbedGroup": "incore_slc_user",
-	"registerNewUserURL": "https://incore-dev.ncsa.illinois.edu/auth/realms/In-core/login-actions/registration?client_id=react-auth",
+	"registerNewUserURL": "https://incore-dev.ncsa.illinois.edu/auth/realms/In-core/protocol/openid-connect/registrations?client_id=react-auth&response_type=code&scope=openid&redirect_uri=https://incore-dev.ncsa.illinois.edu/playbook/slc/",
 	"resetPasswordURL": "https://incore-dev.ncsa.illinois.edu/auth/realms/In-core/login-actions/reset-credentials?client_id=react-auth",
 	"inputDatasetTypes": {
 		"buildings": [
