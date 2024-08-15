@@ -8,12 +8,12 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.30.2
+version: 1.31.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
-appVersion: 5.3.1
+appVersion: 5.4.1
 
 # List of people that maintain this helm chart.
 maintainers:
@@ -47,6 +47,7 @@ annotations:
     - name: Helm Chart
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
+    - IN-CORE release 5.4.1
     - Update registration and reset password link in playbooks
     - Use correct mongodb uri secret in auth service
     - Upgraded postgresql to bitnami/postgresql:15.5.11. This requires an upgrade of the database, which can be done using a dump and restore.
