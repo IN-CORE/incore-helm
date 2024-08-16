@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.31.0 - 2024-08-21
+- Update registration and reset password link in playbooks
+- Use correct mongodb uri secret in auth service
+- Upgraded postgresql to bitnami/postgresql:15.5.11. This requires an upgrade of the database, which can be done using a dump and restore.
+- Updated keycloak theme to 1.1.0 that has email theme
+
 ## 1.30.2 - 2024-07-01
 - Minor release to correct the chart version number
 
