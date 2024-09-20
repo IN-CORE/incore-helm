@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "incore.fullname" . }}-svc-project
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.svc_project.replicas }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "incore.name" . }}-svc-project
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "incore.name" . }}-svc-project
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: incore-project-jetty
+          image: "{{ .Values.image.project }}/{{ .Values.svc_project.image.repository }}:{{ .Values.svc_project.image.tag }}"
+          imagePullPolicy: {{ .Values.svc_project.image.pullPolicy | default .Values.image.pullPolicy }}
+          env:
+            - name: JETTY_PORT
+              value: {{ .Values.svc_project.service.port | quote }}
+            - name: DATA_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: DATA_MONGODB_URI
+            - name: SPACE_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: SPACE_MONGODB_URI
+            - name: PROJECT_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: PROJECT_MONGODB_URI
+            - name: COMMON_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: COMMON_MONGODB_URI
+            - name: SERVICES_ALLOW_ORIGIN
+              value: {{ join "," .Values.cors.origin | quote }}
+            - name: SERVICES_ALLOW_METHODS
+              value: {{ .Values.cors.methods | quote }}
+            - name: SERVICES_ALLOW_HEADERS
+              value: {{ .Values.cors.headers | quote }}
+          ports:
+            - containerPort: {{ .Values.svc_project.service.port }}
+              name: svc-project
+          livenessProbe:
+            httpGet:
+              path: /project/api/projects?skip=0&limit=1
+              port: {{ .Values.svc_project.service.port }}
+          readinessProbe:
+            httpGet:
+              path: /project/api/projects?skip=0&limit=1
+              port: {{ .Values.svc_project.service.port }}
+          resources:
+            {{- toYaml .Values.frontend.resources | nindent 12 }}
+      {{- with .Values.frontend.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.frontend.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.frontend.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
