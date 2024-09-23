@@ -28,7 +28,7 @@ spec:
     - host: {{ .host | quote }}
       http:
         paths:
-          - path: /project/api/
+          - path: /project/
             pathType: ImplementationSpecific
             backend:
               service:

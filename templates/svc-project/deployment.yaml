@@ -27,21 +27,16 @@ spec:
           env:
             - name: JETTY_PORT
               value: {{ .Values.svc_project.service.port | quote }}
-            - name: DATA_MONGODB_URI
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: DATA_MONGODB_URI
-            - name: SPACE_MONGODB_URI
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "incore.fullname" . }}-services
-                  key: SPACE_MONGODB_URI
             - name: PROJECT_MONGODB_URI
               valueFrom:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: PROJECT_MONGODB_URI
+            - name: SPACE_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: SPACE_MONGODB_URI
             - name: COMMON_MONGODB_URI
               valueFrom:
                 secretKeyRef:
@@ -58,11 +53,11 @@ spec:
               name: svc-project
           livenessProbe:
             httpGet:
-              path: /project/api/projects?skip=0&limit=1
+              path: /project/
               port: {{ .Values.svc_project.service.port }}
           readinessProbe:
             httpGet:
-              path: /project/api/projects?skip=0&limit=1
+              path: /project/
               port: {{ .Values.svc_project.service.port }}
           resources:
             {{- toYaml .Values.frontend.resources | nindent 12 }}
