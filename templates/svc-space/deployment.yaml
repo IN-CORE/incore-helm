@@ -77,6 +77,11 @@ spec:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: SPACE_MONGODB_URI
+            - name: PROJECT_SERVICE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: PROJECT_SERVICE_URL
             - name: SEMANTICS_MONGODB_URI
               valueFrom:
                 secretKeyRef:

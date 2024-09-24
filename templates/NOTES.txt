@@ -46,6 +46,7 @@ Services:
 - Semantics     : {{ .Values.svc_sema.image.tag }}
 - Space         : {{ .Values.svc_space.image.tag }}
 - Plotting      : {{ .Values.svc_plotting.image.tag }}
+- Project       : {{ .Values.svc_project.image.tag }}
 
 Maestro Services:
 {{- if .Values.svc_maestro.testbeds }}
