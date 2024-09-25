@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 - Project service has been added
+- Add additional service urls to the environment variablees of project service
 
 ## 1.31.0 - 2024-08-21
 - Update registration and reset password link in playbooks
