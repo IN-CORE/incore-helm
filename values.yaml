@@ -608,4 +608,22 @@ keycloak:
   extraVolumeMounts: |
     - name: incore-theme
       mountPath: /opt/bitnami/keycloak/themes/incore-theme
-  
+  new_user_alert:
+    image:
+
+# ----------------------------------------------------------------------
+# CRONJOBS
+# ----------------------------------------------------------------------
+cronjob:
+  keycloak:
+    new_user_alert:
+        image:
+            repository: new-user-alert
+            tag: 0.1.0
+        env:
+          SMTP_SERVER: smtp_server_name
+          SMTP_PORT: 25
+          EMAIL_SUBJECT: "IN-CORE New User Alert"
+          EMAIL_RECIPIENTS: ""
+          EMAIL_FROM: ""
+          EMAIL_BODY: "A new user has been created in IN-CORE"

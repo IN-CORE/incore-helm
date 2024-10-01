@@ -74,4 +74,4 @@ Support:
 
 Cron Job:
 - Maestro User Sync     : {{ .Values.maestro_usersync.image.tag }}
-- Version Tag Sync      : {{ .Values.frontend.image.tag }}
+- New User Alert        : {{ .Values.cronjob.keycloak.new_user_alert.image.tag }}
