@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "incore.fullname" . }}-new-user-alert
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  schedule: "*/12 * * * *"  # Runs every 12 minutes
+  startingDeadlineSeconds: 3600
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      template:
+        spec:
+          {{ - with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{ - toYaml . | nindent 12 }}
+          {{ - end } }
+          containers:
+          - name: new-user-alert-job
+            image: hub.ncsa.illinois.edu/incore/new-user-alert:0.1.0
+            image: "{{ .Values.image.project }}/{{ .Values.new-user-alert.image.repository }}:{{ .Values.maestro_usersync.image.tag }}"
+            envFrom:
+            - secretRef:
+                name: keycloak-env-secrets  # Reference to a Kubernetes secret for environment variables
+          restartPolicy: OnFailure
