@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "incore.labels" . | nindent 4 }}
 spec:
-  schedule: "*/15 * * * *"  # Runs every 15 minutes
+  schedule: "0 8,16 * * 1-5"  # Runs at 8 AM and 4 PM, Monday to Friday
   startingDeadlineSeconds: 3600
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1
@@ -50,5 +50,3 @@ spec:
                 - name: EMAIL_BODY
                   value: {{ .Values.cronjob.keycloak.new_user_alert.env.EMAIL_BODY | quote }}
           restartPolicy: Never
-
-
