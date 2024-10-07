@@ -49,3 +49,4 @@ annotations:
   artifacthub.io/changes: |
     - Project service has been added
     - Add additional service urls to the environment variablees of project service
+    - Add cronjob for alerting new user registration
