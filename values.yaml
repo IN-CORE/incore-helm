@@ -608,8 +608,6 @@ keycloak:
   extraVolumeMounts: |
     - name: incore-theme
       mountPath: /opt/bitnami/keycloak/themes/incore-theme
-  new_user_alert:
-    image:
 
 # ----------------------------------------------------------------------
 # CRONJOBS
