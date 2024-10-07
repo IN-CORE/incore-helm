@@ -30,6 +30,7 @@ UI:
 - playbooks-{{ $key }}: {{ .image | quote }}
 {{- end }}
 {{- end }}
+- studio        : {{ .Values.studio.image.tag }}
 
 Documentation:
 - Manual        : {{ .Values.doc_incore.image.tag }}
