@@ -485,6 +485,18 @@ datawolf:
     postgresqlPassword: datawolf
     postgresqlDatabase: database
 
+  extraEnvVars:
+    - name: DATASET_DAO
+      value: "edu.illinois.ncsa.incore.dao.IncoreDatasetDao"
+    - name: INCORE_SERVER
+      value: "http://incore-svc-data:8888"
+    - name: INCORE_GROUP
+      value: "incore_user"
+    - name: FILE_STORAGE
+      value: "edu.illinois.ncsa.incore.impl.IncoreFileStorage"
+    - name: INCORE_USER
+      value: "incrtest"
+
   ingress:
     enabled: false
 
