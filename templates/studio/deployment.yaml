@@ -26,6 +26,9 @@ spec:
         - name: studio
           image: "{{ .Values.image.project }}/{{ .Values.studio.image.repository }}:{{ .Values.studio.image.tag }}"
           imagePullPolicy: {{ .Values.studio.image.pullPolicy | default .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: studio-config
+              mountPath: /usr/share/nginx/html/studio
           ports:
             - containerPort: 80
               name: http
@@ -39,6 +42,13 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.studio.resources | nindent 12 }}
+      volumes:
+        - name: studio-config
+          configMap:
+            name: {{ include "incore.fullname" . }}-studio
+            items:
+              - key: dependencyGraph
+                path: dependencyGraph.json
       {{- with .Values.studio.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
