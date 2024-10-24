@@ -142,7 +142,7 @@ frontend:
   replicas: 1
   image:
     repository: frontend
-    tag: 1.13.0
+    tag: 1.13.1
   service:
     type: ClusterIP
     port: 80
@@ -179,7 +179,7 @@ doc_incore:
   replicas: 1
   image:
     repository: doc/incore
-    tag: 4.13.0
+    tag: 4.14.0
   service:
     type: ClusterIP
     port: 80
@@ -191,7 +191,7 @@ doc_pyincore:
   replicas: 1
   image:
     repository: doc/pyincore
-    tag: 1.19.0
+    tag: 1.20.0
   service:
     type: ClusterIP
     port: 80
@@ -203,7 +203,7 @@ doc_pyincore_viz:
   replicas: 1
   image:
     repository: doc/pyincore-viz
-    tag: 1.10.1
+    tag: 1.11.0
   service:
     type: ClusterIP
     port: 80
@@ -215,7 +215,7 @@ doc_pyincore_data:
   replicas: 1
   image:
     repository: doc/pyincore-data
-    tag: 0.6.3
+    tag: 0.7.0
   service:
     type: ClusterIP
     port: 80
@@ -227,7 +227,7 @@ doc_api:
   replicas: 1
   image:
     repository: doc/api
-    tag: v4.12.0
+    tag: v4.14.0
   service:
     type: ClusterIP
     port: 80
@@ -236,11 +236,11 @@ doc_api:
 # DATA SERVICE CONFIGURATION
 # ----------------------------------------------------------------------
 svc_data:
-  replicas: 4
+  replicas: 1
   repo: /home/incore/data/
   image:
     repository: data-jetty
-    tag: 1.26.1
+    tag: 1.27.0
   service:
     type: ClusterIP
     port: 8888
@@ -263,10 +263,10 @@ svc_data:
 # DFR3 SERVICE CONFIGURATION
 # ----------------------------------------------------------------------
 svc_dfr3:
-  replicas: 4
+  replicas: 1
   image:
     repository: dfr3-jetty
-    tag: 1.26.1
+    tag: 1.27.0
   service:
     type: ClusterIP
     port: 8888
@@ -286,10 +286,10 @@ svc_dfr3:
 # HAZARD SERVICE CONFIGURATION
 # ----------------------------------------------------------------------
 svc_hazard:
-  replicas: 4
+  replicas: 1
   image:
     repository: hazard-jetty
-    tag: 1.26.1
+    tag: 1.27.0
   service:
     type: ClusterIP
     port: 8888
@@ -309,10 +309,10 @@ svc_hazard:
 # SPACE SERVICE CONFIGURATION
 # ----------------------------------------------------------------------
 svc_space:
-  replicas: 2
+  replicas: 1
   image:
     repository: space-jetty
-    tag: 1.26.1
+    tag: 1.27.0
   service:
     type: ClusterIP
     port: 8888
@@ -335,7 +335,7 @@ svc_sema:
   replicas: 1
   image:
     repository: semantics-jetty
-    tag: 1.26.1
+    tag: 1.27.0
   service:
     type: ClusterIP
     port: 8888
@@ -350,6 +350,20 @@ svc_sema:
 #            period: 1s
 #            average: 10
 #            burst: 20
+
+# ----------------------------------------------------------------------
+# PROJECT SERVICE CONFIGURATION
+# ----------------------------------------------------------------------
+svc_project:
+  replicas: 1
+  image:
+    repository: project-jetty
+    tag: 1.27.0
+  service:
+    type: ClusterIP
+    port: 8888
+  ingress:
+    annotations:
 
 # ----------------------------------------------------------------------
 # MAESTRO SERVICE CONFIGURATION
@@ -594,3 +608,20 @@ keycloak:
   extraVolumeMounts: |
     - name: incore-theme
       mountPath: /opt/bitnami/keycloak/themes/incore-theme
+
+# ----------------------------------------------------------------------
+# CRONJOBS
+# ----------------------------------------------------------------------
+cronjob:
+  keycloak:
+    new_user_alert:
+        image:
+            repository: new-user-alert
+            tag: 0.1.0
+        env:
+          SMTP_SERVER: smtp_server_name
+          SMTP_PORT: 25
+          EMAIL_SUBJECT: "IN-CORE New User Alert"
+          EMAIL_RECIPIENTS: ""
+          EMAIL_FROM: ""
+          EMAIL_BODY: "A new user has been created in IN-CORE"

@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.32.0 - 2024-10-23
+- Project service has been added
+- Add additional service urls to the environment variablees of project service
+- Add cronjob for alerting new user registration
+- IN-CORE release 5.0.0
+
 ## 1.31.0 - 2024-08-21
 - Update registration and reset password link in playbooks
 - Use correct mongodb uri secret in auth service

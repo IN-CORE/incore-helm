@@ -47,8 +47,7 @@ annotations:
     - name: Helm Chart
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
-    - IN-CORE release 5.4.1
-    - Update registration and reset password link in playbooks
-    - Use correct mongodb uri secret in auth service
-    - Upgraded postgresql to bitnami/postgresql:15.5.11. This requires an upgrade of the database, which can be done using a dump and restore.
-    - Updated keycloak theme to 1.1.0 that has email theme
+    - Project service has been added
+    - Add additional service urls to the environment variables of project service
+    - Add cronjob for alerting new user registration
+    - IN-CORE release 5.5.0

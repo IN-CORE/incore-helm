@@ -46,6 +46,7 @@ Services:
 - Semantics     : {{ .Values.svc_sema.image.tag }}
 - Space         : {{ .Values.svc_space.image.tag }}
 - Plotting      : {{ .Values.svc_plotting.image.tag }}
+- Project       : {{ .Values.svc_project.image.tag }}
 
 Maestro Services:
 {{- if .Values.svc_maestro.testbeds }}
@@ -73,4 +74,4 @@ Support:
 
 Cron Job:
 - Maestro User Sync     : {{ .Values.maestro_usersync.image.tag }}
-- Version Tag Sync      : {{ .Values.frontend.image.tag }}
+- New User Alert        : {{ .Values.cronjob.keycloak.new_user_alert.image.tag }}

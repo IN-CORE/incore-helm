@@ -1,0 +1,52 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "incore.fullname" . }}-new-user-alert
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  schedule: "0 8,16 * * 1-5"  # Runs at 8 AM and 4 PM, Monday to Friday
+  startingDeadlineSeconds: 3600
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      template:
+        spec:
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          containers:
+            - name: new-user-alert-job
+              image: "{{ .Values.image.project }}/{{ .Values.cronjob.keycloak.new_user_alert.image.repository }}:{{ .Values.cronjob.keycloak.new_user_alert.image.tag }}"
+              imagePullPolicy: IfNotPresent
+              command: ["python"]
+              args:
+                - "/usr/src/app/find_new_users_and_mail.py"
+              env:
+                - name: KEYCLOAK_USERNAME
+                  value: {{ .Values.maestro_usersync.env.ADMIN_USERNAME }}
+                - name: KEYCLOAK_PASSWORD
+                  value: {{ .Values.keycloak.auth.adminPassword }}
+                - name: KEYCLOAK_URL
+                  value: {{ .Values.maestro_usersync.env.SERVER_BASE_URL }}
+                - name: REALM
+                  value: In-core
+                - name: GROUP
+                  value: 0unapproved
+                - name: SMTP_SERVER
+                  value: {{ .Values.cronjob.keycloak.new_user_alert.env.SMTP_SERVER }}
+                - name: SMTP_PORT
+                  value: {{ .Values.cronjob.keycloak.new_user_alert.env.SMTP_PORT | quote }}
+                - name: EMAIL_SUBJECT
+                  value: {{ .Values.cronjob.keycloak.new_user_alert.env.EMAIL_SUBJECT | quote }}
+                - name: EMAIL_RECIPIENTS
+                  value: {{ .Values.cronjob.keycloak.new_user_alert.env.EMAIL_RECIPIENTS }}
+                - name: EMAIL_FROM
+                  value: {{ .Values.cronjob.keycloak.new_user_alert.env.EMAIL_FROM }}
+                - name: EMAIL_BODY
+                  value: {{ .Values.cronjob.keycloak.new_user_alert.env.EMAIL_BODY | quote }}
+          restartPolicy: Never
