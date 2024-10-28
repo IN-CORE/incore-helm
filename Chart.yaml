@@ -51,3 +51,4 @@ annotations:
     - Add additional service urls to the environment variablees of project service
     - Add cronjob for alerting new user registration
     - Add IN-CORE Studio deployment
+    - Add IN-CORE Studio ConfigMap for dependency graph.
