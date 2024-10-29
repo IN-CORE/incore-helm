@@ -6,10 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+- Add extra variables for datawolf
+- 
+## 1.32.0 - 2024-10-23
 - Project service has been added
 - Add additional service urls to the environment variablees of project service
 - Add cronjob for alerting new user registration
-- Add extra variables for datawolf
+- IN-CORE release 5.0.0
 
 ## 1.31.0 - 2024-08-21
 - Update registration and reset password link in playbooks
