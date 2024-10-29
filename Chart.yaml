@@ -47,7 +47,5 @@ annotations:
     - name: Helm Chart
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
-    - Project service has been added
-    - Add additional service urls to the environment variables of project service
-    - Add cronjob for alerting new user registration
-    - IN-CORE release 5.5.0
+    - Add extra variables for datawolf
+
