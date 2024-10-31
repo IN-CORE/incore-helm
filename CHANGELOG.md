@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 - Add extra variables for datawolf
-- 
+- Changed new user alert cron job schedule to central time
+
 ## 1.32.0 - 2024-10-23
 - Project service has been added
 - Add additional service urls to the environment variablees of project service
