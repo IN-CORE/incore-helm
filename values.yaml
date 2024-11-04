@@ -191,7 +191,7 @@ doc_pyincore:
   replicas: 1
   image:
     repository: doc/pyincore
-    tag: 1.20.0
+    tag: v1.20.1
   service:
     type: ClusterIP
     port: 80
@@ -203,7 +203,7 @@ doc_pyincore_viz:
   replicas: 1
   image:
     repository: doc/pyincore-viz
-    tag: 1.11.0
+    tag: v1.11.0
   service:
     type: ClusterIP
     port: 80
@@ -215,7 +215,7 @@ doc_pyincore_data:
   replicas: 1
   image:
     repository: doc/pyincore-data
-    tag: 0.7.0
+    tag: v0.7.0
   service:
     type: ClusterIP
     port: 80
@@ -240,7 +240,7 @@ svc_data:
   repo: /home/incore/data/
   image:
     repository: data-jetty
-    tag: 1.27.0
+    tag: 1.27.1
   service:
     type: ClusterIP
     port: 8888
@@ -266,7 +266,7 @@ svc_dfr3:
   replicas: 1
   image:
     repository: dfr3-jetty
-    tag: 1.27.0
+    tag: 1.27.1
   service:
     type: ClusterIP
     port: 8888
@@ -289,7 +289,7 @@ svc_hazard:
   replicas: 1
   image:
     repository: hazard-jetty
-    tag: 1.27.0
+    tag: 1.27.1
   service:
     type: ClusterIP
     port: 8888
@@ -312,7 +312,7 @@ svc_space:
   replicas: 1
   image:
     repository: space-jetty
-    tag: 1.27.0
+    tag: 1.27.1
   service:
     type: ClusterIP
     port: 8888
@@ -335,7 +335,7 @@ svc_sema:
   replicas: 1
   image:
     repository: semantics-jetty
-    tag: 1.27.0
+    tag: 1.27.1
   service:
     type: ClusterIP
     port: 8888
@@ -358,7 +358,7 @@ svc_project:
   replicas: 1
   image:
     repository: project-jetty
-    tag: 1.27.0
+    tag: 1.27.1
   service:
     type: ClusterIP
     port: 8888
@@ -484,6 +484,18 @@ datawolf:
     postgresqlUsername: datawolf
     postgresqlPassword: datawolf
     postgresqlDatabase: database
+
+  extraEnvVars:
+    - name: DATASET_DAO
+      value: "edu.illinois.ncsa.incore.dao.IncoreDatasetDao"
+    - name: INCORE_SERVER
+      value: "http://incore-svc-data:8888"
+    - name: INCORE_GROUP
+      value: "incore_user"
+    - name: FILE_STORAGE
+      value: "edu.illinois.ncsa.incore.impl.IncoreFileStorage"
+    - name: INCORE_USER
+      value: "incrtest"
 
   ingress:
     enabled: false
