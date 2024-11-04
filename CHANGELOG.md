@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## Unreleased
+## 1.32.1 - 2024-11-04
 - Add extra variables for datawolf
 - Changed new user alert cron job schedule to central time
 
