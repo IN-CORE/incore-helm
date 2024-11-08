@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "incore.fullname" . }}-studio
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.studio.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "incore.name" . }}-studio
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "incore.name" . }}-studio
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      {{- with .Values.studio.image.pullSecrets | default .Values.image.pullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: studio
+          image: "{{ .Values.image.project }}/{{ .Values.studio.image.repository }}:{{ .Values.studio.image.tag }}"
+          imagePullPolicy: {{ .Values.studio.image.pullPolicy | default .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: studio-config
+              mountPath: /usr/share/nginx/html/studio/config
+          ports:
+            - containerPort: 80
+              name: http
+          livenessProbe:
+            httpGet:
+              path: /studio/
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /studio/
+              port: http
+          resources:
+            {{- toYaml .Values.studio.resources | nindent 12 }}
+      volumes:
+        - name: studio-config
+          configMap:
+            name: {{ include "incore.fullname" . }}-studio
+            items:
+              - key: dependencyGraph
+                path: dependencyGraph.json
+      {{- with .Values.studio.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.studio.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.studio.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
