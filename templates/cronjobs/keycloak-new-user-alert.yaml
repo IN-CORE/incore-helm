@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "incore.labels" . | nindent 4 }}
 spec:
-  schedule: "0 8,16 * * 1-5"  # Runs at 8 AM and 4 PM, Monday to Friday
+  schedule: "0 5,13 * * 1-5"  # Runs at 8 AM and 4 PM, Monday to Friday
   startingDeadlineSeconds: 3600
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1

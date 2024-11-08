@@ -10,6 +10,6 @@ dependencies:
   version: 9.3.1
 - name: datawolf
   repository: https://opensource.ncsa.illinois.edu/charts
-  version: 1.0.1
-digest: sha256:9dcf0f7f3dcbf0e52b393fcfb97acfec40868bef13d998e21f295d75d941936f
-generated: "2024-10-30T14:49:13.57372-04:00"
+  version: 1.1.0
+digest: sha256:127ffce91fd64e1f70c326fa8a8c013b09a1cd9a4dd8ed05db15244ff644f0cb
+generated: "2024-11-01T14:20:27.979116-05:00"
