@@ -28,7 +28,7 @@ spec:
           imagePullPolicy: {{ .Values.studio.image.pullPolicy | default .Values.image.pullPolicy }}
           volumeMounts:
             - name: studio-config
-              mountPath: /usr/share/nginx/html/studio
+              mountPath: /usr/share/nginx/html/studio/config
           ports:
             - containerPort: 80
               name: http
