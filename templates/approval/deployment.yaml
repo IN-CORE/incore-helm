@@ -34,9 +34,13 @@ spec:
             - name: KEYCLOAK_PASSWORD
               value: {{ .Values.keycloak.auth.adminPassword }}
             - name: KEYCLOAK_URL
-              value: "https://incore.ncsa.illinois.edu/auth/"
+              {{- with first .Values.keycloak.ingress.rules }}
+              value: {{ printf "https://%s/auth/" .host | quote }}
+              {{- end }}
             - name: APPROVE_APP_URL
-              value: "https://incore.ncsa.illinois.edu/approve"
+              {{- with first .Values.keycloak.ingress.rules }}
+              value: {{ printf "https://%s/approve" .host | quote }}
+              {{- end }}
             - name: EMAIL_FROM
               value: "no-reply@illinois.edu"
             - name: SMTP_SERVER
