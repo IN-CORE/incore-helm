@@ -48,8 +48,8 @@ spec:
             - name: SMTP_PORT
               value: "25"
           ports:
-            - containerPort: 80
-              name: http
+            - containerPort: {{ .Values.approval.service.port }}
+              name: approval
 #          livenessProbe:
 #            httpGet:
 #              path: /approval/
