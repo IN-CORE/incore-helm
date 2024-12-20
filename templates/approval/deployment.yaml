@@ -32,15 +32,12 @@ spec:
             - name: KEYCLOAK_USERNAME
               value: "keycloak"
             - name: KEYCLOAK_PASSWORD
-              value: {{ .Values.keycloak.auth.adminPassword }}
+              value: {{ .Values.approval.KEYCLOAK_PASSWORD | default .Values.keycloak.auth.adminPassword | quote }}
             - name: KEYCLOAK_URL
-              {{- with first .Values.keycloak.ingress.rules }}
-              value: {{ printf "https://%s/auth/" .host | quote }}
-              {{- end }}
+              value: {{ .Values.approval.KEYCLOAK_URL | default .Values.keycloak.auth.url | default (printf
+                "https://%s/auth/" (first .Values.keycloak.ingress.rules).host) | quote }}
             - name: APPROVE_APP_URL
-              {{- with first .Values.keycloak.ingress.rules }}
-              value: {{ printf "https://%s/approve" .host | quote }}
-              {{- end }}
+              value: {{ .Values.approval.APPROVE_APP_URL | default .Values.keycloak.auth.approveAppUrl | default (printf "https://%s/approval/approve" (first .Values.keycloak.ingress.rules).host) | quote }}
             - name: EMAIL_FROM
               value: "no-reply@illinois.edu"
             - name: SMTP_SERVER
