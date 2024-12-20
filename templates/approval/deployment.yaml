@@ -26,6 +26,23 @@ spec:
         - name: approval
           image: "{{ .Values.image.project }}/{{ .Values.approval.image.repository }}:{{ .Values.approval.image.tag }}"
           imagePullPolicy: {{ .Values.approval.image.pullPolicy | default .Values.image.pullPolicy }}
+          env:
+            - name: ADMIN_LIST
+              value: "jonglee1@illinois.edu,cmnavarr@illinois.edu"
+            - name: KEYCLOAK_USERNAME
+              value: "keycloak"
+            - name: KEYCLOAK_PASSWORD
+              value: {{ .Values.keycloak.auth.adminPassword }}
+            - name: KEYCLOAK_URL
+              value: "https://incore.ncsa.illinois.edu/auth/"
+            - name: APPROVE_APP_URL
+              value: "https://incore.ncsa.illinois.edu/approve"
+            - name: EMAIL_FROM
+              value: "no-reply@illinois.edu"
+            - name: SMTP_SERVER
+              value: "outbound-relays.techservices.illinois.edu"
+            - name: SMTP_PORT
+              value: "25"
           ports:
             - containerPort: 80
               name: http
@@ -39,13 +56,6 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.approval.resources | nindent 12 }}
-      volumes:
-        - name: approval-config
-          configMap:
-            name: {{ include "incore.fullname" . }}-approval
-            items:
-              - key: dependencyGraph
-                path: dependencyGraph.json
       {{- with .Values.approval.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
