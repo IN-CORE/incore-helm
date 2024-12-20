@@ -50,14 +50,14 @@ spec:
           ports:
             - containerPort: 80
               name: http
-          livenessProbe:
-            httpGet:
-              path: /approval/
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /approval/
-              port: http
+#          livenessProbe:
+#            httpGet:
+#              path: /approval/
+#              port: http
+#          readinessProbe:
+#            httpGet:
+#              path: /approval/
+#              port: http
           resources:
             {{- toYaml .Values.approval.resources | nindent 12 }}
       {{- with .Values.approval.nodeSelector }}
