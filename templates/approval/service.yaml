@@ -12,5 +12,5 @@ spec:
   ports:
     - port: {{ .Values.approval.service.port }}
       name: approval
-      targetPort: http
+      targetPort: {{ .Values.approval.service.port }}
       protocol: TCP
