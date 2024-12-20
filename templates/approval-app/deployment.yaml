@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "incore.fullname" . }}-approval
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.approval.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "incore.name" . }}-approval
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "incore.name" . }}-approval
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      {{- with .Values.approval.image.pullSecrets | default .Values.image.pullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: approval
+          image: "{{ .Values.image.project }}/{{ .Values.approval.image.repository }}:{{ .Values.approval.image.tag }}"
+          imagePullPolicy: {{ .Values.approval.image.pullPolicy | default .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 80
+              name: http
+          livenessProbe:
+            httpGet:
+              path: /approval/
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /approval/
+              port: http
+          resources:
+            {{- toYaml .Values.approval.resources | nindent 12 }}
+      volumes:
+        - name: approval-config
+          configMap:
+            name: {{ include "incore.fullname" . }}-approval
+            items:
+              - key: dependencyGraph
+                path: dependencyGraph.json
+      {{- with .Values.approval.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.approval.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.approval.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
