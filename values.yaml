@@ -642,7 +642,7 @@ keycloak:
 approval:
   replicas: 1
   image:
-    repository: approval
+    repository: approval-app
     tag: latest
   service:
     type: ClusterIP
