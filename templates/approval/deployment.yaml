@@ -47,14 +47,14 @@ spec:
           ports:
             - containerPort: {{ .Values.approval.service.port }}
               name: approval
-#          livenessProbe:
-#            httpGet:
-#              path: /approval/
-#              port: http
-#          readinessProbe:
-#            httpGet:
-#              path: /approval/
-#              port: http
+          livenessProbe:
+            httpGet:
+              path: /approval/healthz
+              port: approval
+          readinessProbe:
+            httpGet:
+              path: /approval/healthz
+              port: approval
           resources:
             {{- toYaml .Values.approval.resources | nindent 12 }}
       {{- with .Values.approval.nodeSelector }}
