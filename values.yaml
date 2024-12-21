@@ -634,6 +634,21 @@ keycloak:
   extraVolumeMounts: |
     - name: incore-theme
       mountPath: /opt/bitnami/keycloak/themes/incore-theme
+    
+
+# ----------------------------------------------------------------------
+# APPROVAL APP CONFIGURATION
+# ----------------------------------------------------------------------
+approval:
+  replicas: 1
+  image:
+    repository: approval-app
+    tag: latest
+  service:
+    type: ClusterIP
+    port: 5000
+  ingress:
+    annotations:
 
 # ----------------------------------------------------------------------
 # CRONJOBS
