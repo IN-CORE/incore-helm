@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add more allowed method to CORS
 - Add IN-CORE Studio deployment
 - Add IN-CORE Studio configMap
+- Add IN-CORE user approval application
 
 ## 1.32.1 - 2024-11-04
 - Add extra variables for datawolf
