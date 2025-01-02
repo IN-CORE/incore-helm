@@ -28,9 +28,9 @@ spec:
           imagePullPolicy: {{ .Values.approval.image.pullPolicy | default .Values.image.pullPolicy }}
           env:
             - name: ADMIN_LIST
-              value: "jonglee1@illinois.edu,cmnavarr@illinois.edu"
+              value: {{ .Values.approval.ADMIN_LIST | quote }}
             - name: KEYCLOAK_USERNAME
-              value: "keycloak"
+              value: {{ .Values.approval.KEYCLOAK_USERNAME | quote }}
             - name: KEYCLOAK_PASSWORD
               {{- if .Values.approval.KEYCLOAK_PASSWORD }}
               value: {{ .Values.approval.KEYCLOAK_PASSWORD | quote }}
@@ -46,11 +46,11 @@ spec:
             - name: APPROVE_APP_URL
               value: {{ .Values.approval.APPROVE_APP_URL | default .Values.keycloak.auth.approveAppUrl | default (printf "https://%s/approval/approve" (first .Values.keycloak.ingress.rules).host) | quote }}
             - name: EMAIL_FROM
-              value: "no-reply@illinois.edu"
+              value: {{ .Values.approval.EMAIL_FROM | quote }}
             - name: SMTP_SERVER
-              value: "outbound-relays.techservices.illinois.edu"
+              value: {{ .Values.approval.SMTP_SERVER | quote }}
             - name: SMTP_PORT
-              value: "25"
+              value: {{ .Values.approval.SMTP_PORT | quote }}
           ports:
             - containerPort: {{ .Values.approval.service.port }}
               name: approval
