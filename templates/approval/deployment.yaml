@@ -44,7 +44,7 @@ spec:
               value: {{ .Values.approval.KEYCLOAK_URL | default .Values.keycloak.auth.url | default (printf
                 "https://%s/auth/" (first .Values.keycloak.ingress.rules).host) | quote }}
             - name: APPROVE_APP_URL
-              value: {{ .Values.approval.APPROVE_APP_URL | default .Values.keycloak.auth.approveAppUrl | default (printf "https://%s/approval/approve" (first .Values.keycloak.ingress.rules).host) | quote }}
+              value: {{ .Values.approval.APPROVE_APP_URL | default .Values.keycloak.auth.approveAppUrl | default (printf "https://%s/approval" (first .Values.keycloak.ingress.rules).host) | quote }}
             - name: EMAIL_FROM
               value: {{ .Values.approval.EMAIL_FROM | quote }}
             - name: SMTP_SERVER
