@@ -50,3 +50,4 @@ annotations:
     - Add more allowed method to cors
     - Add IN-CORE Studio deployment
     - Add IN-CORE Studio ConfigMap for dependency graph.
+    - Add IN-CORE user approval application

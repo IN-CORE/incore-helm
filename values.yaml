@@ -634,6 +634,26 @@ keycloak:
   extraVolumeMounts: |
     - name: incore-theme
       mountPath: /opt/bitnami/keycloak/themes/incore-theme
+    
+
+# ----------------------------------------------------------------------
+# APPROVAL APP CONFIGURATION
+# ----------------------------------------------------------------------
+approval:
+  replicas: 1
+  image:
+    repository: approval-app
+    tag: master
+  service:
+    type: ClusterIP
+    port: 5000
+  ingress:
+    annotations:
+  ADMIN_LIST: admin1@illinois.edu,admin2@illinois.edu
+  KEYCLOAK_USERNAME: keycloak
+  EMAIL_FROM: no-reply@illinois.edu
+  SMTP_SERVER: smtp.server.name
+  SMTP_PORT: 25
 
 # ----------------------------------------------------------------------
 # CRONJOBS
