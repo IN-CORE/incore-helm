@@ -32,14 +32,10 @@ spec:
             - name: KEYCLOAK_USERNAME
               value: {{ .Values.approval.KEYCLOAK_USERNAME | quote }}
             - name: KEYCLOAK_PASSWORD
-              {{- if .Values.approval.KEYCLOAK_PASSWORD }}
-              value: {{ .Values.approval.KEYCLOAK_PASSWORD | quote }}
-              {{- else }}
               valueFrom:
                 secretKeyRef:
                   name: {{ include "incore.fullname" . }}-services
                   key: KEYCLOAK_PASSWORD
-              {{- end }}
             - name: KEYCLOAK_URL
               value: {{ .Values.approval.KEYCLOAK_URL | default .Values.keycloak.auth.url | default (printf
                 "https://%s/auth/" (first .Values.keycloak.ingress.rules).host) | quote }}
