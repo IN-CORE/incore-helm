@@ -30,6 +30,7 @@ UI:
 - playbooks-{{ $key }}: {{ .image | quote }}
 {{- end }}
 {{- end }}
+- studio        : {{ .Values.studio.image.tag }}
 
 Documentation:
 - Manual        : {{ .Values.doc_incore.image.tag }}
@@ -71,6 +72,7 @@ Support:
 - Postgresql    : {{ .Values.postgresql.image.tag | default .Subcharts.postgresql.Chart.AppVersion }}
 - Keycloak      : {{ .Values.keycloak.image.tag | default .Subcharts.keycloak.Chart.AppVersion }} 
 - MongoDB       : {{ .Values.mongodb.image.tag | default .Subcharts.mongodb.Chart.AppVersion }}
+- Approval      : {{ .Values.approval.image.tag }}
 
 Cron Job:
 - Maestro User Sync     : {{ .Values.maestro_usersync.image.tag }}

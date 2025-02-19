@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.33.0 - 2025-02-20
+- IN-CORE release 6.0.0
+- Add more allowed method to CORS
+- Add IN-CORE Studio deployment
+- Add IN-CORE Studio configMap
+- Add IN-CORE user approval application
+
 ## 1.32.1 - 2024-11-04
 - Add extra variables for datawolf
 - Changed new user alert cron job schedule to central time

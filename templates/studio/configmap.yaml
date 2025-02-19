@@ -1,0 +1,13 @@
+{{- if .Values.studio }}
+{{- $labels := include "incore.labels" . }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "incore.fullname" . }}-studio
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+data:
+  dependencyGraph: |-
+    {{- $.Files.Get "studio/dependencyGraph.json" | nindent 4 }}
+{{- end }}
