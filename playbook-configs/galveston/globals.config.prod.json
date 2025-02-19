@@ -1,13 +1,13 @@
 {
 	"baseUrlRoute": "playbook",
-	"geoServerWMS": "https://incore.ncsa.illinois.edu/geoserver/incore/wms",
-	"geoServerWFS": "https://incore.ncsa.illinois.edu/geoserver/incore/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json",
+	"geoServerWMS": "https://tools.in-core.org/geoserver/incore/wms",
+	"geoServerWFS": "https://tools.in-core.org/geoserver/incore/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json",
 	"client_id": "react-auth",
-	"authService": "https://incore.ncsa.illinois.edu/auth/realms/In-core/protocol/openid-connect/token",
-	"hazardServiceBase": "https://incore.ncsa.illinois.edu/hazard/api/",
-	"dataServiceBase": "https://incore.ncsa.illinois.edu/data/api/",
-	"spaceServiceBase": "https://incore.ncsa.illinois.edu/space/api/",
-	"maestroServiceBase": "https://incore.ncsa.illinois.edu/maestro/galveston/",
+	"authService": "https://tools.in-core.org/auth/realms/In-core/protocol/openid-connect/token",
+	"hazardServiceBase": "https://tools.in-core.org/hazard/api/",
+	"dataServiceBase": "https://tools.in-core.org/data/api/",
+	"spaceServiceBase": "https://tools.in-core.org/space/api/",
+	"maestroServiceBase": "https://tools.in-core.org/maestro/galveston/",
 	"setGravatarURL": "https://en.gravatar.com/support/activating-your-account/",
 	"allowUpload": false,
 	"allowedRegions": [
@@ -22,8 +22,8 @@
 	],
 	"testbedSpace": "galveston-app",
 	"testbedGroup": "incore_galveston_user",
-	"registerNewUserURL": "https://incore.ncsa.illinois.edu/auth/realms/In-core/protocol/openid-connect/registrations?client_id=react-auth&response_type=code&scope=openid&redirect_uri=https://incore.ncsa.illinois.edu/playbook/galveston/",
-	"resetPasswordURL": "https://incore.ncsa.illinois.edu/auth/realms/In-core/login-actions/reset-credentials?client_id=react-auth",
+	"registerNewUserURL": "https://tools.in-core.org/auth/realms/In-core/protocol/openid-connect/registrations?client_id=react-auth&response_type=code&scope=openid&redirect_uri=https://tools.in-core.org/playbook/galveston/",
+	"resetPasswordURL": "https://tools.in-core.org/auth/realms/In-core/login-actions/reset-credentials?client_id=react-auth",
 	"inputDatasetTypes": {
 		"buildings": [
 			{

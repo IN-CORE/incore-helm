@@ -1,8 +1,8 @@
 {
   "hostname": "https://incore.ncsa.illinois.edu",
-  "executionGetURL": "https://incore.ncsa.illinois.edu/datawolf/workflows/9c1c11c8-9ba5-4125-bb35-e032095983af/executions",
-  "executionPostURL": "https://incore.ncsa.illinois.edu/datawolf/executions",
-  "datasetBaseURL": "https://incore.ncsa.illinois.edu/datawolf/datasets",
-  "datawolfPersonsDetail": "https://incore.ncsa.illinois.edu/datawolf/persons?email=",
+  "executionGetURL": "https://tools.in-core.org/datawolf/workflows/9c1c11c8-9ba5-4125-bb35-e032095983af/executions",
+  "executionPostURL": "https://tools.in-core.org/datawolf/executions",
+  "datasetBaseURL": "https://tools.in-core.org/datawolf/datasets",
+  "datawolfPersonsDetail": "https://tools.in-core.org/datawolf/persons?email=",
   "retreiveTimeInterval": 10000
 }
