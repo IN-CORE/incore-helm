@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unreleased
+- Removed new user alert cron job
+
 ## 1.33.0 - 2025-02-20
 - IN-CORE release 6.0.0
 - Add more allowed method to CORS
