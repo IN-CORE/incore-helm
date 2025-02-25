@@ -640,7 +640,7 @@ keycloak:
 # APPROVAL APP CONFIGURATION
 # ----------------------------------------------------------------------
 approval:
-  replicas: 1
+  replicaCount: 1
   image:
     repository: approval-app
     tag: master
