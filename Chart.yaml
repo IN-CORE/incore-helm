@@ -47,8 +47,4 @@ annotations:
     - name: Helm Chart
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
-    - IN-CORE release 6.0.0
-    - Add more allowed method to CORS
-    - Add IN-CORE Studio deployment
-    - Add IN-CORE Studio configMap
-    - Add IN-CORE user approval application
+    - Update the configuration of the IN-CORE playbooks
