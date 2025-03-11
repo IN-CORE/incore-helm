@@ -1,13 +1,13 @@
 {
 	"baseUrlRoute": "playbook",
-	"geoServerWMS": "https://incore-dev.ncsa.illinois.edu/geoserver/incore/wms",
-	"geoServerWFS": "https://incore-dev.ncsa.illinois.edu/geoserver/incore/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json",
+	"geoServerWMS": "https://dev.in-core.org/geoserver/incore/wms",
+	"geoServerWFS": "https://dev.in-core.org/geoserver/incore/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json",
 	"client_id": "react-auth",
-	"authService": "https://incore-dev.ncsa.illinois.edu/auth/realms/In-core/protocol/openid-connect/token",
-	"hazardServiceBase": "https://incore-dev.ncsa.illinois.edu/hazard/api/",
-	"dataServiceBase": "https://incore-dev.ncsa.illinois.edu/data/api/",
-	"spaceServiceBase": "https://incore-dev.ncsa.illinois.edu/space/api/",
-	"maestroServiceBase": "https://incore-dev.ncsa.illinois.edu/maestro/slc/",
+	"authService": "https://dev.in-core.org/auth/realms/In-core/protocol/openid-connect/token",
+	"hazardServiceBase": "https://dev.in-core.org/hazard/api/",
+	"dataServiceBase": "https://dev.in-core.org/data/api/",
+	"spaceServiceBase": "https://dev.in-core.org/space/api/",
+	"maestroServiceBase": "https://dev.in-core.org/maestro/slc/",
 	"setGravatarURL": "https://en.gravatar.com/support/activating-your-account/",
 	"allowUpload": false,
 	"allowedRegions": [
@@ -42,8 +42,8 @@
 	],
 	"testbedSpace": "commresilienceslc",
 	"testbedGroup": "incore_slc_user",
-	"registerNewUserURL": "https://incore-dev.ncsa.illinois.edu/auth/realms/In-core/protocol/openid-connect/registrations?client_id=react-auth&response_type=code&scope=openid&redirect_uri=https://incore-dev.ncsa.illinois.edu/playbook/slc/",
-	"resetPasswordURL": "https://incore-dev.ncsa.illinois.edu/auth/realms/In-core/login-actions/reset-credentials?client_id=react-auth",
+	"registerNewUserURL": "https://dev.in-core.org/auth/realms/In-core/protocol/openid-connect/registrations?client_id=react-auth&response_type=code&scope=openid&redirect_uri=https://dev.in-core.org/playbook/slc/",
+	"resetPasswordURL": "https://dev.in-core.org/auth/realms/In-core/login-actions/reset-credentials?client_id=react-auth",
 	"inputDatasetTypes": {
 		"buildings": [
 			{
