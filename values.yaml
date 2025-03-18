@@ -505,7 +505,7 @@ datawolf:
     - name: INCORE_SERVER
       value: "http://incore-svc-data:8888"
     - name: INCORE_GROUP
-      value: "incore_user"
+      value: "incore_admin"
     - name: FILE_STORAGE
       value: "edu.illinois.ncsa.incore.impl.IncoreFileStorage"
     - name: INCORE_USER
