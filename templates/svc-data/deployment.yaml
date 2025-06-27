@@ -76,7 +76,7 @@ spec:
             - name: PG_HOST
               value: "incore-postgresql-hl"
             - name: PG_PORT
-              value: 5432
+              value: "5432"
             - name: PG_USER
               value: "postgres"
             - name: PG_PASSWORD
