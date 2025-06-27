@@ -50,3 +50,4 @@ annotations:
     - Update the configuration of the IN-CORE playbooks
     - Update Dependency Graph for Studio
     - Add Utility tools in Dependency Graph for Studio
+    - Add new endpoints for NSI in daata-service

@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Update the configuration of the IN-CORE playbooks
 - Removed new user alert cron job
 - Update dependency Graph for studio
+- Add NSI endpoints to incore-services
 
 ## 1.33.0 - 2025-02-20
 - IN-CORE release 6.0.0
