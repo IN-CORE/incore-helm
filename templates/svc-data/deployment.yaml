@@ -87,7 +87,7 @@ spec:
                   {{- else }}
                   name: {{ include "incore.fullname" . }}-postgresql
                   {{- end }}
-                  key: postgresql-password
+                  key: postgres-password
           ports:
             - containerPort: {{ .Values.svc_data.service.port }}
               name: svc-data
