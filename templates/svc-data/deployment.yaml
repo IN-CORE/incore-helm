@@ -72,13 +72,13 @@ spec:
             - name: SERVICES_ALLOW_HEADERS
               value: {{ .Values.cors.headers | quote }}
             - name: PG_DATABASE
-              value: {{ default "nsi" .Values.svc_data.postgresql.database | quote }}
+              value: "nsi"
             - name: PG_HOST
-              value: {{ default "incore-postgresql-hl" .Values.svc_data.postgresql.host | quote }}
+              value: "incore-postgresql-hl"
             - name: PG_PORT
-              value: {{ default "5432" .Values.svc_data.postgresql.port | quote }}
+              value: 5432
             - name: PG_USER
-              value: {{ default "postgres" .Values.svc_data.postgresql.user | quote }}
+              value: "postgres"
             - name: PG_PASSWORD
               valueFrom:
                 secretKeyRef:
