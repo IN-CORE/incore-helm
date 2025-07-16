@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.34.0 - 2025-07-08
+- Update the configuration of the IN-CORE playbooks
+- Removed new user alert cron job
+- Update dependency Graph for studio
+- Add Utility tools in Dependency Graph for Studio
+- Add NSI endpoints to incore-services
+
 ## 1.33.0 - 2025-02-20
 - IN-CORE release 6.0.0
 - Add more allowed method to CORS

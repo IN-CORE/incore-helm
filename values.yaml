@@ -160,7 +160,7 @@ auth:
   audience: INCORE
   image:
     repository: incore-auth
-    tag: 1.7.0
+    tag: 1.7.1
   service:
     type: ClusterIP
     port: 5000
@@ -640,7 +640,7 @@ keycloak:
 # APPROVAL APP CONFIGURATION
 # ----------------------------------------------------------------------
 approval:
-  replicas: 1
+  replicaCount: 1
   image:
     repository: approval-app
     tag: master

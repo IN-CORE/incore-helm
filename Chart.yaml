@@ -8,7 +8,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.33.0
+version: 1.34.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -47,8 +47,7 @@ annotations:
     - name: Helm Chart
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
-    - IN-CORE release 6.0.0
-    - Add more allowed method to CORS
-    - Add IN-CORE Studio deployment
-    - Add IN-CORE Studio configMap
-    - Add IN-CORE user approval application
+    - Update the configuration of the IN-CORE playbooks
+    - Update Dependency Graph for Studio
+    - Add Utility tools in Dependency Graph for Studio
+    - Add new endpoints for NSI in daata-service
