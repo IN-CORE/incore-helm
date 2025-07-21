@@ -473,7 +473,7 @@ playbooks:
 datawolf:
   image:
     repository: hub.ncsa.illinois.edu/incore/datawolf
-    tag: studio-beta-2
+    tag: 4.8.0
 
   auth:
     enabled: false
