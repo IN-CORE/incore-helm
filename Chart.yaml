@@ -47,7 +47,4 @@ annotations:
     - name: Helm Chart
       url: https://github.com/IN-CORE/incore-helm
   artifacthub.io/changes: |
-    - Update the configuration of the IN-CORE playbooks
-    - Update Dependency Graph for Studio
-    - Add Utility tools in Dependency Graph for Studio
-    - Add new endpoints for NSI in daata-service
+    - Update dependency graphs to use Kube tools

@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unreleased
+- Update dependency graphs to use Kube tools
+
 ## 1.34.0 - 2025-07-08
 - Update the configuration of the IN-CORE playbooks
 - Removed new user alert cron job
