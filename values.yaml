@@ -142,7 +142,7 @@ frontend:
   replicas: 1
   image:
     repository: frontend
-    tag: 1.14.0
+    tag: 1.15.0
   service:
     type: ClusterIP
     port: 80
@@ -179,7 +179,7 @@ doc_incore:
   replicas: 1
   image:
     repository: doc/incore
-    tag: 4.15.0
+    tag: 4.16.0
   service:
     type: ClusterIP
     port: 80
@@ -191,7 +191,7 @@ doc_pyincore:
   replicas: 1
   image:
     repository: doc/pyincore
-    tag: v1.21.0
+    tag: v1.22.0
   service:
     type: ClusterIP
     port: 80
@@ -203,7 +203,7 @@ doc_pyincore_viz:
   replicas: 1
   image:
     repository: doc/pyincore-viz
-    tag: v1.11.1
+    tag: v1.12.0
   service:
     type: ClusterIP
     port: 80
@@ -215,7 +215,7 @@ doc_pyincore_data:
   replicas: 1
   image:
     repository: doc/pyincore-data
-    tag: v0.8.0
+    tag: v1.0.0
   service:
     type: ClusterIP
     port: 80
@@ -227,7 +227,7 @@ doc_api:
   replicas: 1
   image:
     repository: doc/api
-    tag: v4.15.0
+    tag: v4.16.0
   service:
     type: ClusterIP
     port: 80
@@ -239,7 +239,7 @@ studio:
   replicas: 1
   image:
     repository: studio
-    tag: v1.0.0.alpha.2
+    tag: v1.0.0
   service:
     type: ClusterIP
     port: 80
@@ -254,7 +254,7 @@ svc_data:
   repo: /home/incore/data/
   image:
     repository: data-jetty
-    tag: 1.28.0
+    tag: 1.29.0
   service:
     type: ClusterIP
     port: 8888
@@ -280,7 +280,7 @@ svc_dfr3:
   replicas: 1
   image:
     repository: dfr3-jetty
-    tag: 1.28.0
+    tag: 1.29.0
   service:
     type: ClusterIP
     port: 8888
@@ -303,7 +303,7 @@ svc_hazard:
   replicas: 1
   image:
     repository: hazard-jetty
-    tag: 1.28.0
+    tag: 1.29.0
   service:
     type: ClusterIP
     port: 8888
@@ -326,7 +326,7 @@ svc_space:
   replicas: 1
   image:
     repository: space-jetty
-    tag: 1.28.0
+    tag: 1.29.0
   service:
     type: ClusterIP
     port: 8888
@@ -349,7 +349,7 @@ svc_sema:
   replicas: 1
   image:
     repository: semantics-jetty
-    tag: 1.28.0
+    tag: 1.29.0
   service:
     type: ClusterIP
     port: 8888
@@ -372,7 +372,7 @@ svc_project:
   replicas: 1
   image:
     repository: project-jetty
-    tag: 1.28.0
+    tag: 1.29.0
   service:
     type: ClusterIP
     port: 8888
