@@ -486,6 +486,10 @@ datawolf:
 
   engine:
     storelogs: true
+    nodeAffinityRequired: true
+
+  jobs:
+    nodeAffinityRequired: true
 
   persistence:
     #existingClaim:
