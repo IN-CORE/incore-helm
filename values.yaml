@@ -203,19 +203,19 @@ doc_pyincore_viz:
   replicas: 1
   image:
     repository: doc/pyincore-viz
-    tag: v1.12.0
+    tag: 1.12.0
   service:
     type: ClusterIP
     port: 80
 
 # ----------------------------------------------------------------------
-# PYINCORE_VIZ DOCUMENTATION CONFIGURATION
+# PYINCORE_DATA DOCUMENTATION CONFIGURATION
 # ----------------------------------------------------------------------
 doc_pyincore_data:
   replicas: 1
   image:
     repository: doc/pyincore-data
-    tag: v1.0.0
+    tag: 1.0.0
   service:
     type: ClusterIP
     port: 80
