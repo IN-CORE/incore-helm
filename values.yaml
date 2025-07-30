@@ -142,7 +142,7 @@ frontend:
   replicas: 1
   image:
     repository: frontend
-    tag: 1.15.0
+    tag: 1.15.1
   service:
     type: ClusterIP
     port: 80
