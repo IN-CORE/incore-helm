@@ -5,7 +5,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ $fullName }}-doc-incubator
-  {{- if .Values.ingress.className }}
   labels:
     {{- include "incore.labels" . | nindent 4 }}
   annotations:
