@@ -239,7 +239,7 @@ studio:
   replicas: 1
   image:
     repository: studio
-    tag: v1.0.0
+    tag: 1.0.0
   service:
     type: ClusterIP
     port: 80
