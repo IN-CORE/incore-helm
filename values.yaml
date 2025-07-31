@@ -238,8 +238,8 @@ doc_api:
 doc_pyincore_incubator:
   replicas: 1
   image:
-    repository: doc/pyincore_incubator
-    tag: develop
+    repository: doc/pyincore-incubator
+    tag: v0.1.0
   service:
     type: ClusterIP
     port: 80
