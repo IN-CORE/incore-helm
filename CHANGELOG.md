@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.35.1 - 2025-07-31
+- IN-CORE lab 1.12.0 with PyIncore-Incubator
+
 ## 1.35.0 - 2025-07-31
 - IN-CORE release 6.1.0
 - Update dependency graphs to use Kube tools
