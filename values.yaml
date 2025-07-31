@@ -238,7 +238,7 @@ doc_api:
 doc_pyincore_incubator:
   replicas: 1
   image:
-    repository: doc/pyincore_incubator
+    repository: doc/pyincore-incubator
     tag: develop
   service:
     type: ClusterIP
