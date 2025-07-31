@@ -233,7 +233,7 @@ doc_api:
     port: 80
 
 # ----------------------------------------------------------------------
-# API DOCUMENTATION CONFIGURATION
+# PYINCORE_INCUBATOR DOCUMENTATION CONFIGURATION
 # ----------------------------------------------------------------------
 doc_pyincore_incubator:
   replicas: 1
