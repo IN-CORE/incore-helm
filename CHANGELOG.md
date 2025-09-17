@@ -5,7 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## Unreleased
+## 1.36.0 - 2025-09-17
+- IN-CORE release 6.2.0
 - Update Dependency graph with new analyses
 
 ## 1.35.1 - 2025-07-31
