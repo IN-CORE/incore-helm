@@ -142,7 +142,7 @@ frontend:
   replicas: 1
   image:
     repository: frontend
-    tag: 1.15.1
+    tag: 1.16.0
   service:
     type: ClusterIP
     port: 80
@@ -251,7 +251,7 @@ studio:
   replicas: 1
   image:
     repository: studio
-    tag: 1.0.0
+    tag: 1.1.0
   service:
     type: ClusterIP
     port: 80
@@ -266,7 +266,7 @@ svc_data:
   repo: /home/incore/data/
   image:
     repository: data-jetty
-    tag: 1.29.0
+    tag: 1.30.0
   service:
     type: ClusterIP
     port: 8888
@@ -292,7 +292,7 @@ svc_dfr3:
   replicas: 1
   image:
     repository: dfr3-jetty
-    tag: 1.29.0
+    tag: 1.30.0
   service:
     type: ClusterIP
     port: 8888
@@ -315,7 +315,7 @@ svc_hazard:
   replicas: 1
   image:
     repository: hazard-jetty
-    tag: 1.29.0
+    tag: 1.30.0
   service:
     type: ClusterIP
     port: 8888
@@ -338,7 +338,7 @@ svc_space:
   replicas: 1
   image:
     repository: space-jetty
-    tag: 1.29.0
+    tag: 1.30.0
   service:
     type: ClusterIP
     port: 8888
@@ -361,7 +361,7 @@ svc_sema:
   replicas: 1
   image:
     repository: semantics-jetty
-    tag: 1.29.0
+    tag: 1.30.0
   service:
     type: ClusterIP
     port: 8888
@@ -384,7 +384,7 @@ svc_project:
   replicas: 1
   image:
     repository: project-jetty
-    tag: 1.29.0
+    tag: 1.30.0
   service:
     type: ClusterIP
     port: 8888
