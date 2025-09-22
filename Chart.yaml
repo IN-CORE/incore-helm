@@ -30,10 +30,10 @@ sources:
 dependencies:
   - name: keycloak
     version: ~21
-    repository: https://charts.bitnami.com/bitnami
+    repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
   - name: postgresql
     version: ~15
-    repository: https://charts.bitnami.com/bitnami
+    repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
   - name: mongodb
     version: ~9
     repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
