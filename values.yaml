@@ -577,6 +577,29 @@ mongodb:
   auth:
     rootPassword: incorerocks
   replicaSetName: incore
+  # Fix for restart issues
+  livenessProbe:
+    enabled: true
+    initialDelaySeconds: 60
+    periodSeconds: 20
+    timeoutSeconds: 10
+    failureThreshold: 6
+    successThreshold: 1
+  readinessProbe:
+    enabled: true
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 10
+    failureThreshold: 6
+    successThreshold: 1
+  # Ensure adequate resources
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 250m
+      memory: 512Mi
   initdbScripts:
 
 # ----------------------------------------------------------------------
@@ -586,6 +609,7 @@ postgresql:
   image:
     registry: docker.io
     repository: bitnamilegacy/postgresql
+    tag: "16.4.0"
   auth:
     postgresPassword: incorerocks
   primary:
@@ -616,6 +640,7 @@ keycloak:
   image:
     registry: docker.io
     repository: bitnamilegacy/keycloak
+    tag: "24.0.4"
   auth:
     adminUser: keycloak
     adminPassword: keycloakAdminPassword
