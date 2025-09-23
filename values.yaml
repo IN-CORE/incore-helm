@@ -573,6 +573,7 @@ mongodb:
   image:
     registry: docker.io
     repository: bitnamilegacy/mongodb
+    tag: "6.0.6"
   auth:
     rootPassword: incorerocks
   replicaSetName: incore
