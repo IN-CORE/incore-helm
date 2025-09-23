@@ -573,7 +573,6 @@ mongodb:
   image:
     registry: docker.io
     repository: bitnamilegacy/mongodb
-    tag: "9.3.1"
   auth:
     rootPassword: incorerocks
   replicaSetName: incore
@@ -586,7 +585,6 @@ postgresql:
   image:
     registry: docker.io
     repository: bitnamilegacy/postgresql
-    tag: "15.5.38"
   auth:
     postgresPassword: incorerocks
   primary:
@@ -617,7 +615,6 @@ keycloak:
   image:
     registry: docker.io
     repository: bitnamilegacy/keycloak
-    tag: "21.8.0"
   auth:
     adminUser: keycloak
     adminPassword: keycloakAdminPassword
