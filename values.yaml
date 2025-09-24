@@ -570,6 +570,10 @@ geoserver:
 mongodb:
   architecture: standalone
   useStatefulSet: true
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/mongodb
+    tag: "4.4.5"
   auth:
     rootPassword: incorerocks
   replicaSetName: incore
@@ -579,6 +583,10 @@ mongodb:
 # POSTGRESQL
 # ----------------------------------------------------------------------
 postgresql:
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/postgresql
+    tag: "16.4.0"
   auth:
     postgresPassword: incorerocks
   primary:
@@ -606,6 +614,10 @@ postgresql:
 # ----------------------------------------------------------------------
 keycloak:
   httpRelativePath: /auth/
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/keycloak
+    tag: "24.0.4"
   auth:
     adminUser: keycloak
     adminPassword: keycloakAdminPassword
