@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.38.0 - 2025-12-15
+- IN-CORE release 6.3.0
+
 ## 1.37.0 - 2025-09-26
 - Changed charts and images from bitnami to bitnami legacy
 
