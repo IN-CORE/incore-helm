@@ -40,6 +40,11 @@ dependencies:
   - name: datawolf
     version: ~1
     repository: https://opensource.ncsa.illinois.edu/charts
+  - name: datawolf
+    alias: datawolfcommunity
+    condition: datawolfcommunity.enabled
+    version: ~1
+    repository: https://opensource.ncsa.illinois.edu/charts
 
 # annotations for artifact.io
 annotations:

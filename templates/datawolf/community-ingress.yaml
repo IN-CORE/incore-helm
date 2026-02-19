@@ -1,0 +1,39 @@
+{{- if and .Values.ingress.enabled .Values.datawolfcommunity.enabled -}}
+{{- $fullName := include "incore.fullname" . -}}
+{{- $path := default "/datawolf-community/" .Values.datawolfcommunity.ingress.path -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}-datawolfcommunity
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+  annotations:
+    {{- include "incore.authIngressAnnotation" . | nindent 4 }}
+    {{- with .Values.datawolfcommunity.ingress.annotations }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+spec:
+  {{- if .Values.ingress.tls }}
+  tls:
+    {{- range .Values.ingress.tls }}
+    - hosts:
+        {{- range .hosts }}
+        - {{ . | quote }}
+        {{- end }}
+      secretName: {{ .secretName }}
+    {{- end }}
+  {{- end }}
+  rules:
+    {{- range .Values.ingress.hosts }}
+    - host: {{ .host | quote }}
+      http:
+        paths:
+          - path: {{ $path }}
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{ $fullName }}-datawolfcommunity
+                port:
+                  name: http
+    {{- end }}
+{{- end }}

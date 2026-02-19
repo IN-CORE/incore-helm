@@ -10,6 +10,7 @@
 	"maestroServiceBase": "https://dev.in-core.org/maestro/galveston/",
 	"setGravatarURL": "https://en.gravatar.com/support/activating-your-account/",
 	"allowUpload": false,
+	"enableRunAnalysis": false,
 	"allowedRegions": [
 		{
 			"name": "Island",
