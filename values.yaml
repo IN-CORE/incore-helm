@@ -531,6 +531,51 @@ datawolf:
     enabled: false
 
 # ----------------------------------------------------------------------
+# COMMUNITY DATAWOLF CONFIGURATION
+# ----------------------------------------------------------------------
+# Secondary DataWolf instance intended for community-app workflows.
+datawolfcommunity:
+  enabled: true
+
+  image:
+    repository: hub.ncsa.illinois.edu/incore/datawolf
+    tag: 4.9.0
+
+  auth:
+    enabled: false
+    admins:
+      - datawolf@incore.illinios.edu
+
+  dataset: public
+
+  loglevel: INFO
+
+  engine:
+    storelogs: true
+    nodeAffinityRequired: true
+
+  jobs:
+    nodeAffinityRequired: true
+
+  persistence:
+    size: 5Gi
+
+  postgresql:
+    enabled: false
+    url: jdbc:postgresql://postgresql/datawolfcommunity
+    postgresqlUsername: datawolfcommunity
+    postgresqlPassword: datawolfcommunity
+    postgresqlDatabase: database
+
+  # Keep defaults for dataset/file storage so this instance
+  # behaves like a standalone DataWolf deployment.
+  extraEnvVars: []
+
+  ingress:
+    enabled: false
+    path: /datawolf-community/
+
+# ----------------------------------------------------------------------
 # Maestro usersync configuration
 # ----------------------------------------------------------------------
 maestro_usersync:
@@ -600,6 +645,10 @@ postgresql:
           CREATE DATABASE datawolf;
           CREATE USER datawolf WITH PASSWORD 'datawolf';
           GRANT ALL PRIVILEGES ON DATABASE datawolf TO datawolf;
+        datawolfcommunity.sql: |
+          CREATE DATABASE datawolfcommunity;
+          CREATE USER datawolfcommunity WITH PASSWORD 'datawolfcommunity';
+          GRANT ALL PRIVILEGES ON DATABASE datawolfcommunity TO datawolfcommunity;
         maestro.sql: |
           CREATE DATABASE maestro_galveston;
           CREATE DATABASE maestro_joplin;
