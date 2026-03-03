@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## unreleased
+- Changed fr
+- Add auth_config.json mount to frontend for logout URL (incore-ui TODO: redirect to Keycloak on logout)
+
 ## 1.38.0 - 2025-12-15
 - IN-CORE release 6.3.0
 
