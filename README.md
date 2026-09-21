@@ -103,3 +103,7 @@ IN-CORE will use a persistent storage to store all data that is uploaded as well
 1. Install the chart
 
 For an example of using existing PVC, see the file [incore-pvc.yaml](incore-pvc.yaml).
+
+## License
+
+This project is licensed under the [Mozilla Public License 2.0](https://www.mozilla.org/MPL/2.0/). See [LICENSE](LICENSE).
