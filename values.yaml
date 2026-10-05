@@ -457,6 +457,30 @@ svc_plotting:
     size: 5Gi
 
 # ----------------------------------------------------------------------
+# MCP SERVER CONFIGURATION
+# ----------------------------------------------------------------------
+mcp:
+  enabled: false
+  replicas: 1
+  image:
+    repository: incore-mcp
+    tag: 0.1.0
+  # audience tokens must carry, defaults to auth.audience so tokens can be
+  # forwarded to the gateway unchanged
+  audience: ""
+  service:
+    type: ClusterIP
+    port: 8000
+  ingress:
+    annotations:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      memory: 512Mi
+
+# ----------------------------------------------------------------------
 # PLAYBOOK CONFIGURATION
 # ----------------------------------------------------------------------
 playbooks:

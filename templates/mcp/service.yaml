@@ -1,0 +1,18 @@
+{{- if .Values.mcp.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "incore.fullname" . }}-mcp
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  selector:
+    app.kubernetes.io/name: {{ include "incore.name" . }}-mcp
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  type: {{ .Values.mcp.service.type }}
+  ports:
+    - port: {{ .Values.mcp.service.port }}
+      name: mcp
+      targetPort: {{ .Values.mcp.service.port }}
+      protocol: TCP
+{{- end }}

@@ -1,0 +1,52 @@
+{{- if and .Values.ingress.enabled .Values.ingress.traefik .Values.mcp.enabled -}}
+  {{- $fullName := include "incore.fullname" . -}}
+# OAuth discovery for MCP clients. Following RFC 8414 / OIDC discovery, a client looking
+# for issuer https://<host>/auth/realms/<realm> first requests
+#   /.well-known/oauth-authorization-server/auth/realms/<realm>
+#   /.well-known/openid-configuration/auth/realms/<realm>
+# Without this route, the frontend's catch-all answers those with 200 HTML and the client
+# gives up before trying Keycloak's own path. Rewrite both to Keycloak's metadata.
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: oauth-discovery
+spec:
+  replacePathRegex:
+    regex: ^/\.well-known/(?:oauth-authorization-server|openid-configuration)/auth/realms/([^/]+)/?$
+    replacement: /auth/realms/${1}/.well-known/openid-configuration
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}-oauth-discovery
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: {{ .Release.Namespace }}-oauth-discovery@kubernetescrd
+spec:
+  {{- if .Values.ingress.tls }}
+  tls:
+    {{- range .Values.ingress.tls }}
+    - hosts:
+        {{- range .hosts }}
+        - {{ . | quote }}
+        {{- end }}
+      secretName: {{ .secretName }}
+    {{- end }}
+  {{- end }}
+  rules:
+    {{- range .Values.ingress.hosts }}
+    - host: {{ .host | quote }}
+      http:
+        paths:
+          {{- range list "oauth-authorization-server" "openid-configuration" }}
+          - path: /.well-known/{{ . }}/auth/realms/
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{ $fullName }}-keycloak
+                port:
+                  name: http
+          {{- end }}
+    {{- end }}
+{{- end }}
