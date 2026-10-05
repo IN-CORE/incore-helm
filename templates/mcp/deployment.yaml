@@ -1,0 +1,73 @@
+{{- if .Values.mcp.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "incore.fullname" . }}-mcp
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.mcp.replicas }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "incore.name" . }}-mcp
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "incore.name" . }}-mcp
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: incore-mcp
+          image: "{{ .Values.image.project }}/{{ .Values.mcp.image.repository }}:{{ .Values.mcp.image.tag }}"
+          imagePullPolicy: {{ .Values.mcp.image.pullPolicy | default .Values.image.pullPolicy }}
+          env:
+            - name: MCP_PORT
+              value: {{ .Values.mcp.service.port | quote }}
+            # Calls go through the public gateway so incore-auth validates the user's token.
+            - name: INCORE_URL
+              {{- with first .Values.ingress.hosts }}
+              value: {{ printf "https://%s" .host | quote }}
+              {{- end }}
+            - name: MCP_PUBLIC_URL
+              {{- with first .Values.ingress.hosts }}
+              value: {{ printf "https://%s/mcp" .host | quote }}
+              {{- end }}
+            - name: KEYCLOAK_ISSUER
+              {{- with first .Values.keycloak.ingress.rules }}
+              value: {{ printf "https://%s/auth/realms/%s" .host $.Values.auth.realm | quote }}
+              {{- end }}
+            - name: KEYCLOAK_AUDIENCE
+              value: {{ .Values.mcp.audience | default .Values.auth.audience | quote }}
+          ports:
+            - containerPort: {{ .Values.mcp.service.port }}
+              name: mcp
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: mcp
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: mcp
+          {{- with .Values.mcp.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      {{- with .Values.mcp.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.mcp.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.mcp.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}
