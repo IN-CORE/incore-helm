@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 - Add IN-CORE MCP server deployment
+- Route OAuth discovery URLs to Keycloak so MCP clients can find the realm metadata
 
 ## 1.38.0 - 2025-12-15
 - IN-CORE release 6.3.0
