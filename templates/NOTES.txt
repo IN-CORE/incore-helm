@@ -69,6 +69,9 @@ Playbooks:
 
 Support:
 - DataWolf      : {{ .Values.datawolf.image.tag | default .Subcharts.datawolf.Chart.AppVersion }}
+{{- if .Values.datawolfplaybook.enabled }}
+- DataWolf (playbook) : {{ .Values.datawolfplaybook.image.tag | default .Subcharts.datawolfplaybook.Chart.AppVersion }}
+{{- end }}
 - Postgresql    : {{ .Values.postgresql.image.tag | default .Subcharts.postgresql.Chart.AppVersion }}
 - Keycloak      : {{ .Values.keycloak.image.tag | default .Subcharts.keycloak.Chart.AppVersion }} 
 - MongoDB       : {{ .Values.mongodb.image.tag | default .Subcharts.mongodb.Chart.AppVersion }}
