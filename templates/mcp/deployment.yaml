@@ -43,6 +43,20 @@ spec:
               {{- end }}
             - name: KEYCLOAK_AUDIENCE
               value: {{ .Values.mcp.audience | default .Values.auth.audience | quote }}
+            {{- with .Values.mcp.allowedOrigins }}
+            - name: MCP_ALLOWED_ORIGINS
+              value: {{ join "," . | quote }}
+            {{- end }}
+            {{- if .Values.mcp.llm.apiKey }}
+            # Chat relay (POST /mcp/chat) is only enabled when the key is set.
+            - name: LLM_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "incore.fullname" . }}-services
+                  key: LLM_API_KEY
+            - name: LLM_MODEL
+              value: {{ .Values.mcp.llm.model | quote }}
+            {{- end }}
           ports:
             - containerPort: {{ .Values.mcp.service.port }}
               name: mcp
