@@ -457,6 +457,38 @@ svc_plotting:
     size: 5Gi
 
 # ----------------------------------------------------------------------
+# MCP SERVER CONFIGURATION
+# ----------------------------------------------------------------------
+mcp:
+  enabled: false
+  replicas: 1
+  image:
+    repository: incore-mcp
+    tag: 0.1.0
+  # audience tokens must carry, defaults to auth.audience so tokens can be
+  # forwarded to the gateway unchanged
+  audience: ""
+  # browser origins allowed besides the public host, e.g. a local incore-ui
+  # (http://localhost:3000)
+  allowedOrigins: []
+  # chat relay (POST /mcp/chat), disabled unless llm.apiKey is set
+  llm:
+    # Lumen project key ("sk_...")
+    apiKey: ""
+    model: gemma-4-31b-it
+  service:
+    type: ClusterIP
+    port: 8000
+  ingress:
+    annotations:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      memory: 512Mi
+
+# ----------------------------------------------------------------------
 # PLAYBOOK CONFIGURATION
 # ----------------------------------------------------------------------
 playbooks:

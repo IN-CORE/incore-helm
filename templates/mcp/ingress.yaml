@@ -1,0 +1,47 @@
+{{- if and .Values.ingress.enabled .Values.mcp.enabled -}}
+  {{- $fullName := include "incore.fullname" . -}}
+  {{- $svcPort := .Values.mcp.service.port -}}
+# No incore-auth middleware here: incore-mcp validates Keycloak tokens itself and must
+# answer unauthenticated requests with its own 401 + OAuth discovery metadata.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}-mcp
+  labels:
+    {{- include "incore.labels" . | nindent 4 }}
+  {{- with .Values.mcp.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if .Values.ingress.tls }}
+  tls:
+    {{- range .Values.ingress.tls }}
+    - hosts:
+        {{- range .hosts }}
+        - {{ . | quote }}
+        {{- end }}
+      secretName: {{ .secretName }}
+    {{- end }}
+  {{- end }}
+  rules:
+    {{- range .Values.ingress.hosts }}
+    - host: {{ .host | quote }}
+      http:
+        paths:
+          - path: /mcp
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{ $fullName }}-mcp
+                port:
+                  number: {{ $svcPort }}
+          - path: /.well-known/oauth-protected-resource
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{ $fullName }}-mcp
+                port:
+                  number: {{ $svcPort }}
+    {{- end }}
+  {{- end }}
