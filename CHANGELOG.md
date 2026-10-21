@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unreleased
+- Add optional second DataWolf instance for the playbooks (`datawolfplaybook`, disabled by default), served under `/datawolf-playbook/` with its own database and volume
+- Prod playbook configs use the `/datawolf-playbook/` DataWolf
+- Requires datawolf chart 1.2.0 (configurable context path)
+
 ## 1.38.0 - 2025-12-15
 - IN-CORE release 6.3.0
 

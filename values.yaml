@@ -580,6 +580,66 @@ mongodb:
   initdbScripts:
 
 # ----------------------------------------------------------------------
+# DATAWOLF FOR PLAYBOOKS (community app)
+# ----------------------------------------------------------------------
+# Second, independent DataWolf instance used only by the playbooks. It has its own
+# database (on the shared postgresql), its own volume and its own ingress host, so the
+# playbooks can use it without affecting the DataWolf used by IN-CORE Studio.
+# Anything not set here falls back to the datawolf chart defaults, so settings such as
+# image, extraEnvVars, engine and resources need to be repeated if they differ from the
+# defaults of the chart.
+datawolfplaybook:
+  enabled: false
+
+  # keeps the resource names different from the datawolf above
+  fullnameOverride: incore-datawolf-playbook
+
+  image:
+    repository: hub.ncsa.illinois.edu/incore/datawolf
+    tag: 4.10.0
+
+  auth:
+    enabled: false
+    admins:
+      - datawolf@incore.illinios.edu
+
+  dataset: public
+
+  loglevel: INFO
+
+  engine:
+    storelogs: true
+    nodeAffinityRequired: true
+
+  jobs:
+    nodeAffinityRequired: true
+
+  persistence:
+    #existingClaim:
+    #storageClass: "-"
+    size: 10Gi
+
+  postgresql:
+    enabled: false
+    url: postgresql://incore-postgresql-hl/datawolf_playbook
+    postgresqlUsername: datawolf_playbook
+    postgresqlPassword: datawolf_playbook
+    postgresqlDatabase: database
+
+  extraEnvVars:
+    - name: DATASET_DAO
+      value: "edu.illinois.ncsa.incore.dao.IncoreDatasetDao"
+  initdbScripts:
+
+  # the playbooks call datawolf from the browser, so it is exposed on the same hosts as
+  # ingress.hosts under its own path. Datawolf itself serves under this path (needs a
+  # datawolf image and chart that support contextPath, so image 4.10.0 and chart ~1.2).
+  contextPath: /datawolf-playbook
+
+  ingress:
+    annotations: {}
+
+# ----------------------------------------------------------------------
 # POSTGRESQL
 # ----------------------------------------------------------------------
 postgresql:
@@ -600,6 +660,10 @@ postgresql:
           CREATE DATABASE datawolf;
           CREATE USER datawolf WITH PASSWORD 'datawolf';
           GRANT ALL PRIVILEGES ON DATABASE datawolf TO datawolf;
+        datawolf_playbook.sql: |
+          CREATE DATABASE datawolf_playbook;
+          CREATE USER datawolf_playbook WITH PASSWORD 'datawolf_playbook';
+          GRANT ALL PRIVILEGES ON DATABASE datawolf_playbook TO datawolf_playbook;
         maestro.sql: |
           CREATE DATABASE maestro_galveston;
           CREATE DATABASE maestro_joplin;
