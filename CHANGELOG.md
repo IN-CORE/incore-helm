@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unreleased
+- Pinned the JupyterHub chart to 4.4.4 (JupyterHub 5.5) in deploy-incore-lab.sh
+- Added jupyterhub-common.yaml for shared IN-CORE Lab settings, keeping the KubeSpawner 6 slug scheme
+
 ## 1.38.0 - 2025-12-15
 - IN-CORE release 6.3.0
 
