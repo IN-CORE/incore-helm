@@ -1,0 +1,10 @@
+# Settings shared by every IN-CORE Lab cluster, layered on top of the
+# (untracked) values-jupyterhub-<cluster>.yaml by deploy-incore-lab.sh.
+# Keep secrets out of this file.
+hub:
+  extraConfig:
+    kubespawnerSlugScheme.py: |
+      # KubeSpawner 7 (chart 4.x) changed the default slug scheme to "safe", which
+      # renames pods and the /home/{username} path for usernames with characters
+      # like ".", "_" or uppercase. Keep the KubeSpawner 6 names.
+      c.KubeSpawner.slug_scheme = "escape"
